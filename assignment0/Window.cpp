@@ -39,7 +39,7 @@ void Window::initialize_objects()
 {
     terrain = new Terrain(shaderProgram);
     obj = new OBJObject("bear.obj");
-    dragon = new OBJObject("bunny.obj");
+    dragon = new OBJObject("Dragon.obj");
     
 	// Load the shader program. Make sure you have the correct filepath up top
 	shaderProgram = LoadShaders(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);

@@ -107,7 +107,11 @@ void OBJObject::parse(const char *filepath)
             fscanf(fp, "%f %f %f\n", &normal.x, &normal.y, &normal.z );
             normals.push_back(normal);
         } else if( strcmp( lineHeader, "f" ) == 0) {
-            fscanf(fp, "%d//%d %d//%d %d//%d\n", &fx, &ignore, &fy, &ignore, &fz, &ignore);
+            if(strcmp(filepath, "Dragon.obj") == 0) {
+                fscanf(fp, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &fx, &ignore, &ignore, &fy, &ignore, &ignore, &fz, &ignore, &ignore);
+            } else {
+                fscanf(fp, "%d//%d %d//%d %d//%d\n", &fx, &ignore, &fy, &ignore, &fz, &ignore);
+            }
             // indices are zero-based numbering
             indices.push_back(fx - 1);
             indices.push_back(fy - 1);
