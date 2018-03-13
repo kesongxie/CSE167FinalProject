@@ -7,32 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F377E8D2057C5DB00F2B876 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F377E8C2057C5DB00F2B876 /* libSDL2-2.0.0.dylib */; };
+		4F377E8F2057C61500F2B876 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F377E8E2057C61400F2B876 /* libglfw.3.2.dylib */; };
+		4F377E902057C6F400F2B876 /* heightmap.bmp in Copy Files */ = {isa = PBXBuildFile; fileRef = 98066E04205367550025BA30 /* heightmap.bmp */; };
+		4F377E922057C83500F2B876 /* rock_texture_2.jpg in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E912057C82F00F2B876 /* rock_texture_2.jpg */; };
+		4F377E952057CE4F00F2B876 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F377E942057CE4F00F2B876 /* BoundingBox.cpp */; };
+		4F377E972057D07700F2B876 /* OBJObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F377E962057D07700F2B876 /* OBJObject.cpp */; };
+		4F377E9F2057D17A00F2B876 /* bear.obj in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E9A2057D15500F2B876 /* bear.obj */; };
+		4F377EA02057D17A00F2B876 /* bunny.obj in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E9B2057D15500F2B876 /* bunny.obj */; };
+		4F377EA12057D17A00F2B876 /* android.frag in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E9E2057D15600F2B876 /* android.frag */; };
+		4F377EA22057D17A00F2B876 /* android.vert in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E992057D15500F2B876 /* android.vert */; };
+		4F377EA32057D17A00F2B876 /* bbox.frag in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E9D2057D15600F2B876 /* bbox.frag */; };
+		4F377EA42057D17A00F2B876 /* bbox.vert in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E9C2057D15600F2B876 /* bbox.vert */; };
 		98066DFB205305030025BA30 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98066DF2205305020025BA30 /* Window.cpp */; };
 		98066DFC205305030025BA30 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98066DF6205305030025BA30 /* shader.cpp */; };
 		98066DFD205305030025BA30 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98066DF7205305030025BA30 /* main.cpp */; };
 		98066DFE205305030025BA30 /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98066DF8205305030025BA30 /* Terrain.cpp */; };
-		98066DFF205305140025BA30 /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98066DF1205305020025BA30 /* shader.frag */; };
-		98066E00205305140025BA30 /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98066DF5205305020025BA30 /* shader.vert */; };
-		98066E0220535E9B0025BA30 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98066E0120535E9B0025BA30 /* libSDL2-2.0.0.dylib */; };
+		98066DFF205305140025BA30 /* shader.frag in Copy Files */ = {isa = PBXBuildFile; fileRef = 98066DF1205305020025BA30 /* shader.frag */; };
+		98066E00205305140025BA30 /* shader.vert in Copy Files */ = {isa = PBXBuildFile; fileRef = 98066DF5205305020025BA30 /* shader.vert */; };
 		98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21077200D72EC00B4D688 /* OpenGL.framework */; };
-		98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21078200D730C00B4D688 /* libglfw.3.2.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		98D21060200D6F8600B4D688 /* CopyFiles */ = {
+		98D21060200D6F8600B4D688 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				98066DFF205305140025BA30 /* shader.frag in CopyFiles */,
-				98066E00205305140025BA30 /* shader.vert in CopyFiles */,
+				4F377E9F2057D17A00F2B876 /* bear.obj in Copy Files */,
+				4F377EA02057D17A00F2B876 /* bunny.obj in Copy Files */,
+				4F377EA12057D17A00F2B876 /* android.frag in Copy Files */,
+				4F377EA22057D17A00F2B876 /* android.vert in Copy Files */,
+				4F377EA32057D17A00F2B876 /* bbox.frag in Copy Files */,
+				4F377EA42057D17A00F2B876 /* bbox.vert in Copy Files */,
+				4F377E922057C83500F2B876 /* rock_texture_2.jpg in Copy Files */,
+				4F377E902057C6F400F2B876 /* heightmap.bmp in Copy Files */,
+				98066DFF205305140025BA30 /* shader.frag in Copy Files */,
+				98066E00205305140025BA30 /* shader.vert in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F377E8C2057C5DB00F2B876 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../../usr/local/Cellar/sdl2/2.0.8/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
+		4F377E8E2057C61400F2B876 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = "../../../../../../../Developer/glfw-3.2.1/src/libglfw.3.2.dylib"; sourceTree = "<group>"; };
+		4F377E912057C82F00F2B876 /* rock_texture_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rock_texture_2.jpg; sourceTree = "<group>"; };
+		4F377E932057CE4F00F2B876 /* BoundingBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundingBox.h; sourceTree = "<group>"; };
+		4F377E942057CE4F00F2B876 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = "<group>"; };
+		4F377E962057D07700F2B876 /* OBJObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OBJObject.cpp; sourceTree = "<group>"; };
+		4F377E982057D09600F2B876 /* OBJObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBJObject.h; sourceTree = "<group>"; };
+		4F377E992057D15500F2B876 /* android.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = android.vert; sourceTree = "<group>"; };
+		4F377E9A2057D15500F2B876 /* bear.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bear.obj; sourceTree = "<group>"; };
+		4F377E9B2057D15500F2B876 /* bunny.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bunny.obj; sourceTree = "<group>"; };
+		4F377E9C2057D15600F2B876 /* bbox.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = bbox.vert; sourceTree = "<group>"; };
+		4F377E9D2057D15600F2B876 /* bbox.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = bbox.frag; sourceTree = "<group>"; };
+		4F377E9E2057D15600F2B876 /* android.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = android.frag; sourceTree = "<group>"; };
 		98066DF1205305020025BA30 /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		98066DF2205305020025BA30 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
 		98066DF3205305020025BA30 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
@@ -56,8 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98066E0220535E9B0025BA30 /* libSDL2-2.0.0.dylib in Frameworks */,
-				98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */,
+				4F377E8D2057C5DB00F2B876 /* libSDL2-2.0.0.dylib in Frameworks */,
+				4F377E8F2057C61500F2B876 /* libglfw.3.2.dylib in Frameworks */,
 				98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,10 +117,17 @@
 		98D21064200D6F8600B4D688 /* assignment0 */ = {
 			isa = PBXGroup;
 			children = (
+				4F377E9A2057D15500F2B876 /* bear.obj */,
+				4F377E9B2057D15500F2B876 /* bunny.obj */,
+				4F377E912057C82F00F2B876 /* rock_texture_2.jpg */,
 				983E98F92053E4AC004BC2E6 /* stb_image.h */,
 				98066E04205367550025BA30 /* heightmap.bmp */,
 				98066DF1205305020025BA30 /* shader.frag */,
 				98066DF5205305020025BA30 /* shader.vert */,
+				4F377E9E2057D15600F2B876 /* android.frag */,
+				4F377E992057D15500F2B876 /* android.vert */,
+				4F377E9D2057D15600F2B876 /* bbox.frag */,
+				4F377E9C2057D15600F2B876 /* bbox.vert */,
 				98066DF7205305030025BA30 /* main.cpp */,
 				98066DF4205305020025BA30 /* main.h */,
 				98066DF6205305030025BA30 /* shader.cpp */,
@@ -97,6 +136,10 @@
 				98066DF3205305020025BA30 /* Window.h */,
 				98066DFA205305030025BA30 /* Terrain.h */,
 				98066DF8205305030025BA30 /* Terrain.cpp */,
+				4F377E962057D07700F2B876 /* OBJObject.cpp */,
+				4F377E982057D09600F2B876 /* OBJObject.h */,
+				4F377E942057CE4F00F2B876 /* BoundingBox.cpp */,
+				4F377E932057CE4F00F2B876 /* BoundingBox.h */,
 			);
 			path = assignment0;
 			sourceTree = "<group>";
@@ -104,7 +147,9 @@
 		98D21076200D72EC00B4D688 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F377E8E2057C61400F2B876 /* libglfw.3.2.dylib */,
 				98066E0120535E9B0025BA30 /* libSDL2-2.0.0.dylib */,
+				4F377E8C2057C5DB00F2B876 /* libSDL2-2.0.0.dylib */,
 				98D21078200D730C00B4D688 /* libglfw.3.2.dylib */,
 				98D21077200D72EC00B4D688 /* OpenGL.framework */,
 			);
@@ -120,7 +165,7 @@
 			buildPhases = (
 				98D2105E200D6F8600B4D688 /* Sources */,
 				98D2105F200D6F8600B4D688 /* Frameworks */,
-				98D21060200D6F8600B4D688 /* CopyFiles */,
+				98D21060200D6F8600B4D688 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -168,10 +213,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F377E972057D07700F2B876 /* OBJObject.cpp in Sources */,
 				98066DFC205305030025BA30 /* shader.cpp in Sources */,
 				98066DFD205305030025BA30 /* main.cpp in Sources */,
 				98066DFB205305030025BA30 /* Window.cpp in Sources */,
 				98066DFE205305030025BA30 /* Terrain.cpp in Sources */,
+				4F377E952057CE4F00F2B876 /* BoundingBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,11 +333,11 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2ATYTS9SNC;
+				DEVELOPMENT_TEAM = 7H5DJ8MJAZ;
 				HEADER_SEARCH_PATHS = (
-					/Developer/glm,
 					"/Developer/glfw-3.2.1/include",
 					/usr/local/include,
+					/Developer/glm,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"/Developer/glfw-3.2.1/src",
@@ -305,11 +352,11 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2ATYTS9SNC;
+				DEVELOPMENT_TEAM = 7H5DJ8MJAZ;
 				HEADER_SEARCH_PATHS = (
-					/Developer/glm,
 					"/Developer/glfw-3.2.1/include",
 					/usr/local/include,
+					/Developer/glm,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"/Developer/glfw-3.2.1/src",

@@ -7,7 +7,7 @@
 #include "stb_image.h"
 
 
-#define HEIGHT_MAP_PATH "/Developer/FinalProject/assignment0/heightmap.bmp"
+#define HEIGHT_MAP_PATH "./heightmap.bmp"
 
 Terrain::Terrain(GLint shaderProgram)
 {
@@ -60,7 +60,7 @@ Terrain::Terrain(GLint shaderProgram)
     // bind the texture
     glBindTexture(GL_TEXTURE_3D, textureBuffer);
     int width, height, nrChannels;
-    unsigned char *data = stbi_load("/Developer/FinalProject/assignment0/rock_texture_2.jpg", &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load("./rock_texture_2.jpg", &width, &height, &nrChannels, 0);
     if (data)
     {
       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);

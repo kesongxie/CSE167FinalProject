@@ -1,12 +1,28 @@
-#include "window.h"
+#include "Window.h"
+#include "OBJObject.h"
 
 const char* window_title = "GLFW Starter Project";
 Terrain * terrain;
-GLint shaderProgram;
+GLint shaderProgram, objShaderProgram;
+
+// obj
+OBJObject * obj;
+OBJObject * dragon;
+
+// trackball variables
+double prev_x, prev_y;
+double curr_x, curr_y;
+glm::vec3 curPoint, lastPoint;
+bool rot = false;
+
+glm::vec3 rotAxis;
+float rotAngle;
 
 // On some systems you need to change this to the absolute path
 #define VERTEX_SHADER_PATH "./shader.vert"
 #define FRAGMENT_SHADER_PATH "./shader.frag"
+#define OBJ_VERTEX_SHADER_PATH "./android.vert"
+#define OBJ_FRAGMENT_SHADER_PATH "./android.frag"
 
 // Default camera parameters
 glm::vec3 cam_pos(0.0f, 20.0f, 140.0);		// e  | Position of camera
@@ -21,17 +37,23 @@ glm::mat4 Window::V;
 
 void Window::initialize_objects()
 {
-
+    terrain = new Terrain(shaderProgram);
+    obj = new OBJObject("bear.obj");
+    dragon = new OBJObject("bunny.obj");
+    
 	// Load the shader program. Make sure you have the correct filepath up top
 	shaderProgram = LoadShaders(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);
-    terrain = new Terrain(shaderProgram);
+    objShaderProgram = LoadShaders(OBJ_VERTEX_SHADER_PATH, OBJ_FRAGMENT_SHADER_PATH);
 }
 
 // Treat this as a destructor function. Delete dynamically allocated memory here.
 void Window::clean_up()
 {
 	delete(terrain);
+    delete(obj);
+    delete(dragon);
 	glDeleteProgram(shaderProgram);
+    glDeleteProgram(objShaderProgram);
 }
 
 GLFWwindow* Window::create_window(int width, int height)
@@ -102,6 +124,19 @@ void Window::idle_callback()
 {
 	// Call the update function the cube
 	//cube->update();
+    
+    // Iterate thru bounding boxes vector, use AABB to detect if any collide with dragon's boudning box. If any collide with dragon, set the colliding boxes’ collide flags to true (colliding boxes will be colored red via fragment shader).
+    BoundingBox * boxA = dragon->box;
+    for(auto iter = bbox_vector.begin(); iter != bbox_vector.end(); iter++){
+        BoundingBox * boxB = *iter;
+        if (checkCollision(boxA, boxB)) {
+            boxA->collide = true;
+            boxB->collide = true;
+        } else {
+            boxA->collide = false;
+            boxB->collide = false;
+        }
+    }
 }
 
 void Window::display_callback(GLFWwindow* window)
@@ -114,6 +149,10 @@ void Window::display_callback(GLFWwindow* window)
 	
 	// Render the cube
 	terrain->draw(shaderProgram);
+    
+    glUseProgram(objShaderProgram);
+    dragon->draw(objShaderProgram); // mock dragon
+    obj->draw(objShaderProgram); // mock asteroid
 
 	// Gets events, including input such as keyboard and mouse or window resizing
 	glfwPollEvents();
@@ -132,5 +171,108 @@ void Window::key_callback(GLFWwindow* window, int key, int scancode, int action,
 			// Close the window. This causes the program to also terminate.
 			glfwSetWindowShouldClose(window, GL_TRUE);
 		}
+        // debug: display/hide bounding box
+        if (key == GLFW_KEY_D)
+        {
+            Window::bbox_display = !Window::bbox_display;
+        }
+        if (key == GLFW_KEY_UP)
+        {
+            dragon->move_y(1.0f);
+        }
+        if (key == GLFW_KEY_DOWN)
+        {
+            dragon->move_y(-1.0f);
+        }
+        if (key == GLFW_KEY_LEFT)
+        {
+            dragon->move_x(-1.0f);
+        }
+        if (key == GLFW_KEY_RIGHT)
+        {
+            dragon->move_x(1.0f);
+        }
 	}
+}
+
+void Window::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+    if (action == GLFW_PRESS)
+    {
+        // Check if mouse left button is pressed, enter rotation mode
+        if (button == GLFW_MOUSE_BUTTON_LEFT) {
+            rot = true;
+            glfwGetCursorPos(window, &prev_x, &prev_y);
+        }
+    } else if (action == GLFW_RELEASE) {
+        // Check if mouse left button is released, exit rotation mode
+        if (button == GLFW_MOUSE_BUTTON_LEFT) {
+            rot = false;
+        }
+    }
+}
+
+void Window::cursor_pos_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    curr_x = xpos;
+    curr_y = ypos;
+    
+    if (rot) {
+        lastPoint = trackballMapping(prev_x, prev_y);
+        curPoint = trackballMapping(curr_x, curr_y);
+        
+        if (lastPoint == curPoint) return;
+        
+        float velocity = length(curPoint-lastPoint);
+        if (velocity < 0.0001) return;
+        
+        rotAngle = velocity;
+        rotAxis = glm::cross(lastPoint, curPoint);
+        
+        // extract 3x3 rotation mtx, apply to VIEW
+        cam_pos = glm::mat3(glm::rotate(glm::mat4(1.0f), rotAngle*50/180 * glm::pi<float>(), rotAxis)) * cam_pos;
+        V = glm::lookAt(cam_pos, cam_look_at, cam_up);
+    }
+    // Keep track of previous position
+    prev_x = curr_x;
+    prev_y = curr_y;
+}
+
+void Window::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    V = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, -1 * yoffset)) * V;
+    // extract current camera position from VIEW, update cam_pos
+    cam_pos = getCamPos(V);
+}
+
+glm::vec3 Window::trackballMapping(double xpos, double ypos) {
+    glm::vec3 v;
+    float d;
+    
+    v.x = (2.0 * xpos - Window::width)/Window::width;
+    v.y = (Window::height - 2.0 * ypos)/Window::height;
+    v.z = 0.0;
+    d = glm::length(v);
+    d = (d < 1) ? d : 1.0;
+    v.z = sqrtf(1.0001 - d*d);
+    v = glm::normalize(v);
+    return v;
+}
+
+// Extracting camera position from a ModelView Matrix
+glm::vec3 Window::getCamPos(glm::mat4 modelview)
+{
+    glm::mat3 rotMat(modelview);
+    glm::vec3 d(modelview[3]);
+    
+    glm::vec3 retVec = -d * rotMat;
+    return retVec;
+}
+
+// Checking collision between AABB and AABB
+bool Window::checkCollision(BoundingBox* a, BoundingBox* b)
+{
+    return (a->min_x <= b->max_x && a->max_x >= b->min_x) &&
+    (a->min_y <= b->max_y && a->max_y >= b->min_y) &&
+    (a->min_z <= b->max_z && a->max_z >= b->min_z);
 }
