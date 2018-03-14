@@ -16,6 +16,7 @@
 		98066E0220535E9B0025BA30 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98066E0120535E9B0025BA30 /* libSDL2-2.0.0.dylib */; };
 		98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21077200D72EC00B4D688 /* OpenGL.framework */; };
 		98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21078200D730C00B4D688 /* libglfw.3.2.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98D873F920585B9E00472E29 /* PerlinNoise.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,8 @@
 		98D21062200D6F8600B4D688 /* assignment0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = assignment0; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D21077200D72EC00B4D688 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		98D21078200D730C00B4D688 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = "../../../../Developer/glfw-3.2.1/src/libglfw.3.2.dylib"; sourceTree = "<group>"; };
+		98D873F920585B9E00472E29 /* PerlinNoise.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PerlinNoise.cpp; sourceTree = "<group>"; };
+		98D873FA20585B9E00472E29 /* PerlinNoise.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PerlinNoise.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				98066DF3205305020025BA30 /* Window.h */,
 				98066DFA205305030025BA30 /* Terrain.h */,
 				98066DF8205305030025BA30 /* Terrain.cpp */,
+				98D873F920585B9E00472E29 /* PerlinNoise.cpp */,
+				98D873FA20585B9E00472E29 /* PerlinNoise.hpp */,
 			);
 			path = assignment0;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				98066DFC205305030025BA30 /* shader.cpp in Sources */,
 				98066DFD205305030025BA30 /* main.cpp in Sources */,
 				98066DFB205305030025BA30 /* Window.cpp in Sources */,
+				98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */,
 				98066DFE205305030025BA30 /* Terrain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

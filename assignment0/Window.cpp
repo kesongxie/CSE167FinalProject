@@ -9,7 +9,7 @@ GLint shaderProgram;
 #define FRAGMENT_SHADER_PATH "./shader.frag"
 
 // Default camera parameters
-glm::vec3 cam_pos(0.0f, 20.0f, 140.0);		// e  | Position of camera
+glm::vec3 cam_pos(0.0f, 20.0f, 30.0);		// e  | Position of camera
 glm::vec3 cam_look_at(0.0f, 0.0f, 0.0f);	// d  | This is where the camera looks at
 glm::vec3 cam_up(0.0f, 1.0f, 0.0f);			// up | What orientation "up" is
 
@@ -101,7 +101,7 @@ void Window::resize_callback(GLFWwindow* window, int width, int height)
 void Window::idle_callback()
 {
 	// Call the update function the cube
-	//cube->update();
+//    terrain->update();
 }
 
 void Window::display_callback(GLFWwindow* window)

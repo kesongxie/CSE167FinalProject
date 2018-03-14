@@ -5,7 +5,7 @@
 #include <SDL2/SDL_opengl.h>
 #include <math.h>
 #include "stb_image.h"
-
+#include "PerlinNoise.hpp"
 
 #define HEIGHT_MAP_PATH "/Developer/FinalProject/assignment0/heightmap.bmp"
 
@@ -60,7 +60,7 @@ Terrain::Terrain(GLint shaderProgram)
     // bind the texture
     glBindTexture(GL_TEXTURE_3D, textureBuffer);
     int width, height, nrChannels;
-    unsigned char *data = stbi_load("/Developer/FinalProject/assignment0/rock_texture_2.jpg", &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load("/Developer/FinalProject/assignment0/rock_texture.jpg", &width, &height, &nrChannels, 0);
     if (data)
     {
       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -116,6 +116,21 @@ void Terrain::draw(GLuint shaderProgram)
 	glUniformMatrix4fv(uModelview, 1, GL_FALSE, &modelview[0][0]);
 	// Now draw the cube. We simply need to bind the VAO associated with it.
 	glBindVertexArray(VAO);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    /*
+     // Filled
+     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+     glBegin(GL_TRIANGLES);
+     glVertex....
+     glEnd();
+     
+     // Wireframe
+     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
+     glBegin(GL_TRIANGLES);
+     glVertex....
+     glEnd();
+     */
+    
 	// Tell OpenGL to draw with triangles, using 36 indices, the type of the indices, and the offset to start from
 	glDrawElements(GL_TRIANGLE_STRIP, indices.size(), GL_UNSIGNED_INT, 0);
 	// Unbind the VAO when we're done so we don't accidentally draw extra stuff or tamper with its bound buffers
@@ -123,25 +138,29 @@ void Terrain::draw(GLuint shaderProgram)
 }
 
 
-
 void Terrain::loadTerrain() {
     
     SDL_Surface* img = SDL_LoadBMP(HEIGHT_MAP_PATH);
     
     toWorld = glm::mat4(1.0f);
-    width = 300;
-    length = 300;
-    float scale = 10;
+    width = 50;
+    height= 50;
+    float scale = 2;
     float offset = 2;
-    
+
     uint8_t *pixels = (uint8_t *) img->pixels;
     float scale_x = ((float) img->w) / (width - 1);
-    float scale_z = ((float) img->h) / (length - 1);
+    float scale_z = ((float) img->h) / (height - 1);
+
     
-    for(unsigned int z = 0; z < length; z++) {
+    // (double _persistence, double _frequency, double _amplitude, int _octaves, int _randomseed);
+    PerlinNoise *noise = new PerlinNoise(1.1, 0.1, 2.0, 3, 4);
+
+    for(unsigned int z = 0; z < height; z++) {
         for(unsigned int x = 0; x < width; x++) {
             glm::vec3 point = glm::vec3(x, 0, z);
             
+            /*
             // get the height
             int img_x = (int) truncf(x * scale_x);
             int img_y = (int) truncf(z * scale_z);
@@ -156,45 +175,66 @@ void Terrain::loadTerrain() {
             
             // Apply height offset
             h += offset;
-            
-            
             point.y = h;
+            */
+            point.y = noise->GetHeight(x, z) * 4.0;
+//            point.y = rand() % 2 - 1;
             vertices.push_back(point);
         }
     }
     
 
-    
-    
-    
-    
     for(int i = 0; i < vertices.size(); i++) {
         vertices[i].x -= width / 2.0;
+        vertices[i].z -= height / 2.0;
     }
-    
-    // calculate the normals
+
     for(int i = 0; i < vertices.size(); i++) {
-       normals.push_back(calculateNormal(i));
+        vertices[i].x *= scale;
+        vertices[i].z *= scale;
     }
     
-    for(unsigned int z = 1; z < length; z++) {
-        unsigned int curIndex = 1 + (z - 1) * width;
+    
+    
+    for(unsigned int z = 1; z < height; z++) {
+        unsigned int curIndex =  (z - 1) * width;
+        indices.push_back(curIndex);
         indices.push_back(curIndex);
         bool down = true; //true => down, false => top right
         for(unsigned i = 1; i < 2 * width; i++) {
             if(down) {
                 curIndex = curIndex + width;
+                indices.push_back(curIndex);
             } else {
-                curIndex = (curIndex + 1 - width);
+                curIndex = curIndex + 1 - width;
+                indices.push_back(curIndex);
             }
-            indices.push_back(curIndex);
             down = !down;
+            unsigned long lastIndex = indices.size();
+            
+            if (lastIndex > 2) {
+                // get the last three as the points for the triangles
+                glm::vec3 point_0 = vertices[(indices[lastIndex - 1])];
+                glm::vec3 point_1 = vertices[(indices[lastIndex - 2])];
+                glm::vec3 point_2 = vertices[(indices[lastIndex - 3])];
+                glm::vec3 edge_1 = glm::vec3(point_2.x - point_1.x, point_2.y - point_1.y, point_2.z - point_1.z);
+                glm::vec3 edge_2 = glm::vec3(point_1.x - point_0.x, point_1.y - point_0.y, point_1.z - point_0.z);
+                normals.push_back(glm::normalize(glm::cross(edge_1, edge_2)));
+            }
+
         }
+        indices.push_back(curIndex);
     }
+    
+
 }
 
 
+
 glm::vec3 Terrain::calculateNormal(int i) {
+    return glm::vec3(1.0f);
+    
+    /*
     int left = i - 1;
     int right = i + 1;
     int top = i - width;
@@ -218,7 +258,7 @@ glm::vec3 Terrain::calculateNormal(int i) {
     }
     int y = rand() % 4;
     float mag = sqrt(pow(hl - hr, 2) + pow(y, 2) + pow(hb - ht, 2));
-    return glm::vec3((hl - hr) / mag, (y) / mag, (hb - ht) / mag);
+    return glm::vec3((hl - hr) / mag, (y) / mag, (hb - ht) / mag);*/
 }
 
 void Terrain::update()

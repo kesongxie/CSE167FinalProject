@@ -29,7 +29,7 @@ void main()
     sampleExtraOutput = 1.0f;
    
 //    inColor = vec4(position.y, position.y, position.y, 1.0);
-    
+    inColor = vec4(1.0f, 1.0f, 1.0f, 1.0);
 //    inColor = vec4(normals.x, normals.y, normals.z, 1.0);
-    texCoord = v_texCoord;
+//    texCoord = v_texCoord;
 }

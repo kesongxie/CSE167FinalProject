@@ -31,7 +31,8 @@ public:
 	void spin(float);
 
     unsigned int width;
-    unsigned int length;
+    unsigned int height;
+
     
 	// These variables are needed for the shader program
 	GLuint VBO, VAO, EBO, normalbuffer, textureBuffer;
@@ -41,6 +42,7 @@ private:
     void loadTerrain();
     // calculate the normal
     glm::vec3 calculateNormal(int i);
+
 };
 
 #endif
