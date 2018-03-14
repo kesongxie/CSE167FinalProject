@@ -56,26 +56,28 @@ Terrain::Terrain(GLint shaderProgram)
     
      // ----- TEXTURE --------
     // bind the texture
-    glBindTexture(GL_TEXTURE_3D, textureBuffer);
+    glBindTexture(GL_TEXTURE_2D, textureBuffer);
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
     int width, height, nrChannels;
     unsigned char *data = stbi_load("/Developer/FinalProject/assignment0/cloud_texture.jpg", &width, &height, &nrChannels, 0);
     if (data)
     {
-      glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-            stbi_image_free(data);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        stbi_image_free(data);
+        glGenerateMipmap(GL_TEXTURE_2D);
     } else {
         std:: cout << "failed to load image" << std::endl;
     }
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+    
+    glUniform1i(glGetUniformLocation(shaderProgram, "texture1"), 0);
 
-    glUniform1i(glGetUniformLocation(shaderProgram, "atexture"), 0);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    
 
 	// We've sent the vertex data over to OpenGL, but there's still something missing.
 	// In what order should it draw those vertices? That's why we'll need a GL_ELEMENT_ARRAY_BUFFER for this.
@@ -118,11 +120,16 @@ void Terrain::draw(GLuint shaderProgram)
     // Wireframe
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+    glBindTexture(GL_TEXTURE_2D, textureBuffer);
+
+
     
 	// Tell OpenGL to draw with triangles, using 36 indices, the type of the indices, and the offset to start from
 	glDrawElements(GL_TRIANGLE_STRIP, indices.size(), GL_UNSIGNED_INT, 0);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
+    
+    
     
     // Unbind the VAO when we're done so we don't accidentally draw extra stuff or tamper with its bound buffers
 	glBindVertexArray(0);
