@@ -1,15 +1,24 @@
 #include "window.h"
+#include "Skybox.hpp"
 
 const char* window_title = "GLFW Starter Project";
 Terrain * terrain;
+Skybox * skybox;
 GLint shaderProgram;
+GLint skyboxshaderProgram;
+
 
 // On some systems you need to change this to the absolute path
 #define VERTEX_SHADER_PATH "./shader.vert"
 #define FRAGMENT_SHADER_PATH "./shader.frag"
 
+#define SKYBOX_VERTEX_SHADER_PATH "./skybox.vert"
+#define SKYBOX_FRAGMENT_SHADER_PATH "./skybox.frag"
+
+
+
 // Default camera parameters
-glm::vec3 cam_pos(0.0f, 20.0f, 30.0);		// e  | Position of camera
+glm::vec3 cam_pos(0.0f, 0.0f, 0.5);		// e  | Position of camera
 glm::vec3 cam_look_at(0.0f, 0.0f, 0.0f);	// d  | This is where the camera looks at
 glm::vec3 cam_up(0.0f, 1.0f, 0.0f);			// up | What orientation "up" is
 
@@ -19,11 +28,16 @@ int Window::height;
 glm::mat4 Window::P;
 glm::mat4 Window::V;
 
+
+
 void Window::initialize_objects()
 {
 
 	// Load the shader program. Make sure you have the correct filepath up top
 	shaderProgram = LoadShaders(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);
+    skyboxshaderProgram = LoadShaders(SKYBOX_VERTEX_SHADER_PATH, SKYBOX_FRAGMENT_SHADER_PATH);
+
+    skybox = new Skybox(skyboxshaderProgram);
     terrain = new Terrain(shaderProgram);
 }
 
@@ -31,7 +45,9 @@ void Window::initialize_objects()
 void Window::clean_up()
 {
 	delete(terrain);
+    delete(skybox);
 	glDeleteProgram(shaderProgram);
+    glDeleteProgram(skyboxshaderProgram);
 }
 
 GLFWwindow* Window::create_window(int width, int height)
@@ -101,7 +117,9 @@ void Window::resize_callback(GLFWwindow* window, int width, int height)
 void Window::idle_callback()
 {
 	// Call the update function the cube
-//    terrain->update();
+    // modify the camera position
+    
+    terrain->update();
 }
 
 void Window::display_callback(GLFWwindow* window)
@@ -109,11 +127,27 @@ void Window::display_callback(GLFWwindow* window)
 	// Clear the color and depth buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	// Use the shader of programID
-	glUseProgram(shaderProgram);
-	
-	// Render the cube
-	terrain->draw(shaderProgram);
+
+    
+    
+    
+    glUseProgram(skyboxshaderProgram);
+    glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
+    
+    // Now send these values to the shader program
+    glUniformMatrix4fv(glGetUniformLocation(skyboxshaderProgram, "projection"), 1, GL_FALSE, &Window::P[0][0]);
+    glUniformMatrix4fv(glGetUniformLocation(skyboxshaderProgram, "view"), 1, GL_FALSE, &Window::V[0][0]);
+
+    skybox->render();
+    
+    
+    // Use the shader of programID
+    glDisable(GL_CULL_FACE);
+    glUseProgram(shaderProgram);
+    
+    // Render the cube
+    terrain->draw(shaderProgram);
+    
 
 	// Gets events, including input such as keyboard and mouse or window resizing
 	glfwPollEvents();
@@ -126,6 +160,11 @@ void Window::key_callback(GLFWwindow* window, int key, int scancode, int action,
 	// Check for a key press
 	if (action == GLFW_PRESS)
 	{
+//        if(key == GLFW_KEY_W) {
+//            terrain->move(1.0f);
+//        }
+
+        
 		// Check if escape was pressed
 		if (key == GLFW_KEY_ESCAPE)
 		{

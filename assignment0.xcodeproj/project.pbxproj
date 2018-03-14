@@ -14,6 +14,9 @@
 		98066DFF205305140025BA30 /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98066DF1205305020025BA30 /* shader.frag */; };
 		98066E00205305140025BA30 /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98066DF5205305020025BA30 /* shader.vert */; };
 		98066E0220535E9B0025BA30 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98066E0120535E9B0025BA30 /* libSDL2-2.0.0.dylib */; };
+		984B1A572058DF02000BF5D6 /* Skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 984B1A552058DF02000BF5D6 /* Skybox.cpp */; };
+		984B1A5A2058DFD0000BF5D6 /* skybox.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 984B1A592058DFC7000BF5D6 /* skybox.frag */; };
+		984B1A5B2058DFD0000BF5D6 /* skybox.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 984B1A582058DFC6000BF5D6 /* skybox.vert */; };
 		98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21077200D72EC00B4D688 /* OpenGL.framework */; };
 		98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21078200D730C00B4D688 /* libglfw.3.2.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98D873F920585B9E00472E29 /* PerlinNoise.cpp */; };
@@ -26,6 +29,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				984B1A5A2058DFD0000BF5D6 /* skybox.frag in CopyFiles */,
+				984B1A5B2058DFD0000BF5D6 /* skybox.vert in CopyFiles */,
 				98066DFF205305140025BA30 /* shader.frag in CopyFiles */,
 				98066E00205305140025BA30 /* shader.vert in CopyFiles */,
 			);
@@ -47,6 +52,10 @@
 		98066E0120535E9B0025BA30 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../usr/local/Cellar/sdl2/2.0.8/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		98066E04205367550025BA30 /* heightmap.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = heightmap.bmp; sourceTree = "<group>"; };
 		983E98F92053E4AC004BC2E6 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		984B1A552058DF02000BF5D6 /* Skybox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Skybox.cpp; sourceTree = "<group>"; };
+		984B1A562058DF02000BF5D6 /* Skybox.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Skybox.hpp; sourceTree = "<group>"; };
+		984B1A582058DFC6000BF5D6 /* skybox.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = skybox.vert; sourceTree = "<group>"; };
+		984B1A592058DFC7000BF5D6 /* skybox.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = skybox.frag; sourceTree = "<group>"; };
 		98D21062200D6F8600B4D688 /* assignment0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = assignment0; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D21077200D72EC00B4D688 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		98D21078200D730C00B4D688 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = "../../../../Developer/glfw-3.2.1/src/libglfw.3.2.dylib"; sourceTree = "<group>"; };
@@ -88,6 +97,8 @@
 		98D21064200D6F8600B4D688 /* assignment0 */ = {
 			isa = PBXGroup;
 			children = (
+				984B1A592058DFC7000BF5D6 /* skybox.frag */,
+				984B1A582058DFC6000BF5D6 /* skybox.vert */,
 				983E98F92053E4AC004BC2E6 /* stb_image.h */,
 				98066E04205367550025BA30 /* heightmap.bmp */,
 				98066DF1205305020025BA30 /* shader.frag */,
@@ -102,6 +113,8 @@
 				98066DF8205305030025BA30 /* Terrain.cpp */,
 				98D873F920585B9E00472E29 /* PerlinNoise.cpp */,
 				98D873FA20585B9E00472E29 /* PerlinNoise.hpp */,
+				984B1A562058DF02000BF5D6 /* Skybox.hpp */,
+				984B1A552058DF02000BF5D6 /* Skybox.cpp */,
 			);
 			path = assignment0;
 			sourceTree = "<group>";
@@ -178,6 +191,7 @@
 				98066DFB205305030025BA30 /* Window.cpp in Sources */,
 				98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */,
 				98066DFE205305030025BA30 /* Terrain.cpp in Sources */,
+				984B1A572058DF02000BF5D6 /* Skybox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

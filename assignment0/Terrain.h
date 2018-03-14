@@ -32,16 +32,19 @@ public:
 
     unsigned int width;
     unsigned int height;
+    float offset;
+    void move(float delta);
+    void loadTerrain(float zOffset);
+    void loadTerrain();
 
-    
 	// These variables are needed for the shader program
 	GLuint VBO, VAO, EBO, normalbuffer, textureBuffer;
 	GLuint uProjection, uModelview;
 private:
     // get the height value from the heightmap based on the terrain x and z position
-    void loadTerrain();
     // calculate the normal
     glm::vec3 calculateNormal(int i);
+    void getIndices();
 
 };
 

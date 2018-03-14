@@ -1,5 +1,5 @@
 #include "Terrain.h"
-#include "Window.h"
+//#include "Window.h"
 #include "main.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
@@ -8,16 +8,14 @@
 #include "PerlinNoise.hpp"
 
 #define HEIGHT_MAP_PATH "/Developer/FinalProject/assignment0/heightmap.bmp"
+bool notLoaded = true;
 
 Terrain::Terrain(GLint shaderProgram)
 {
+    offset = 0;
     this->loadTerrain();
-//
-//    for(int i = 0; i < normals.size(); i++) {
-//        std::cout << normals[i].x << ", " << normals[i].y << ", " << normals[i].z << std::endl;
-//    }
-//
-	// Create array object and buffers. Remember to delete your buffers when the object is destroyed!
+
+    // Create array object and buffers. Remember to delete your buffers when the object is destroyed!
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
@@ -60,7 +58,7 @@ Terrain::Terrain(GLint shaderProgram)
     // bind the texture
     glBindTexture(GL_TEXTURE_3D, textureBuffer);
     int width, height, nrChannels;
-    unsigned char *data = stbi_load("/Developer/FinalProject/assignment0/rock_texture.jpg", &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load("/Developer/FinalProject/assignment0/cloud_texture.jpg", &width, &height, &nrChannels, 0);
     if (data)
     {
       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -76,8 +74,6 @@ Terrain::Terrain(GLint shaderProgram)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-
     
     
 
@@ -116,46 +112,44 @@ void Terrain::draw(GLuint shaderProgram)
 	glUniformMatrix4fv(uModelview, 1, GL_FALSE, &modelview[0][0]);
 	// Now draw the cube. We simply need to bind the VAO associated with it.
 	glBindVertexArray(VAO);
+    
+    // Filled
+//    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    // Wireframe
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    /*
-     // Filled
-     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
-     glBegin(GL_TRIANGLES);
-     glVertex....
-     glEnd();
-     
-     // Wireframe
-     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
-     glBegin(GL_TRIANGLES);
-     glVertex....
-     glEnd();
-     */
+
     
 	// Tell OpenGL to draw with triangles, using 36 indices, the type of the indices, and the offset to start from
 	glDrawElements(GL_TRIANGLE_STRIP, indices.size(), GL_UNSIGNED_INT, 0);
-	// Unbind the VAO when we're done so we don't accidentally draw extra stuff or tamper with its bound buffers
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    
+    // Unbind the VAO when we're done so we don't accidentally draw extra stuff or tamper with its bound buffers
 	glBindVertexArray(0);
 }
 
 
 void Terrain::loadTerrain() {
-    
-    SDL_Surface* img = SDL_LoadBMP(HEIGHT_MAP_PATH);
-    
-    toWorld = glm::mat4(1.0f);
-    width = 50;
-    height= 50;
-    float scale = 2;
-    float offset = 2;
+    loadTerrain(0);
+}
 
-    uint8_t *pixels = (uint8_t *) img->pixels;
-    float scale_x = ((float) img->w) / (width - 1);
-    float scale_z = ((float) img->h) / (height - 1);
+
+void Terrain::loadTerrain(float zOffset) {
+//    SDL_Surface* img = SDL_LoadBMP(HEIGHT_MAP_PATH);
+    
+    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(0, -20, -20.0));
+    width = 100;
+    height = 10000;
+    float scale = 2;
+//    float offset = 2;
+//
+//    uint8_t *pixels = (uint8_t *) img->pixels;
+//    float scale_x = ((float) img->w) / (width - 1);
+//    float scale_z = ((float) img->h) / (height - 1);
 
     
     // (double _persistence, double _frequency, double _amplitude, int _octaves, int _randomseed);
     PerlinNoise *noise = new PerlinNoise(1.1, 0.1, 2.0, 3, 4);
-
     for(unsigned int z = 0; z < height; z++) {
         for(unsigned int x = 0; x < width; x++) {
             glm::vec3 point = glm::vec3(x, 0, z);
@@ -188,14 +182,16 @@ void Terrain::loadTerrain() {
         vertices[i].x -= width / 2.0;
         vertices[i].z -= height / 2.0;
     }
-
+    
     for(int i = 0; i < vertices.size(); i++) {
         vertices[i].x *= scale;
         vertices[i].z *= scale;
     }
-    
-    
-    
+    getIndices();
+}
+
+
+void Terrain::getIndices() {
     for(unsigned int z = 1; z < height; z++) {
         unsigned int curIndex =  (z - 1) * width;
         indices.push_back(curIndex);
@@ -221,14 +217,11 @@ void Terrain::loadTerrain() {
                 glm::vec3 edge_2 = glm::vec3(point_1.x - point_0.x, point_1.y - point_0.y, point_1.z - point_0.z);
                 normals.push_back(glm::normalize(glm::cross(edge_1, edge_2)));
             }
-
+            
         }
         indices.push_back(curIndex);
     }
-    
-
 }
-
 
 
 glm::vec3 Terrain::calculateNormal(int i) {
@@ -263,12 +256,20 @@ glm::vec3 Terrain::calculateNormal(int i) {
 
 void Terrain::update()
 {
-	spin(1.0f);
+//    spin(1.0f);
+    move(1.0f);
+    
 }
 
 void Terrain::spin(float deg)
 {
 	// If you haven't figured it out from the last project, this is how you fix spin's behavior
 	toWorld = toWorld * glm::rotate(glm::mat4(1.0f), 1.0f / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+}
+
+void Terrain::move(float delta) {
+    offset -= delta;
+    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, delta)) * toWorld;
+
 }
 
