@@ -37,8 +37,10 @@ private:
 public:
     std::vector<unsigned int> indices;
     std::vector<glm::vec3> vertices;
+    std::vector<glm::vec3> rot_vertices;
     std::vector<glm::vec3> normals;
     glm::mat4 toWorld;
+    glm::mat4 toWorld_noRot;
     
     float magnitude; // for normalizing
     float max_dimension; // for scaling all objects into a 2x2x2 cube
@@ -63,6 +65,7 @@ public:
     void move_x(float);
     void move_y(float);
     void move_z(float);
+    void spin(float);
 };
 
 #endif

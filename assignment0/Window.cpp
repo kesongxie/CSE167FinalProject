@@ -38,7 +38,7 @@ glm::mat4 Window::V;
 void Window::initialize_objects()
 {
     terrain = new Terrain(shaderProgram);
-    obj = new OBJObject("bear.obj");
+    obj = new OBJObject("Asteroid.obj");
     dragon = new OBJObject("Dragon.obj");
     
 	// Load the shader program. Make sure you have the correct filepath up top
@@ -123,7 +123,7 @@ void Window::resize_callback(GLFWwindow* window, int width, int height)
 void Window::idle_callback()
 {
 	// Call the update function the cube
-	//cube->update();
+	obj->spin(1.0f);
     
     // Iterate thru bounding boxes vector, use AABB to detect if any collide with dragon's boudning box. If any collide with dragon, set the colliding boxes’ collide flags to true (colliding boxes will be colored red via fragment shader).
     BoundingBox * boxA = dragon->box;

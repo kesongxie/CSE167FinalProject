@@ -13,12 +13,13 @@ OBJObject::OBJObject(const char *filepath)
     init_z = z_coord = 0;
     
     box = new BoundingBox();
-    if(strcmp(filepath, "bear.obj") == 0) {
+    if(strcmp(filepath, "Asteroid.obj") == 0) {
         Window::bbox_vector.push_back(box); // to compare all bounding boxes' boundaries
     }
     
 //    toWorld = glm::mat4(1.0f);
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+    toWorld_noRot = toWorld;
     parse(filepath);
     
     // Create array object and buffers. Remember to delete your buffers when the object is destroyed!
@@ -107,7 +108,7 @@ void OBJObject::parse(const char *filepath)
             fscanf(fp, "%f %f %f\n", &normal.x, &normal.y, &normal.z );
             normals.push_back(normal);
         } else if( strcmp( lineHeader, "f" ) == 0) {
-            if(strcmp(filepath, "Dragon.obj") == 0) {
+            if(strcmp(filepath, "Dragon.obj") == 0 || strcmp(filepath, "Asteroid.obj") == 0) {
                 fscanf(fp, "%d/%d/%d %d/%d/%d %d/%d/%d\n", &fx, &ignore, &ignore, &fy, &ignore, &ignore, &fz, &ignore, &ignore);
             } else {
                 fscanf(fp, "%d//%d %d//%d %d//%d\n", &fx, &ignore, &fy, &ignore, &fz, &ignore);
@@ -118,6 +119,9 @@ void OBJObject::parse(const char *filepath)
             indices.push_back(fz - 1);
         }
     }
+    
+    // get a copy of vertices, keep track of all vertex postions after rotation
+    rot_vertices = vertices;
     
     // iterate thru all vertices to find maximum and minimum values of x,y,z coordinates,
     // and calculate the maximum dimension of either x, y, or z axis.
@@ -170,7 +174,7 @@ void OBJObject::draw(GLuint shaderProgram)
     glBindVertexArray(0);
     
     if (Window::bbox_display) {
-        box->draw(shaderProgram, modelview * transform);
+        box->draw(shaderProgram, Window::V * toWorld_noRot * transform);
     }
 }
 
@@ -178,6 +182,7 @@ void OBJObject::move_x(float value)
 {
     x_coord += value;
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+    toWorld_noRot = toWorld;
     // update bounding box's boundaries
     box->max_x += value;
     box->min_x += value;
@@ -187,6 +192,7 @@ void OBJObject::move_y(float value)
 {
     y_coord += value;
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+    toWorld_noRot = toWorld;
     // update bounding box's boundaries
     box->max_y += value;
     box->min_y += value;
@@ -198,3 +204,29 @@ void OBJObject::move_z(float value)
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
 }
 
+void OBJObject::spin(float deg)
+{
+    // If you haven't figured it out from the last project, this is how you fix spin's behavior
+    toWorld = toWorld * glm::rotate(glm::mat4(1.0f), deg / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    
+    float max_x, max_y, max_z, min_x, min_y, min_z;
+    // initialize values
+    max_x = max_y = max_z = -numeric_limits<float>::max();
+    min_x = min_y = min_z = numeric_limits<float>::max();
+    for (int i=0; i<vertices.size(); i++) {
+        glm::vec3 old_v = rot_vertices[i];
+        glm::vec3 new_v = glm::rotate(old_v, deg / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+        rot_vertices[i] = glm::vec3(new_v.x, new_v.y, new_v.z);
+        
+        if (new_v.x > max_x) max_x = new_v.x;
+        if (new_v.x < min_x) min_x = new_v.x;
+        if (new_v.y > max_y) max_y = new_v.y;
+        if (new_v.y < min_y) min_y = new_v.y;
+        if (new_v.z > max_z) max_z = new_v.z;
+        if (new_v.z < min_z) min_z = new_v.z;
+    }
+    box->setBoundaries(max_x, max_y, max_z, min_x, min_y, min_z);
+    size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
+    center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
+    transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
+}

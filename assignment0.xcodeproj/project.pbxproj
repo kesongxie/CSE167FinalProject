@@ -13,12 +13,12 @@
 		4F377E922057C83500F2B876 /* rock_texture_2.jpg in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E912057C82F00F2B876 /* rock_texture_2.jpg */; };
 		4F377E952057CE4F00F2B876 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F377E942057CE4F00F2B876 /* BoundingBox.cpp */; };
 		4F377E972057D07700F2B876 /* OBJObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F377E962057D07700F2B876 /* OBJObject.cpp */; };
-		4F377E9F2057D17A00F2B876 /* bear.obj in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E9A2057D15500F2B876 /* bear.obj */; };
 		4F377EA12057D17A00F2B876 /* android.frag in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E9E2057D15600F2B876 /* android.frag */; };
 		4F377EA22057D17A00F2B876 /* android.vert in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E992057D15500F2B876 /* android.vert */; };
 		4F377EA32057D17A00F2B876 /* bbox.frag in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E9D2057D15600F2B876 /* bbox.frag */; };
 		4F377EA42057D17A00F2B876 /* bbox.vert in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377E9C2057D15600F2B876 /* bbox.vert */; };
 		4F377EA62058815B00F2B876 /* Dragon.obj in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377EA52058815100F2B876 /* Dragon.obj */; };
+		4F377EA820590FF600F2B876 /* Asteroid.obj in Copy Files */ = {isa = PBXBuildFile; fileRef = 4F377EA720590FF200F2B876 /* Asteroid.obj */; };
 		98066DFB205305030025BA30 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98066DF2205305020025BA30 /* Window.cpp */; };
 		98066DFC205305030025BA30 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98066DF6205305030025BA30 /* shader.cpp */; };
 		98066DFD205305030025BA30 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98066DF7205305030025BA30 /* main.cpp */; };
@@ -35,8 +35,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				4F377EA820590FF600F2B876 /* Asteroid.obj in Copy Files */,
 				4F377EA62058815B00F2B876 /* Dragon.obj in Copy Files */,
-				4F377E9F2057D17A00F2B876 /* bear.obj in Copy Files */,
 				4F377EA12057D17A00F2B876 /* android.frag in Copy Files */,
 				4F377EA22057D17A00F2B876 /* android.vert in Copy Files */,
 				4F377EA32057D17A00F2B876 /* bbox.frag in Copy Files */,
@@ -60,11 +60,11 @@
 		4F377E962057D07700F2B876 /* OBJObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OBJObject.cpp; sourceTree = "<group>"; };
 		4F377E982057D09600F2B876 /* OBJObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBJObject.h; sourceTree = "<group>"; };
 		4F377E992057D15500F2B876 /* android.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = android.vert; sourceTree = "<group>"; };
-		4F377E9A2057D15500F2B876 /* bear.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bear.obj; sourceTree = "<group>"; };
 		4F377E9C2057D15600F2B876 /* bbox.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = bbox.vert; sourceTree = "<group>"; };
 		4F377E9D2057D15600F2B876 /* bbox.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = bbox.frag; sourceTree = "<group>"; };
 		4F377E9E2057D15600F2B876 /* android.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = android.frag; sourceTree = "<group>"; };
 		4F377EA52058815100F2B876 /* Dragon.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dragon.obj; sourceTree = "<group>"; };
+		4F377EA720590FF200F2B876 /* Asteroid.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Asteroid.obj; sourceTree = "<group>"; };
 		98066DF1205305020025BA30 /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		98066DF2205305020025BA30 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
 		98066DF3205305020025BA30 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
@@ -117,8 +117,8 @@
 		98D21064200D6F8600B4D688 /* assignment0 */ = {
 			isa = PBXGroup;
 			children = (
+				4F377EA720590FF200F2B876 /* Asteroid.obj */,
 				4F377EA52058815100F2B876 /* Dragon.obj */,
-				4F377E9A2057D15500F2B876 /* bear.obj */,
 				4F377E912057C82F00F2B876 /* rock_texture_2.jpg */,
 				983E98F92053E4AC004BC2E6 /* stb_image.h */,
 				98066E04205367550025BA30 /* heightmap.bmp */,
