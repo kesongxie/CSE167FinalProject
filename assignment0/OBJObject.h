@@ -44,6 +44,7 @@ public:
     
     float magnitude; // for normalizing
     float max_dimension; // for scaling all objects into a 2x2x2 cube
+    float angle; // currently rotated degrees
     
     // PA4: variables for BoundingBox
     BoundingBox * box;

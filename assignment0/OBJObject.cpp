@@ -10,7 +10,12 @@ OBJObject::OBJObject(const char *filepath)
 {
     init_x = x_coord = 0;
     init_y = y_coord = 15;
-    init_z = z_coord = 0;
+    if(strcmp(filepath, "Asteroid.obj") == 0){
+        init_z = z_coord = 500;
+    } else {
+        init_z = z_coord = 0;
+    }
+    angle = 0.0f;
     
     box = new BoundingBox();
     if(strcmp(filepath, "Asteroid.obj") == 0) {
@@ -145,7 +150,7 @@ void OBJObject::parse(const char *filepath)
     //    }
     
     // construct BoundingBox transformation matrix
-    box->setBoundaries(max_x, max_y, max_z, min_x, min_y, min_z);
+    box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
     size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
     center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
     transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
@@ -202,12 +207,18 @@ void OBJObject::move_z(float value)
 {
     z_coord += value;
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+    toWorld_noRot = toWorld;
+    // update bounding box's boundaries
+    box->max_z += value;
+    box->min_z += value;
 }
 
 void OBJObject::spin(float deg)
 {
+    angle += deg;
+    if (angle > 360.0f || angle < -360.0f) angle = 0.0f;
     // If you haven't figured it out from the last project, this is how you fix spin's behavior
-    toWorld = toWorld * glm::rotate(glm::mat4(1.0f), deg / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    toWorld = toWorld * glm::rotate(glm::mat4(1.0f), angle / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
     
     float max_x, max_y, max_z, min_x, min_y, min_z;
     // initialize values
@@ -225,7 +236,7 @@ void OBJObject::spin(float deg)
         if (new_v.z > max_z) max_z = new_v.z;
         if (new_v.z < min_z) min_z = new_v.z;
     }
-    box->setBoundaries(max_x, max_y, max_z, min_x, min_y, min_z);
+    box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
     size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
     center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
     transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);

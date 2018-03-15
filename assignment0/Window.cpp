@@ -123,8 +123,9 @@ void Window::resize_callback(GLFWwindow* window, int width, int height)
 void Window::idle_callback()
 {
 	// Call the update function the cube
+    obj->move_z(-1.0f);
 	obj->spin(1.0f);
-    
+
     // Iterate thru bounding boxes vector, use AABB to detect if any collide with dragon's boudning box. If any collide with dragon, set the colliding boxes’ collide flags to true (colliding boxes will be colored red via fragment shader).
     BoundingBox * boxA = dragon->box;
     for(auto iter = bbox_vector.begin(); iter != bbox_vector.end(); iter++){
