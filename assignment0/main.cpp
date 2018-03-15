@@ -16,6 +16,12 @@ void setup_callbacks()
 	glfwSetKeyCallback(window, Window::key_callback);
 	// Set the window resize callback
 	glfwSetFramebufferSizeCallback(window, Window::resize_callback);
+    // Set the mouse button callback
+    glfwSetMouseButtonCallback(window, Window::mouse_button_callback);
+    // Set the cursor position callback
+    glfwSetCursorPosCallback(window, Window::cursor_pos_callback);
+    // Set the scroll callback
+    glfwSetScrollCallback(window, Window::scroll_callback);
 }
 
 void setup_glew()
