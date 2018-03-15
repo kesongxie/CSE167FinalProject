@@ -20,6 +20,14 @@
 		98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21077200D72EC00B4D688 /* OpenGL.framework */; };
 		98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21078200D730C00B4D688 /* libglfw.3.2.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98D873F920585B9E00472E29 /* PerlinNoise.cpp */; };
+		98DED2842059EE500066D22D /* OBJObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98DED27C2059EE4F0066D22D /* OBJObject.cpp */; };
+		98DED2852059EE500066D22D /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98DED27F2059EE4F0066D22D /* BoundingBox.cpp */; };
+		98DED2862059EF890066D22D /* android.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED2822059EE500066D22D /* android.frag */; };
+		98DED2872059EF890066D22D /* android.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED2812059EE4F0066D22D /* android.vert */; };
+		98DED2882059EF890066D22D /* bbox.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED27A2059EE4E0066D22D /* bbox.frag */; };
+		98DED2892059EF890066D22D /* bbox.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED27D2059EE4F0066D22D /* bbox.vert */; };
+		98DED28A205A06CC0066D22D /* Asteroid.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED27E2059EE4F0066D22D /* Asteroid.obj */; };
+		98DED28B205A06CC0066D22D /* Dragon.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED2802059EE4F0066D22D /* Dragon.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +37,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				98DED28A205A06CC0066D22D /* Asteroid.obj in CopyFiles */,
+				98DED28B205A06CC0066D22D /* Dragon.obj in CopyFiles */,
+				98DED2862059EF890066D22D /* android.frag in CopyFiles */,
+				98DED2872059EF890066D22D /* android.vert in CopyFiles */,
+				98DED2882059EF890066D22D /* bbox.frag in CopyFiles */,
+				98DED2892059EF890066D22D /* bbox.vert in CopyFiles */,
 				984B1A5A2058DFD0000BF5D6 /* skybox.frag in CopyFiles */,
 				984B1A5B2058DFD0000BF5D6 /* skybox.vert in CopyFiles */,
 				98066DFF205305140025BA30 /* shader.frag in CopyFiles */,
@@ -61,6 +75,16 @@
 		98D21078200D730C00B4D688 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = "../../../../Developer/glfw-3.2.1/src/libglfw.3.2.dylib"; sourceTree = "<group>"; };
 		98D873F920585B9E00472E29 /* PerlinNoise.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PerlinNoise.cpp; sourceTree = "<group>"; };
 		98D873FA20585B9E00472E29 /* PerlinNoise.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PerlinNoise.hpp; sourceTree = "<group>"; };
+		98DED27A2059EE4E0066D22D /* bbox.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = bbox.frag; sourceTree = "<group>"; };
+		98DED27B2059EE4E0066D22D /* BoundingBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundingBox.h; sourceTree = "<group>"; };
+		98DED27C2059EE4F0066D22D /* OBJObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OBJObject.cpp; sourceTree = "<group>"; };
+		98DED27D2059EE4F0066D22D /* bbox.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = bbox.vert; sourceTree = "<group>"; };
+		98DED27E2059EE4F0066D22D /* Asteroid.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Asteroid.obj; sourceTree = "<group>"; };
+		98DED27F2059EE4F0066D22D /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundingBox.cpp; sourceTree = "<group>"; };
+		98DED2802059EE4F0066D22D /* Dragon.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dragon.obj; sourceTree = "<group>"; };
+		98DED2812059EE4F0066D22D /* android.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = android.vert; sourceTree = "<group>"; };
+		98DED2822059EE500066D22D /* android.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = android.frag; sourceTree = "<group>"; };
+		98DED2832059EE500066D22D /* OBJObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJObject.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +121,16 @@
 		98D21064200D6F8600B4D688 /* assignment0 */ = {
 			isa = PBXGroup;
 			children = (
+				98DED2822059EE500066D22D /* android.frag */,
+				98DED2812059EE4F0066D22D /* android.vert */,
+				98DED27E2059EE4F0066D22D /* Asteroid.obj */,
+				98DED27A2059EE4E0066D22D /* bbox.frag */,
+				98DED27D2059EE4F0066D22D /* bbox.vert */,
+				98DED27F2059EE4F0066D22D /* BoundingBox.cpp */,
+				98DED27B2059EE4E0066D22D /* BoundingBox.h */,
+				98DED2802059EE4F0066D22D /* Dragon.obj */,
+				98DED27C2059EE4F0066D22D /* OBJObject.cpp */,
+				98DED2832059EE500066D22D /* OBJObject.h */,
 				984B1A592058DFC7000BF5D6 /* skybox.frag */,
 				984B1A582058DFC6000BF5D6 /* skybox.vert */,
 				983E98F92053E4AC004BC2E6 /* stb_image.h */,
@@ -186,12 +220,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DED2842059EE500066D22D /* OBJObject.cpp in Sources */,
 				98066DFC205305030025BA30 /* shader.cpp in Sources */,
 				98066DFD205305030025BA30 /* main.cpp in Sources */,
 				98066DFB205305030025BA30 /* Window.cpp in Sources */,
 				98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */,
 				98066DFE205305030025BA30 /* Terrain.cpp in Sources */,
 				984B1A572058DF02000BF5D6 /* Skybox.cpp in Sources */,
+				98DED2852059EE500066D22D /* BoundingBox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
