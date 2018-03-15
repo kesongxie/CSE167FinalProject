@@ -11,11 +11,13 @@ OBJObject::OBJObject(const char *filepath)
     init_x = x_coord = 0;
     init_y = y_coord = 15;
     if(strcmp(filepath, "Asteroid.obj") == 0){
-        init_z = z_coord = -500;
+        init_z = z_coord = -1000 + (rand() % 200);
+        init_x = x_coord =  rand() % 800 - 400;
+        init_y = y_coord =  rand() % 20 + 5;
         toWorld = glm::mat4(1.0f);
     } else {
         init_z = z_coord = 0;
-        init_y = y_coord = -10;
+        init_y = y_coord = 0;
         toWorld = glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
     }
     angle = 0.0f;
@@ -214,6 +216,11 @@ void OBJObject::move_z(float value)
     // update bounding box's boundaries
     box->max_z += value;
     box->min_z += value;
+    if(z_coord > 100) {
+        init_z = z_coord = -1000 + (rand() % 200);
+        init_x = x_coord =  rand() % 800 - 400;
+        init_y = y_coord =  rand() % 100 + 5;
+    }
 }
 
 void OBJObject::spin(float deg)

@@ -55,6 +55,101 @@
 		98DED33E205A915B0066D22D /* leg_showroom_ddn.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED320205A91060066D22D /* leg_showroom_ddn.png */; };
 		98DED33F205A915B0066D22D /* modelLoading.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED2E0205A884C0066D22D /* modelLoading.frag */; };
 		98DED340205A915B0066D22D /* modelLoading.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED2E1205A884C0066D22D /* modelLoading.vs */; };
+		98DED359205AA5780066D22D /* Thumbs.db in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED342205AA5640066D22D /* Thumbs.db */; };
+		98DED35A205AA5780066D22D /* wing-up specular.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED343205AA5640066D22D /* wing-up specular.jpg */; };
+		98DED35B205AA5780066D22D /* wing-up bump.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED344205AA5640066D22D /* wing-up bump.jpg */; };
+		98DED35C205AA5780066D22D /* gun romb.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED345205AA5640066D22D /* gun romb.jpg */; };
+		98DED35D205AA5780066D22D /* Untitled-1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED346205AA5640066D22D /* Untitled-1.jpg */; };
+		98DED35E205AA5780066D22D /* Viper-mk-IV-fighter.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED347205AA5640066D22D /* Viper-mk-IV-fighter.mtl */; };
+		98DED35F205AA5780066D22D /* carlinga specular.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED348205AA5640066D22D /* carlinga specular.jpg */; };
+		98DED360205AA5780066D22D /* face specular.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED349205AA5640066D22D /* face specular.jpg */; };
+		98DED361205AA5780066D22D /* face.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED34A205AA5640066D22D /* face.jpg */; };
+		98DED362205AA5780066D22D /* wing specular.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED34B205AA5640066D22D /* wing specular.jpg */; };
+		98DED363205AA5780066D22D /* carma creasta.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED34C205AA5640066D22D /* carma creasta.jpg */; };
+		98DED364205AA5780066D22D /* face-bump.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED34D205AA5640066D22D /* face-bump.jpg */; };
+		98DED365205AA5780066D22D /* aripa buna.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED34E205AA5640066D22D /* aripa buna.jpg */; };
+		98DED366205AA5780066D22D /* wing-up.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED34F205AA5640066D22D /* wing-up.jpg */; };
+		98DED367205AA5780066D22D /* wing bump.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED350205AA5640066D22D /* wing bump.jpg */; };
+		98DED368205AA5780066D22D /* parbriz.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED351205AA5640066D22D /* parbriz.jpg */; };
+		98DED369205AA5780066D22D /* carmaaripi.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED352205AA5640066D22D /* carmaaripi.jpg */; };
+		98DED36A205AA5780066D22D /* Viper-mk-IV-fighter.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED353205AA5640066D22D /* Viper-mk-IV-fighter.obj */; };
+		98DED36B205AA5780066D22D /* engine cover bump.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED354205AA5640066D22D /* engine cover bump.jpg */; };
+		98DED36C205AA5780066D22D /* engine-covers specular.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED355205AA5640066D22D /* engine-covers specular.jpg */; };
+		98DED36D205AA5780066D22D /* carlinga.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED356205AA5640066D22D /* carlinga.jpg */; };
+		98DED36E205AA5780066D22D /* engine-cover.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED357205AA5640066D22D /* engine-cover.jpg */; };
+		98DED36F205AA5780066D22D /* elicie.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED358205AA5640066D22D /* elicie.jpg */; };
+		98DED378205AB2E60066D22D /* Albedo.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED371205AB2DC0066D22D /* Albedo.jpg */; };
+		98DED379205AB2E60066D22D /* Metalness.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED372205AB2DC0066D22D /* Metalness.jpg */; };
+		98DED37A205AB2E60066D22D /* A2.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED373205AB2DC0066D22D /* A2.obj */; };
+		98DED37B205AB2E60066D22D /* A2.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED374205AB2DC0066D22D /* A2.mtl */; };
+		98DED37C205AB2E60066D22D /* Normal.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED375205AB2DC0066D22D /* Normal.jpg */; };
+		98DED37D205AB2E60066D22D /* Emission.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED376205AB2DC0066D22D /* Emission.jpg */; };
+		98DED37E205AB2E60066D22D /* Displacement.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED377205AB2DC0066D22D /* Displacement.jpg */; };
+		98DED399205AB8160066D22D /* Trident_UV_No_Dekol_Color.tif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED393205AB8090066D22D /* Trident_UV_No_Dekol_Color.tif */; };
+		98DED39A205AB8160066D22D /* Trident-A10.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED394205AB8090066D22D /* Trident-A10.mtl */; };
+		98DED39B205AB8160066D22D /* Trident_UV_Dekol_Color.tif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED395205AB8090066D22D /* Trident_UV_Dekol_Color.tif */; };
+		98DED39C205AB8160066D22D /* Trident-A10.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED396205AB8090066D22D /* Trident-A10.obj */; };
+		98DED39D205AB8160066D22D /* Trident_UV_Spec.tif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED397205AB8090066D22D /* Trident_UV_Spec.tif */; };
+		98DED39E205AB8160066D22D /* Trident_UV_Bump.tif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED398205AB8090066D22D /* Trident_UV_Bump.tif */; };
+		98DED3E5205ABA0F0066D22D /* HighresScreenshot00015.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A1205AB9EA0066D22D /* HighresScreenshot00015.png */; };
+		98DED3E6205ABA0F0066D22D /* HighresScreenshot00014.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A2205AB9EA0066D22D /* HighresScreenshot00014.png */; };
+		98DED3E7205ABA0F0066D22D /* HighresScreenshot00016.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A3205AB9EA0066D22D /* HighresScreenshot00016.png */; };
+		98DED3E8205ABA0F0066D22D /* HighresScreenshot00017.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A4205AB9EA0066D22D /* HighresScreenshot00017.png */; };
+		98DED3E9205ABA0F0066D22D /* HighresScreenshot00013.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A5205AB9EA0066D22D /* HighresScreenshot00013.png */; };
+		98DED3EA205ABA0F0066D22D /* HighresScreenshot00011.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A6205AB9EA0066D22D /* HighresScreenshot00011.png */; };
+		98DED3EB205ABA0F0066D22D /* Foot Back.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A9205AB9EA0066D22D /* Foot Back.obj */; };
+		98DED3EC205ABA0F0066D22D /* Foot Back_Roughness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3AA205AB9EA0066D22D /* Foot Back_Roughness.png */; };
+		98DED3ED205ABA0F0066D22D /* Foot Back_ao.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3AB205AB9EA0066D22D /* Foot Back_ao.png */; };
+		98DED3EE205ABA0F0066D22D /* Foot Back_Metalness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3AC205AB9EA0066D22D /* Foot Back_Metalness.png */; };
+		98DED3EF205ABA0F0066D22D /* Foot Back.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3AD205AB9EA0066D22D /* Foot Back.mtl */; };
+		98DED3F0205ABA0F0066D22D /* Foot Back_BaseColor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3AE205AB9EA0066D22D /* Foot Back_BaseColor.png */; };
+		98DED3F1205ABA0F0066D22D /* Wing up_Metalness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3B0205AB9EA0066D22D /* Wing up_Metalness.png */; };
+		98DED3F2205ABA0F0066D22D /* Wing up_ao.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3B1205AB9EA0066D22D /* Wing up_ao.png */; };
+		98DED3F3205ABA0F0066D22D /* Wing up.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3B2205AB9EA0066D22D /* Wing up.obj */; };
+		98DED3F4205ABA0F0066D22D /* Wing up_BaseColor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3B3205AB9EA0066D22D /* Wing up_BaseColor.png */; };
+		98DED3F5205ABA0F0066D22D /* Wing up.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3B4205AB9EA0066D22D /* Wing up.mtl */; };
+		98DED3F6205ABA0F0066D22D /* Wing up_Emissive.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3B5205AB9EA0066D22D /* Wing up_Emissive.png */; };
+		98DED3F7205ABA0F0066D22D /* Wing up_Roughness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3B6205AB9EA0066D22D /* Wing up_Roughness.png */; };
+		98DED3F8205ABA0F0066D22D /* Wing up.3b.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3B7205AB9EA0066D22D /* Wing up.3b.jpg */; };
+		98DED3F9205ABA0F0066D22D /* Body_Metalness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3B9205AB9EA0066D22D /* Body_Metalness.png */; };
+		98DED3FA205ABA0F0066D22D /* Body.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3BA205AB9EA0066D22D /* Body.obj */; };
+		98DED3FB205ABA0F0066D22D /* Body_BaseColor.psd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3BB205AB9EA0066D22D /* Body_BaseColor.psd */; };
+		98DED3FC205ABA0F0066D22D /* Body_BaseColor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3BC205AB9EA0066D22D /* Body_BaseColor.png */; };
+		98DED3FD205ABA0F0066D22D /* Body_Roughness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3BD205AB9EA0066D22D /* Body_Roughness.png */; };
+		98DED3FE205ABA0F0066D22D /* Body_Emissive - Copie.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3BE205AB9EA0066D22D /* Body_Emissive - Copie.png */; };
+		98DED3FF205ABA0F0066D22D /* Body_ao.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3BF205AB9EA0066D22D /* Body_ao.png */; };
+		98DED400205ABA0F0066D22D /* Body_Emissive.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3C0205AB9EA0066D22D /* Body_Emissive.png */; };
+		98DED401205ABA0F0066D22D /* Body.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3C1205AB9EA0066D22D /* Body.mtl */; };
+		98DED402205ABA0F0066D22D /* Foot Back.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3C3205AB9EA0066D22D /* Foot Back.obj */; };
+		98DED403205ABA0F0066D22D /* Foot Back_Roughness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3C4205AB9EA0066D22D /* Foot Back_Roughness.png */; };
+		98DED404205ABA0F0066D22D /* Foot Back_ao.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3C5205AB9EA0066D22D /* Foot Back_ao.png */; };
+		98DED405205ABA0F0066D22D /* Foot Back_Metalness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3C6205AB9EA0066D22D /* Foot Back_Metalness.png */; };
+		98DED406205ABA0F0066D22D /* Foot Back.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3C7205AB9EA0066D22D /* Foot Back.mtl */; };
+		98DED407205ABA0F0066D22D /* Foot Back_BaseColor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3C8205AB9EA0066D22D /* Foot Back_BaseColor.png */; };
+		98DED408205ABA0F0066D22D /* Cabin Door_BaseColor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3CA205AB9EA0066D22D /* Cabin Door_BaseColor.png */; };
+		98DED409205ABA0F0066D22D /* Cabin Door_Metalness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3CB205AB9EA0066D22D /* Cabin Door_Metalness.png */; };
+		98DED40A205ABA0F0066D22D /* Cabin Door_ao.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3CC205AB9EA0066D22D /* Cabin Door_ao.png */; };
+		98DED40B205ABA0F0066D22D /* Cabin Door.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3CD205AB9EA0066D22D /* Cabin Door.obj */; };
+		98DED40C205ABA0F0066D22D /* Cabin Door.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3CE205AB9EA0066D22D /* Cabin Door.mtl */; };
+		98DED40D205ABA0F0066D22D /* Cabin Door_Roughness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3CF205AB9EA0066D22D /* Cabin Door_Roughness.png */; };
+		98DED40E205ABA0F0066D22D /* Foot Front.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3D1205AB9EA0066D22D /* Foot Front.obj */; };
+		98DED40F205ABA0F0066D22D /* Foot Front_Roughness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3D2205AB9EA0066D22D /* Foot Front_Roughness.png */; };
+		98DED410205ABA0F0066D22D /* Foot Front_ao.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3D3205AB9EA0066D22D /* Foot Front_ao.png */; };
+		98DED411205ABA0F0066D22D /* Foot Front_BaseColor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3D4205AB9EA0066D22D /* Foot Front_BaseColor.png */; };
+		98DED412205ABA0F0066D22D /* Foot Front_Metalness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3D5205AB9EA0066D22D /* Foot Front_Metalness.png */; };
+		98DED413205ABA0F0066D22D /* Foot Front.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3D6205AB9EA0066D22D /* Foot Front.mtl */; };
+		98DED414205ABA0F0066D22D /* Shutter Front_Roughness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3D8205AB9EA0066D22D /* Shutter Front_Roughness.png */; };
+		98DED415205ABA0F0066D22D /* Shutter Front.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3D9205AB9EA0066D22D /* Shutter Front.obj */; };
+		98DED416205ABA0F0066D22D /* Shutter Front_ao.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3DA205AB9EA0066D22D /* Shutter Front_ao.png */; };
+		98DED417205ABA0F0066D22D /* Shutter Front.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3DB205AB9EA0066D22D /* Shutter Front.mtl */; };
+		98DED418205ABA0F0066D22D /* Shutter Front_BaseColor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3DC205AB9EA0066D22D /* Shutter Front_BaseColor.png */; };
+		98DED419205ABA0F0066D22D /* Shutter Front_Metalness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3DD205AB9EA0066D22D /* Shutter Front_Metalness.png */; };
+		98DED41A205ABA0F0066D22D /* Wing Down_ao.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3DF205AB9EA0066D22D /* Wing Down_ao.png */; };
+		98DED41B205ABA0F0066D22D /* Wing Down_Metalness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3E0205AB9EA0066D22D /* Wing Down_Metalness.png */; };
+		98DED41C205ABA0F0066D22D /* Wing Down.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3E1205AB9EA0066D22D /* Wing Down.mtl */; };
+		98DED41D205ABA0F0066D22D /* Wing Down_BaseColor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3E2205AB9EA0066D22D /* Wing Down_BaseColor.png */; };
+		98DED41E205ABA0F0066D22D /* Wing Down.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3E3205AB9EA0066D22D /* Wing Down.obj */; };
+		98DED41F205ABA0F0066D22D /* Wing Down_Roughness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3E4205AB9EA0066D22D /* Wing Down_Roughness.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +159,101 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				98DED3E5205ABA0F0066D22D /* HighresScreenshot00015.png in CopyFiles */,
+				98DED3E6205ABA0F0066D22D /* HighresScreenshot00014.png in CopyFiles */,
+				98DED3E7205ABA0F0066D22D /* HighresScreenshot00016.png in CopyFiles */,
+				98DED3E8205ABA0F0066D22D /* HighresScreenshot00017.png in CopyFiles */,
+				98DED3E9205ABA0F0066D22D /* HighresScreenshot00013.png in CopyFiles */,
+				98DED3EA205ABA0F0066D22D /* HighresScreenshot00011.png in CopyFiles */,
+				98DED3EB205ABA0F0066D22D /* Foot Back.obj in CopyFiles */,
+				98DED3EC205ABA0F0066D22D /* Foot Back_Roughness.png in CopyFiles */,
+				98DED3ED205ABA0F0066D22D /* Foot Back_ao.png in CopyFiles */,
+				98DED3EE205ABA0F0066D22D /* Foot Back_Metalness.png in CopyFiles */,
+				98DED3EF205ABA0F0066D22D /* Foot Back.mtl in CopyFiles */,
+				98DED3F0205ABA0F0066D22D /* Foot Back_BaseColor.png in CopyFiles */,
+				98DED3F1205ABA0F0066D22D /* Wing up_Metalness.png in CopyFiles */,
+				98DED3F2205ABA0F0066D22D /* Wing up_ao.png in CopyFiles */,
+				98DED3F3205ABA0F0066D22D /* Wing up.obj in CopyFiles */,
+				98DED3F4205ABA0F0066D22D /* Wing up_BaseColor.png in CopyFiles */,
+				98DED3F5205ABA0F0066D22D /* Wing up.mtl in CopyFiles */,
+				98DED3F6205ABA0F0066D22D /* Wing up_Emissive.png in CopyFiles */,
+				98DED3F7205ABA0F0066D22D /* Wing up_Roughness.png in CopyFiles */,
+				98DED3F8205ABA0F0066D22D /* Wing up.3b.jpg in CopyFiles */,
+				98DED3F9205ABA0F0066D22D /* Body_Metalness.png in CopyFiles */,
+				98DED3FA205ABA0F0066D22D /* Body.obj in CopyFiles */,
+				98DED3FB205ABA0F0066D22D /* Body_BaseColor.psd in CopyFiles */,
+				98DED3FC205ABA0F0066D22D /* Body_BaseColor.png in CopyFiles */,
+				98DED3FD205ABA0F0066D22D /* Body_Roughness.png in CopyFiles */,
+				98DED3FE205ABA0F0066D22D /* Body_Emissive - Copie.png in CopyFiles */,
+				98DED3FF205ABA0F0066D22D /* Body_ao.png in CopyFiles */,
+				98DED400205ABA0F0066D22D /* Body_Emissive.png in CopyFiles */,
+				98DED401205ABA0F0066D22D /* Body.mtl in CopyFiles */,
+				98DED402205ABA0F0066D22D /* Foot Back.obj in CopyFiles */,
+				98DED403205ABA0F0066D22D /* Foot Back_Roughness.png in CopyFiles */,
+				98DED404205ABA0F0066D22D /* Foot Back_ao.png in CopyFiles */,
+				98DED405205ABA0F0066D22D /* Foot Back_Metalness.png in CopyFiles */,
+				98DED406205ABA0F0066D22D /* Foot Back.mtl in CopyFiles */,
+				98DED407205ABA0F0066D22D /* Foot Back_BaseColor.png in CopyFiles */,
+				98DED408205ABA0F0066D22D /* Cabin Door_BaseColor.png in CopyFiles */,
+				98DED409205ABA0F0066D22D /* Cabin Door_Metalness.png in CopyFiles */,
+				98DED40A205ABA0F0066D22D /* Cabin Door_ao.png in CopyFiles */,
+				98DED40B205ABA0F0066D22D /* Cabin Door.obj in CopyFiles */,
+				98DED40C205ABA0F0066D22D /* Cabin Door.mtl in CopyFiles */,
+				98DED40D205ABA0F0066D22D /* Cabin Door_Roughness.png in CopyFiles */,
+				98DED40E205ABA0F0066D22D /* Foot Front.obj in CopyFiles */,
+				98DED40F205ABA0F0066D22D /* Foot Front_Roughness.png in CopyFiles */,
+				98DED410205ABA0F0066D22D /* Foot Front_ao.png in CopyFiles */,
+				98DED411205ABA0F0066D22D /* Foot Front_BaseColor.png in CopyFiles */,
+				98DED412205ABA0F0066D22D /* Foot Front_Metalness.png in CopyFiles */,
+				98DED413205ABA0F0066D22D /* Foot Front.mtl in CopyFiles */,
+				98DED414205ABA0F0066D22D /* Shutter Front_Roughness.png in CopyFiles */,
+				98DED415205ABA0F0066D22D /* Shutter Front.obj in CopyFiles */,
+				98DED416205ABA0F0066D22D /* Shutter Front_ao.png in CopyFiles */,
+				98DED417205ABA0F0066D22D /* Shutter Front.mtl in CopyFiles */,
+				98DED418205ABA0F0066D22D /* Shutter Front_BaseColor.png in CopyFiles */,
+				98DED419205ABA0F0066D22D /* Shutter Front_Metalness.png in CopyFiles */,
+				98DED41A205ABA0F0066D22D /* Wing Down_ao.png in CopyFiles */,
+				98DED41B205ABA0F0066D22D /* Wing Down_Metalness.png in CopyFiles */,
+				98DED41C205ABA0F0066D22D /* Wing Down.mtl in CopyFiles */,
+				98DED41D205ABA0F0066D22D /* Wing Down_BaseColor.png in CopyFiles */,
+				98DED41E205ABA0F0066D22D /* Wing Down.obj in CopyFiles */,
+				98DED41F205ABA0F0066D22D /* Wing Down_Roughness.png in CopyFiles */,
+				98DED399205AB8160066D22D /* Trident_UV_No_Dekol_Color.tif in CopyFiles */,
+				98DED39A205AB8160066D22D /* Trident-A10.mtl in CopyFiles */,
+				98DED39B205AB8160066D22D /* Trident_UV_Dekol_Color.tif in CopyFiles */,
+				98DED39C205AB8160066D22D /* Trident-A10.obj in CopyFiles */,
+				98DED39D205AB8160066D22D /* Trident_UV_Spec.tif in CopyFiles */,
+				98DED39E205AB8160066D22D /* Trident_UV_Bump.tif in CopyFiles */,
+				98DED378205AB2E60066D22D /* Albedo.jpg in CopyFiles */,
+				98DED379205AB2E60066D22D /* Metalness.jpg in CopyFiles */,
+				98DED37A205AB2E60066D22D /* A2.obj in CopyFiles */,
+				98DED37B205AB2E60066D22D /* A2.mtl in CopyFiles */,
+				98DED37C205AB2E60066D22D /* Normal.jpg in CopyFiles */,
+				98DED37D205AB2E60066D22D /* Emission.jpg in CopyFiles */,
+				98DED37E205AB2E60066D22D /* Displacement.jpg in CopyFiles */,
+				98DED359205AA5780066D22D /* Thumbs.db in CopyFiles */,
+				98DED35A205AA5780066D22D /* wing-up specular.jpg in CopyFiles */,
+				98DED35B205AA5780066D22D /* wing-up bump.jpg in CopyFiles */,
+				98DED35C205AA5780066D22D /* gun romb.jpg in CopyFiles */,
+				98DED35D205AA5780066D22D /* Untitled-1.jpg in CopyFiles */,
+				98DED35E205AA5780066D22D /* Viper-mk-IV-fighter.mtl in CopyFiles */,
+				98DED35F205AA5780066D22D /* carlinga specular.jpg in CopyFiles */,
+				98DED360205AA5780066D22D /* face specular.jpg in CopyFiles */,
+				98DED361205AA5780066D22D /* face.jpg in CopyFiles */,
+				98DED362205AA5780066D22D /* wing specular.jpg in CopyFiles */,
+				98DED363205AA5780066D22D /* carma creasta.jpg in CopyFiles */,
+				98DED364205AA5780066D22D /* face-bump.jpg in CopyFiles */,
+				98DED365205AA5780066D22D /* aripa buna.jpg in CopyFiles */,
+				98DED366205AA5780066D22D /* wing-up.jpg in CopyFiles */,
+				98DED367205AA5780066D22D /* wing bump.jpg in CopyFiles */,
+				98DED368205AA5780066D22D /* parbriz.jpg in CopyFiles */,
+				98DED369205AA5780066D22D /* carmaaripi.jpg in CopyFiles */,
+				98DED36A205AA5780066D22D /* Viper-mk-IV-fighter.obj in CopyFiles */,
+				98DED36B205AA5780066D22D /* engine cover bump.jpg in CopyFiles */,
+				98DED36C205AA5780066D22D /* engine-covers specular.jpg in CopyFiles */,
+				98DED36D205AA5780066D22D /* carlinga.jpg in CopyFiles */,
+				98DED36E205AA5780066D22D /* engine-cover.jpg in CopyFiles */,
+				98DED36F205AA5780066D22D /* elicie.jpg in CopyFiles */,
 				98DED329205A915B0066D22D /* cloud_texture.jpg in CopyFiles */,
 				98DED32A205A915B0066D22D /* heightmap1.bmp in CopyFiles */,
 				98DED32B205A915B0066D22D /* helmet_showroom_spec.png in CopyFiles */,
@@ -164,6 +354,101 @@
 		98DED326205A91320066D22D /* nanosuit.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nanosuit.obj; sourceTree = "<group>"; };
 		98DED327205A91320066D22D /* leg_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leg_showroom_spec.png; sourceTree = "<group>"; };
 		98DED328205A91330066D22D /* nanosuit.blend */ = {isa = PBXFileReference; lastKnownFileType = file; path = nanosuit.blend; sourceTree = "<group>"; };
+		98DED342205AA5640066D22D /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
+		98DED343205AA5640066D22D /* wing-up specular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wing-up specular.jpg"; sourceTree = "<group>"; };
+		98DED344205AA5640066D22D /* wing-up bump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wing-up bump.jpg"; sourceTree = "<group>"; };
+		98DED345205AA5640066D22D /* gun romb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "gun romb.jpg"; sourceTree = "<group>"; };
+		98DED346205AA5640066D22D /* Untitled-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Untitled-1.jpg"; sourceTree = "<group>"; };
+		98DED347205AA5640066D22D /* Viper-mk-IV-fighter.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Viper-mk-IV-fighter.mtl"; sourceTree = "<group>"; };
+		98DED348205AA5640066D22D /* carlinga specular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "carlinga specular.jpg"; sourceTree = "<group>"; };
+		98DED349205AA5640066D22D /* face specular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "face specular.jpg"; sourceTree = "<group>"; };
+		98DED34A205AA5640066D22D /* face.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = face.jpg; sourceTree = "<group>"; };
+		98DED34B205AA5640066D22D /* wing specular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wing specular.jpg"; sourceTree = "<group>"; };
+		98DED34C205AA5640066D22D /* carma creasta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "carma creasta.jpg"; sourceTree = "<group>"; };
+		98DED34D205AA5640066D22D /* face-bump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "face-bump.jpg"; sourceTree = "<group>"; };
+		98DED34E205AA5640066D22D /* aripa buna.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aripa buna.jpg"; sourceTree = "<group>"; };
+		98DED34F205AA5640066D22D /* wing-up.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wing-up.jpg"; sourceTree = "<group>"; };
+		98DED350205AA5640066D22D /* wing bump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wing bump.jpg"; sourceTree = "<group>"; };
+		98DED351205AA5640066D22D /* parbriz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = parbriz.jpg; sourceTree = "<group>"; };
+		98DED352205AA5640066D22D /* carmaaripi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carmaaripi.jpg; sourceTree = "<group>"; };
+		98DED353205AA5640066D22D /* Viper-mk-IV-fighter.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Viper-mk-IV-fighter.obj"; sourceTree = "<group>"; };
+		98DED354205AA5640066D22D /* engine cover bump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "engine cover bump.jpg"; sourceTree = "<group>"; };
+		98DED355205AA5640066D22D /* engine-covers specular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "engine-covers specular.jpg"; sourceTree = "<group>"; };
+		98DED356205AA5640066D22D /* carlinga.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carlinga.jpg; sourceTree = "<group>"; };
+		98DED357205AA5640066D22D /* engine-cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "engine-cover.jpg"; sourceTree = "<group>"; };
+		98DED358205AA5640066D22D /* elicie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = elicie.jpg; sourceTree = "<group>"; };
+		98DED371205AB2DC0066D22D /* Albedo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Albedo.jpg; sourceTree = "<group>"; };
+		98DED372205AB2DC0066D22D /* Metalness.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metalness.jpg; sourceTree = "<group>"; };
+		98DED373205AB2DC0066D22D /* A2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = A2.obj; sourceTree = "<group>"; };
+		98DED374205AB2DC0066D22D /* A2.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = A2.mtl; sourceTree = "<group>"; };
+		98DED375205AB2DC0066D22D /* Normal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Normal.jpg; sourceTree = "<group>"; };
+		98DED376205AB2DC0066D22D /* Emission.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Emission.jpg; sourceTree = "<group>"; };
+		98DED377205AB2DC0066D22D /* Displacement.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Displacement.jpg; sourceTree = "<group>"; };
+		98DED393205AB8090066D22D /* Trident_UV_No_Dekol_Color.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Trident_UV_No_Dekol_Color.tif; sourceTree = "<group>"; };
+		98DED394205AB8090066D22D /* Trident-A10.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Trident-A10.mtl"; sourceTree = "<group>"; };
+		98DED395205AB8090066D22D /* Trident_UV_Dekol_Color.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Trident_UV_Dekol_Color.tif; sourceTree = "<group>"; };
+		98DED396205AB8090066D22D /* Trident-A10.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Trident-A10.obj"; sourceTree = "<group>"; };
+		98DED397205AB8090066D22D /* Trident_UV_Spec.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Trident_UV_Spec.tif; sourceTree = "<group>"; };
+		98DED398205AB8090066D22D /* Trident_UV_Bump.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Trident_UV_Bump.tif; sourceTree = "<group>"; };
+		98DED3A1205AB9EA0066D22D /* HighresScreenshot00015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighresScreenshot00015.png; sourceTree = "<group>"; };
+		98DED3A2205AB9EA0066D22D /* HighresScreenshot00014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighresScreenshot00014.png; sourceTree = "<group>"; };
+		98DED3A3205AB9EA0066D22D /* HighresScreenshot00016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighresScreenshot00016.png; sourceTree = "<group>"; };
+		98DED3A4205AB9EA0066D22D /* HighresScreenshot00017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighresScreenshot00017.png; sourceTree = "<group>"; };
+		98DED3A5205AB9EA0066D22D /* HighresScreenshot00013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighresScreenshot00013.png; sourceTree = "<group>"; };
+		98DED3A6205AB9EA0066D22D /* HighresScreenshot00011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighresScreenshot00011.png; sourceTree = "<group>"; };
+		98DED3A9205AB9EA0066D22D /* Foot Back.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Foot Back.obj"; sourceTree = "<group>"; };
+		98DED3AA205AB9EA0066D22D /* Foot Back_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Back_Roughness.png"; sourceTree = "<group>"; };
+		98DED3AB205AB9EA0066D22D /* Foot Back_ao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Back_ao.png"; sourceTree = "<group>"; };
+		98DED3AC205AB9EA0066D22D /* Foot Back_Metalness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Back_Metalness.png"; sourceTree = "<group>"; };
+		98DED3AD205AB9EA0066D22D /* Foot Back.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Foot Back.mtl"; sourceTree = "<group>"; };
+		98DED3AE205AB9EA0066D22D /* Foot Back_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Back_BaseColor.png"; sourceTree = "<group>"; };
+		98DED3B0205AB9EA0066D22D /* Wing up_Metalness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing up_Metalness.png"; sourceTree = "<group>"; };
+		98DED3B1205AB9EA0066D22D /* Wing up_ao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing up_ao.png"; sourceTree = "<group>"; };
+		98DED3B2205AB9EA0066D22D /* Wing up.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Wing up.obj"; sourceTree = "<group>"; };
+		98DED3B3205AB9EA0066D22D /* Wing up_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing up_BaseColor.png"; sourceTree = "<group>"; };
+		98DED3B4205AB9EA0066D22D /* Wing up.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Wing up.mtl"; sourceTree = "<group>"; };
+		98DED3B5205AB9EA0066D22D /* Wing up_Emissive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing up_Emissive.png"; sourceTree = "<group>"; };
+		98DED3B6205AB9EA0066D22D /* Wing up_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing up_Roughness.png"; sourceTree = "<group>"; };
+		98DED3B7205AB9EA0066D22D /* Wing up.3b.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Wing up.3b.jpg"; sourceTree = "<group>"; };
+		98DED3B9205AB9EA0066D22D /* Body_Metalness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Body_Metalness.png; sourceTree = "<group>"; };
+		98DED3BA205AB9EA0066D22D /* Body.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Body.obj; sourceTree = "<group>"; };
+		98DED3BB205AB9EA0066D22D /* Body_BaseColor.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Body_BaseColor.psd; sourceTree = "<group>"; };
+		98DED3BC205AB9EA0066D22D /* Body_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Body_BaseColor.png; sourceTree = "<group>"; };
+		98DED3BD205AB9EA0066D22D /* Body_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Body_Roughness.png; sourceTree = "<group>"; };
+		98DED3BE205AB9EA0066D22D /* Body_Emissive - Copie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Body_Emissive - Copie.png"; sourceTree = "<group>"; };
+		98DED3BF205AB9EA0066D22D /* Body_ao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Body_ao.png; sourceTree = "<group>"; };
+		98DED3C0205AB9EA0066D22D /* Body_Emissive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Body_Emissive.png; sourceTree = "<group>"; };
+		98DED3C1205AB9EA0066D22D /* Body.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Body.mtl; sourceTree = "<group>"; };
+		98DED3C3205AB9EA0066D22D /* Foot Back.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Foot Back.obj"; sourceTree = "<group>"; };
+		98DED3C4205AB9EA0066D22D /* Foot Back_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Back_Roughness.png"; sourceTree = "<group>"; };
+		98DED3C5205AB9EA0066D22D /* Foot Back_ao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Back_ao.png"; sourceTree = "<group>"; };
+		98DED3C6205AB9EA0066D22D /* Foot Back_Metalness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Back_Metalness.png"; sourceTree = "<group>"; };
+		98DED3C7205AB9EA0066D22D /* Foot Back.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Foot Back.mtl"; sourceTree = "<group>"; };
+		98DED3C8205AB9EA0066D22D /* Foot Back_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Back_BaseColor.png"; sourceTree = "<group>"; };
+		98DED3CA205AB9EA0066D22D /* Cabin Door_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cabin Door_BaseColor.png"; sourceTree = "<group>"; };
+		98DED3CB205AB9EA0066D22D /* Cabin Door_Metalness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cabin Door_Metalness.png"; sourceTree = "<group>"; };
+		98DED3CC205AB9EA0066D22D /* Cabin Door_ao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cabin Door_ao.png"; sourceTree = "<group>"; };
+		98DED3CD205AB9EA0066D22D /* Cabin Door.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Cabin Door.obj"; sourceTree = "<group>"; };
+		98DED3CE205AB9EA0066D22D /* Cabin Door.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Cabin Door.mtl"; sourceTree = "<group>"; };
+		98DED3CF205AB9EA0066D22D /* Cabin Door_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cabin Door_Roughness.png"; sourceTree = "<group>"; };
+		98DED3D1205AB9EA0066D22D /* Foot Front.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Foot Front.obj"; sourceTree = "<group>"; };
+		98DED3D2205AB9EA0066D22D /* Foot Front_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Front_Roughness.png"; sourceTree = "<group>"; };
+		98DED3D3205AB9EA0066D22D /* Foot Front_ao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Front_ao.png"; sourceTree = "<group>"; };
+		98DED3D4205AB9EA0066D22D /* Foot Front_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Front_BaseColor.png"; sourceTree = "<group>"; };
+		98DED3D5205AB9EA0066D22D /* Foot Front_Metalness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Front_Metalness.png"; sourceTree = "<group>"; };
+		98DED3D6205AB9EA0066D22D /* Foot Front.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Foot Front.mtl"; sourceTree = "<group>"; };
+		98DED3D8205AB9EA0066D22D /* Shutter Front_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shutter Front_Roughness.png"; sourceTree = "<group>"; };
+		98DED3D9205AB9EA0066D22D /* Shutter Front.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Shutter Front.obj"; sourceTree = "<group>"; };
+		98DED3DA205AB9EA0066D22D /* Shutter Front_ao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shutter Front_ao.png"; sourceTree = "<group>"; };
+		98DED3DB205AB9EA0066D22D /* Shutter Front.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Shutter Front.mtl"; sourceTree = "<group>"; };
+		98DED3DC205AB9EA0066D22D /* Shutter Front_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shutter Front_BaseColor.png"; sourceTree = "<group>"; };
+		98DED3DD205AB9EA0066D22D /* Shutter Front_Metalness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shutter Front_Metalness.png"; sourceTree = "<group>"; };
+		98DED3DF205AB9EA0066D22D /* Wing Down_ao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing Down_ao.png"; sourceTree = "<group>"; };
+		98DED3E0205AB9EA0066D22D /* Wing Down_Metalness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing Down_Metalness.png"; sourceTree = "<group>"; };
+		98DED3E1205AB9EA0066D22D /* Wing Down.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Wing Down.mtl"; sourceTree = "<group>"; };
+		98DED3E2205AB9EA0066D22D /* Wing Down_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing Down_BaseColor.png"; sourceTree = "<group>"; };
+		98DED3E3205AB9EA0066D22D /* Wing Down.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Wing Down.obj"; sourceTree = "<group>"; };
+		98DED3E4205AB9EA0066D22D /* Wing Down_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing Down_Roughness.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +486,11 @@
 		98D21064200D6F8600B4D688 /* assignment0 */ = {
 			isa = PBXGroup;
 			children = (
+				98DED370205AB2DC0066D22D /* asteroid */,
+				98DED392205AB8090066D22D /* airplane2 */,
+				98DED341205AA5640066D22D /* airplane */,
 				98DED323205A91310066D22D /* cloud_texture.jpg */,
+				98DED39F205AB9EA0066D22D /* X-Wing Pack */,
 				98DED324205A91320066D22D /* heightmap1.bmp */,
 				98DED322205A91310066D22D /* helmet_showroom_spec.png */,
 				98DED327205A91320066D22D /* leg_showroom_spec.png */,
@@ -269,6 +558,209 @@
 				98D21077200D72EC00B4D688 /* OpenGL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		98DED341205AA5640066D22D /* airplane */ = {
+			isa = PBXGroup;
+			children = (
+				98DED342205AA5640066D22D /* Thumbs.db */,
+				98DED343205AA5640066D22D /* wing-up specular.jpg */,
+				98DED344205AA5640066D22D /* wing-up bump.jpg */,
+				98DED345205AA5640066D22D /* gun romb.jpg */,
+				98DED346205AA5640066D22D /* Untitled-1.jpg */,
+				98DED347205AA5640066D22D /* Viper-mk-IV-fighter.mtl */,
+				98DED348205AA5640066D22D /* carlinga specular.jpg */,
+				98DED349205AA5640066D22D /* face specular.jpg */,
+				98DED34A205AA5640066D22D /* face.jpg */,
+				98DED34B205AA5640066D22D /* wing specular.jpg */,
+				98DED34C205AA5640066D22D /* carma creasta.jpg */,
+				98DED34D205AA5640066D22D /* face-bump.jpg */,
+				98DED34E205AA5640066D22D /* aripa buna.jpg */,
+				98DED34F205AA5640066D22D /* wing-up.jpg */,
+				98DED350205AA5640066D22D /* wing bump.jpg */,
+				98DED351205AA5640066D22D /* parbriz.jpg */,
+				98DED352205AA5640066D22D /* carmaaripi.jpg */,
+				98DED353205AA5640066D22D /* Viper-mk-IV-fighter.obj */,
+				98DED354205AA5640066D22D /* engine cover bump.jpg */,
+				98DED355205AA5640066D22D /* engine-covers specular.jpg */,
+				98DED356205AA5640066D22D /* carlinga.jpg */,
+				98DED357205AA5640066D22D /* engine-cover.jpg */,
+				98DED358205AA5640066D22D /* elicie.jpg */,
+			);
+			path = airplane;
+			sourceTree = "<group>";
+		};
+		98DED370205AB2DC0066D22D /* asteroid */ = {
+			isa = PBXGroup;
+			children = (
+				98DED371205AB2DC0066D22D /* Albedo.jpg */,
+				98DED372205AB2DC0066D22D /* Metalness.jpg */,
+				98DED373205AB2DC0066D22D /* A2.obj */,
+				98DED374205AB2DC0066D22D /* A2.mtl */,
+				98DED375205AB2DC0066D22D /* Normal.jpg */,
+				98DED376205AB2DC0066D22D /* Emission.jpg */,
+				98DED377205AB2DC0066D22D /* Displacement.jpg */,
+			);
+			path = asteroid;
+			sourceTree = "<group>";
+		};
+		98DED392205AB8090066D22D /* airplane2 */ = {
+			isa = PBXGroup;
+			children = (
+				98DED393205AB8090066D22D /* Trident_UV_No_Dekol_Color.tif */,
+				98DED394205AB8090066D22D /* Trident-A10.mtl */,
+				98DED395205AB8090066D22D /* Trident_UV_Dekol_Color.tif */,
+				98DED396205AB8090066D22D /* Trident-A10.obj */,
+				98DED397205AB8090066D22D /* Trident_UV_Spec.tif */,
+				98DED398205AB8090066D22D /* Trident_UV_Bump.tif */,
+			);
+			path = airplane2;
+			sourceTree = "<group>";
+		};
+		98DED39F205AB9EA0066D22D /* X-Wing Pack */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3A0205AB9EA0066D22D /* Screenshots */,
+				98DED3A7205AB9EA0066D22D /* Pack */,
+			);
+			path = "X-Wing Pack";
+			sourceTree = "<group>";
+		};
+		98DED3A0205AB9EA0066D22D /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3A1205AB9EA0066D22D /* HighresScreenshot00015.png */,
+				98DED3A2205AB9EA0066D22D /* HighresScreenshot00014.png */,
+				98DED3A3205AB9EA0066D22D /* HighresScreenshot00016.png */,
+				98DED3A4205AB9EA0066D22D /* HighresScreenshot00017.png */,
+				98DED3A5205AB9EA0066D22D /* HighresScreenshot00013.png */,
+				98DED3A6205AB9EA0066D22D /* HighresScreenshot00011.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
+		98DED3A7205AB9EA0066D22D /* Pack */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3A8205AB9EA0066D22D /* Shutter Back */,
+				98DED3AF205AB9EA0066D22D /* Wing up */,
+				98DED3B8205AB9EA0066D22D /* Body */,
+				98DED3C2205AB9EA0066D22D /* Foot Back */,
+				98DED3C9205AB9EA0066D22D /* Cabin door */,
+				98DED3D0205AB9EA0066D22D /* Foot Front */,
+				98DED3D7205AB9EA0066D22D /* Shutter Front */,
+				98DED3DE205AB9EA0066D22D /* Wing down */,
+			);
+			path = Pack;
+			sourceTree = "<group>";
+		};
+		98DED3A8205AB9EA0066D22D /* Shutter Back */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3A9205AB9EA0066D22D /* Foot Back.obj */,
+				98DED3AA205AB9EA0066D22D /* Foot Back_Roughness.png */,
+				98DED3AB205AB9EA0066D22D /* Foot Back_ao.png */,
+				98DED3AC205AB9EA0066D22D /* Foot Back_Metalness.png */,
+				98DED3AD205AB9EA0066D22D /* Foot Back.mtl */,
+				98DED3AE205AB9EA0066D22D /* Foot Back_BaseColor.png */,
+			);
+			path = "Shutter Back";
+			sourceTree = "<group>";
+		};
+		98DED3AF205AB9EA0066D22D /* Wing up */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3B0205AB9EA0066D22D /* Wing up_Metalness.png */,
+				98DED3B1205AB9EA0066D22D /* Wing up_ao.png */,
+				98DED3B2205AB9EA0066D22D /* Wing up.obj */,
+				98DED3B3205AB9EA0066D22D /* Wing up_BaseColor.png */,
+				98DED3B4205AB9EA0066D22D /* Wing up.mtl */,
+				98DED3B5205AB9EA0066D22D /* Wing up_Emissive.png */,
+				98DED3B6205AB9EA0066D22D /* Wing up_Roughness.png */,
+				98DED3B7205AB9EA0066D22D /* Wing up.3b.jpg */,
+			);
+			path = "Wing up";
+			sourceTree = "<group>";
+		};
+		98DED3B8205AB9EA0066D22D /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3B9205AB9EA0066D22D /* Body_Metalness.png */,
+				98DED3BA205AB9EA0066D22D /* Body.obj */,
+				98DED3BB205AB9EA0066D22D /* Body_BaseColor.psd */,
+				98DED3BC205AB9EA0066D22D /* Body_BaseColor.png */,
+				98DED3BD205AB9EA0066D22D /* Body_Roughness.png */,
+				98DED3BE205AB9EA0066D22D /* Body_Emissive - Copie.png */,
+				98DED3BF205AB9EA0066D22D /* Body_ao.png */,
+				98DED3C0205AB9EA0066D22D /* Body_Emissive.png */,
+				98DED3C1205AB9EA0066D22D /* Body.mtl */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		98DED3C2205AB9EA0066D22D /* Foot Back */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3C3205AB9EA0066D22D /* Foot Back.obj */,
+				98DED3C4205AB9EA0066D22D /* Foot Back_Roughness.png */,
+				98DED3C5205AB9EA0066D22D /* Foot Back_ao.png */,
+				98DED3C6205AB9EA0066D22D /* Foot Back_Metalness.png */,
+				98DED3C7205AB9EA0066D22D /* Foot Back.mtl */,
+				98DED3C8205AB9EA0066D22D /* Foot Back_BaseColor.png */,
+			);
+			path = "Foot Back";
+			sourceTree = "<group>";
+		};
+		98DED3C9205AB9EA0066D22D /* Cabin door */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3CA205AB9EA0066D22D /* Cabin Door_BaseColor.png */,
+				98DED3CB205AB9EA0066D22D /* Cabin Door_Metalness.png */,
+				98DED3CC205AB9EA0066D22D /* Cabin Door_ao.png */,
+				98DED3CD205AB9EA0066D22D /* Cabin Door.obj */,
+				98DED3CE205AB9EA0066D22D /* Cabin Door.mtl */,
+				98DED3CF205AB9EA0066D22D /* Cabin Door_Roughness.png */,
+			);
+			path = "Cabin door";
+			sourceTree = "<group>";
+		};
+		98DED3D0205AB9EA0066D22D /* Foot Front */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3D1205AB9EA0066D22D /* Foot Front.obj */,
+				98DED3D2205AB9EA0066D22D /* Foot Front_Roughness.png */,
+				98DED3D3205AB9EA0066D22D /* Foot Front_ao.png */,
+				98DED3D4205AB9EA0066D22D /* Foot Front_BaseColor.png */,
+				98DED3D5205AB9EA0066D22D /* Foot Front_Metalness.png */,
+				98DED3D6205AB9EA0066D22D /* Foot Front.mtl */,
+			);
+			path = "Foot Front";
+			sourceTree = "<group>";
+		};
+		98DED3D7205AB9EA0066D22D /* Shutter Front */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3D8205AB9EA0066D22D /* Shutter Front_Roughness.png */,
+				98DED3D9205AB9EA0066D22D /* Shutter Front.obj */,
+				98DED3DA205AB9EA0066D22D /* Shutter Front_ao.png */,
+				98DED3DB205AB9EA0066D22D /* Shutter Front.mtl */,
+				98DED3DC205AB9EA0066D22D /* Shutter Front_BaseColor.png */,
+				98DED3DD205AB9EA0066D22D /* Shutter Front_Metalness.png */,
+			);
+			path = "Shutter Front";
+			sourceTree = "<group>";
+		};
+		98DED3DE205AB9EA0066D22D /* Wing down */ = {
+			isa = PBXGroup;
+			children = (
+				98DED3DF205AB9EA0066D22D /* Wing Down_ao.png */,
+				98DED3E0205AB9EA0066D22D /* Wing Down_Metalness.png */,
+				98DED3E1205AB9EA0066D22D /* Wing Down.mtl */,
+				98DED3E2205AB9EA0066D22D /* Wing Down_BaseColor.png */,
+				98DED3E3205AB9EA0066D22D /* Wing Down.obj */,
+				98DED3E4205AB9EA0066D22D /* Wing Down_Roughness.png */,
+			);
+			path = "Wing down";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

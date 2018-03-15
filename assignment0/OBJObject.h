@@ -51,6 +51,7 @@ public:
     glm::vec3 size;
     glm::vec3 center;
     glm::mat4 transform;
+    float originZ;
     
     // These variables are needed for the shader program
     GLuint VBO, VAO, NBO, EBO;

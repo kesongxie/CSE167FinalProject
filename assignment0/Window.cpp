@@ -3,6 +3,9 @@
 #include "Skybox.hpp"
 #include "OBJObject.h"
 #include "PerlinNoise.hpp"
+#include <chrono>
+#include <thread>
+
 
 const char* window_title = "GLFW Starter Project";
 Terrain * terrain;
@@ -10,10 +13,13 @@ Skybox * skybox;
 GLint shaderProgram;
 GLint skyboxshaderProgram;
 GLint objShaderProgram;
-
+bool shaking = false;
 
 // obj
 OBJObject * obj;
+OBJObject * obj2;
+OBJObject * obj3;
+OBJObject * obj4;
 OBJObject * dragon;
 
 // trackball variables
@@ -25,7 +31,8 @@ bool rot = false;
 glm::vec3 rotAxis;
 float rotAngle;
 float delta = 0;
-
+float timeLast = 0;
+float degree = 0;
 
 // On some systems you need to change this to the absolute path
 #define VERTEX_SHADER_PATH "./shader.vert"
@@ -39,7 +46,7 @@ float delta = 0;
 
 
 // Default camera parameters
-glm::vec3 cam_pos(0.0f, 0.0f, 10.0f);		// e  | Position of camera
+glm::vec3 cam_pos(0.0f, 0.0f, 100.0f);		// e  | Position of camera
 glm::vec3 cam_look_at(0.0f, 0.0f, 0.0f);	// d  | This is where the camera looks at
 glm::vec3 cam_up(0.0f, 1.0f, 0.0f);			// up | What orientation "up" is
 
@@ -58,6 +65,7 @@ toWorld = glm::scale(glm::mat4(1.0f), glm::vec3(0.005, 0.005, 0.005)) * toWorld;
 
 void Window::initialize_objects()
 {
+    
     noise = new PerlinNoise(1.1, 0.1, 2.0, 3, 4);
 
 	// Load the shader program. Make sure you have the correct filepath up top
@@ -68,6 +76,10 @@ void Window::initialize_objects()
     skybox = new Skybox(skyboxshaderProgram);
     terrain = new Terrain(shaderProgram);
     obj = new OBJObject("Asteroid.obj");
+    obj2 = new OBJObject("Asteroid.obj");
+    obj3 = new OBJObject("Asteroid.obj");
+    obj4 = new OBJObject("Asteroid.obj");
+
     dragon = new OBJObject("Dragon.obj");
 
 }
@@ -152,9 +164,18 @@ void Window::idle_callback()
 {
 	// Call the update function the cube
     // modify the camera position
-    obj->move_z(2.0f);
+    obj->move_z(20.0f);
+    obj2->move_z(30.0f);
+    obj3->move_z(40.0f);
+    obj4->move_z(10.0f);
+
+
     obj->spin(1.0f);
-    
+    obj2->spin(1.0f);
+
+    obj3->spin(1.0f);
+    obj4->spin(1.0f);
+
     // Iterate thru bounding boxes vector, use AABB to detect if any collide with dragon's boudning box. If any collide with dragon, set the colliding boxes’ collide flags to true (colliding boxes will be colored red via fragment shader).
     BoundingBox * boxA = dragon->box;
     
@@ -167,11 +188,14 @@ void Window::idle_callback()
             float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
             cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
             V = glm::lookAt(cam_pos, cam_look_at, cam_up);
-            
+            timeLast += 1;
         } else {
             boxA->collide = false;
             boxB->collide = false;
-            V = glm::lookAt(cam_pos_before_collison, cam_look_at, cam_up);
+            if(timeLast > 5) {
+                timeLast = 0;
+                V = glm::lookAt(cam_pos_before_collison, cam_look_at, cam_up);
+            }
         }
     }
     terrain->update();
@@ -189,8 +213,10 @@ void Window::display_callback(GLFWwindow* window)
     
     // Now send these values to the shader program
     glUniformMatrix4fv(glGetUniformLocation(skyboxshaderProgram, "projection"), 1, GL_FALSE, &Window::P[0][0]);
-    glUniformMatrix4fv(glGetUniformLocation(skyboxshaderProgram, "view"), 1, GL_FALSE, &Window::V[0][0]);
-   // skybox->render();
+    degree += 1.0f;
+    glm::mat4 model = Window::V * glm::rotate(glm::mat4(1.0f), degree / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    glUniformMatrix4fv(glGetUniformLocation(skyboxshaderProgram, "view"), 1, GL_FALSE, &model[0][0]);
+    skybox->render();
     
     
     // --- TERRAIN
@@ -199,21 +225,24 @@ void Window::display_callback(GLFWwindow* window)
     glUseProgram(shaderProgram);
     
     // Render the cube
-    //terrain->draw(shaderProgram);
+   terrain->draw(shaderProgram);
     
     
     // DRAGON
     // render the dragon and the rock
     glUseProgram(objShaderProgram);
-    //dragon->draw(objShaderProgram); // mock dragon
-   // obj->draw(objShaderProgram); // mock asteroid
+    dragon->draw(objShaderProgram); // mock dragon
+    obj->draw(objShaderProgram); // mock asteroid
+    obj2->draw(objShaderProgram); // mock asteroid
+    obj3->draw(objShaderProgram); // mock asteroid
+    obj4->draw(objShaderProgram); // mock asteroid
 
     
 
 	// Gets events, including input such as keyboard and mouse or window resizing
-	glfwPollEvents();
-	// Swap buffers
-	glfwSwapBuffers(window);
+//    glfwPollEvents();
+//    // Swap buffers
+//    glfwSwapBuffers(window);
 }
 
 

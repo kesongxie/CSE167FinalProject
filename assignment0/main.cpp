@@ -3,6 +3,7 @@
 
 
 GLFWwindow* window;
+float angle = 0;
 
 void error_callback(int error, const char* description)
 {
@@ -86,26 +87,35 @@ int main(void)
     
     // build and compile shaders
     // -------------------------
-    glEnable(GL_DEPTH_TEST);
 
     Shader ourShader("./modelLoading.vs", "./modelLoading.frag");
     
     // load models
     // -----------
-    Model ourModel("nanosuit.obj");
+    Model ourModel("Viper-mk-IV-fighter.obj");
 
+
+    glm::mat4 model;
+
+    model = model * glm::rotate(glm::mat4(1.0f), -90 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    model = model * glm::rotate(glm::mat4(1.0f), -2 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 0.0f, 1.0f));
+    
+    model = glm::translate(model, glm::vec3(80.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+    model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));    // it's a bit too big for our scene, so scale it down
+    
 	// Loop while GLFW window should stay open
 	while (!glfwWindowShouldClose(window))
 	{
 		// Main render display callback. Rendering of objects is done here.
-//        Window::display_callback(window);
+        Window::display_callback(window);
 		// Idle callback. Updating objects, etc. can be done here.
-//        Window::idle_callback();
+        Window::idle_callback();
         
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glEnable(GL_DEPTH_TEST);
+
+//        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-        
         // don't forget to enable shader before setting uniforms
         ourShader.use();
         
@@ -116,12 +126,12 @@ int main(void)
 
 
         // render the loaded model
-        glm::mat4 model;
-        model = glm::translate(model, glm::vec3(0.0f, -4.0f, 0.0f)); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.6f));    // it's a bit too big for our scene, so scale it down
+//        angle -= 1.0f;
+//        model =  glm::rotate(glm::mat4(1.0f), angle / 180.0f * glm::pi<float>(), glm::vec3(1.0f, 0.0f, 0.0f));
+
         glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "model"), 1, GL_FALSE, &model[0][0]);
 
-        ourModel.Draw(ourShader);
+       //ourModel.Draw(ourShader);
         
         glfwSwapBuffers(window);
         glfwPollEvents();

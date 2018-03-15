@@ -69,6 +69,12 @@ std::vector<std::string> faces
 
 
 Skybox::Skybox(GLint program) {
+    for(unsigned int i = 0; i < sizeof(skyboxVertices) / sizeof(float); i++) {
+        skyboxVertices[i] *= 500;
+    }
+    
+    
+    
     // load the skybox
     skyboxshaderProgram = program;
     glGenVertexArrays(1, &skyboxVAO);
