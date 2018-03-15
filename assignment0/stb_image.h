@@ -302,6 +302,8 @@
 //     want the zlib decoder to be available, #define STBI_SUPPORT_ZLIB
 //
 
+#ifndef STD_IMAGE // #include guards
+#define STD_IMAGE
 
 #ifndef STBI_NO_STDIO
 #include <stdio.h>
@@ -7461,3 +7463,4 @@ STBIDEF int stbi_is_16_bit_from_callbacks(stbi_io_callbacks const *c, void *user
  ------------------------------------------------------------------------------
  */
 
+#endif

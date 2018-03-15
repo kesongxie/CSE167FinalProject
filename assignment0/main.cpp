@@ -1,4 +1,6 @@
 #include "main.h"
+#include "Model.h"
+
 
 GLFWwindow* window;
 
@@ -77,14 +79,54 @@ int main(void)
 	setup_opengl_settings();
 	// Initialize objects/pointers for rendering
 	Window::initialize_objects();
+    
+//    // configure global opengl state
+//    // -----------------------------
+//    glEnable(GL_DEPTH_TEST);
+    
+    // build and compile shaders
+    // -------------------------
+    glEnable(GL_DEPTH_TEST);
+
+    Shader ourShader("./modelLoading.vs", "./modelLoading.frag");
+    
+    // load models
+    // -----------
+    Model ourModel("nanosuit.obj");
 
 	// Loop while GLFW window should stay open
 	while (!glfwWindowShouldClose(window))
 	{
 		// Main render display callback. Rendering of objects is done here.
-		Window::display_callback(window);
+//        Window::display_callback(window);
 		// Idle callback. Updating objects, etc. can be done here.
-		Window::idle_callback();
+//        Window::idle_callback();
+        
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+        
+        // don't forget to enable shader before setting uniforms
+        ourShader.use();
+        
+        // view/projection transformations
+        // Now send these values to the shader program
+        glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "projection"), 1, GL_FALSE, &Window::P[0][0]);
+        glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "view"), 1, GL_FALSE, &Window::V[0][0]);
+
+
+        // render the loaded model
+        glm::mat4 model;
+        model = glm::translate(model, glm::vec3(0.0f, -4.0f, 0.0f)); // translate it down so it's at the center of the scene
+        model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.6f));    // it's a bit too big for our scene, so scale it down
+        glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "model"), 1, GL_FALSE, &model[0][0]);
+
+        ourModel.Draw(ourShader);
+        
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+
+        
 	}
 
 	Window::clean_up();

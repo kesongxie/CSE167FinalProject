@@ -28,6 +28,33 @@
 		98DED2892059EF890066D22D /* bbox.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED27D2059EE4F0066D22D /* bbox.vert */; };
 		98DED28A205A06CC0066D22D /* Asteroid.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED27E2059EE4F0066D22D /* Asteroid.obj */; };
 		98DED28B205A06CC0066D22D /* Dragon.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED2802059EE4F0066D22D /* Dragon.obj */; };
+		98DED2E2205A88560066D22D /* modelLoading.frag in Sources */ = {isa = PBXBuildFile; fileRef = 98DED2E0205A884C0066D22D /* modelLoading.frag */; };
+		98DED2E3205A88560066D22D /* modelLoading.vs in Sources */ = {isa = PBXBuildFile; fileRef = 98DED2E1205A884C0066D22D /* modelLoading.vs */; };
+		98DED2E6205A88B30066D22D /* libassimp.4.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DED2E5205A88B30066D22D /* libassimp.4.1.0.dylib */; };
+		98DED329205A915B0066D22D /* cloud_texture.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED323205A91310066D22D /* cloud_texture.jpg */; };
+		98DED32A205A915B0066D22D /* heightmap1.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED324205A91320066D22D /* heightmap1.bmp */; };
+		98DED32B205A915B0066D22D /* helmet_showroom_spec.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED322205A91310066D22D /* helmet_showroom_spec.png */; };
+		98DED32C205A915B0066D22D /* leg_showroom_spec.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED327205A91320066D22D /* leg_showroom_spec.png */; };
+		98DED32D205A915B0066D22D /* nanosuit.blend in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED328205A91330066D22D /* nanosuit.blend */; };
+		98DED32E205A915B0066D22D /* nanosuit.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED325205A91320066D22D /* nanosuit.mtl */; };
+		98DED32F205A915B0066D22D /* nanosuit.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED326205A91320066D22D /* nanosuit.obj */; };
+		98DED330205A915B0066D22D /* arm_dif.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED31C205A91050066D22D /* arm_dif.png */; };
+		98DED331205A915B0066D22D /* arm_showroom_ddn.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED316205A91040066D22D /* arm_showroom_ddn.png */; };
+		98DED332205A915B0066D22D /* arm_showroom_spec.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED31A205A91040066D22D /* arm_showroom_spec.png */; };
+		98DED333205A915B0066D22D /* body_dif.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED313205A91030066D22D /* body_dif.png */; };
+		98DED334205A915B0066D22D /* body_showroom_ddn.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED318205A91040066D22D /* body_showroom_ddn.png */; };
+		98DED335205A915B0066D22D /* body_showroom_spec.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED315205A91030066D22D /* body_showroom_spec.png */; };
+		98DED336205A915B0066D22D /* glass_ddn.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED31B205A91050066D22D /* glass_ddn.png */; };
+		98DED337205A915B0066D22D /* glass_dif.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED319205A91040066D22D /* glass_dif.png */; };
+		98DED338205A915B0066D22D /* hand_dif.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED31E205A91060066D22D /* hand_dif.png */; };
+		98DED339205A915B0066D22D /* hand_showroom_ddn.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED31D205A91050066D22D /* hand_showroom_ddn.png */; };
+		98DED33A205A915B0066D22D /* hand_showroom_spec.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED314205A91030066D22D /* hand_showroom_spec.png */; };
+		98DED33B205A915B0066D22D /* helmet_diff.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED321205A91060066D22D /* helmet_diff.png */; };
+		98DED33C205A915B0066D22D /* helmet_showroom_ddn.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED317205A91040066D22D /* helmet_showroom_ddn.png */; };
+		98DED33D205A915B0066D22D /* leg_dif.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED31F205A91060066D22D /* leg_dif.png */; };
+		98DED33E205A915B0066D22D /* leg_showroom_ddn.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED320205A91060066D22D /* leg_showroom_ddn.png */; };
+		98DED33F205A915B0066D22D /* modelLoading.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED2E0205A884C0066D22D /* modelLoading.frag */; };
+		98DED340205A915B0066D22D /* modelLoading.vs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED2E1205A884C0066D22D /* modelLoading.vs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +64,30 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				98DED329205A915B0066D22D /* cloud_texture.jpg in CopyFiles */,
+				98DED32A205A915B0066D22D /* heightmap1.bmp in CopyFiles */,
+				98DED32B205A915B0066D22D /* helmet_showroom_spec.png in CopyFiles */,
+				98DED32C205A915B0066D22D /* leg_showroom_spec.png in CopyFiles */,
+				98DED32D205A915B0066D22D /* nanosuit.blend in CopyFiles */,
+				98DED32E205A915B0066D22D /* nanosuit.mtl in CopyFiles */,
+				98DED32F205A915B0066D22D /* nanosuit.obj in CopyFiles */,
+				98DED330205A915B0066D22D /* arm_dif.png in CopyFiles */,
+				98DED331205A915B0066D22D /* arm_showroom_ddn.png in CopyFiles */,
+				98DED332205A915B0066D22D /* arm_showroom_spec.png in CopyFiles */,
+				98DED333205A915B0066D22D /* body_dif.png in CopyFiles */,
+				98DED334205A915B0066D22D /* body_showroom_ddn.png in CopyFiles */,
+				98DED335205A915B0066D22D /* body_showroom_spec.png in CopyFiles */,
+				98DED336205A915B0066D22D /* glass_ddn.png in CopyFiles */,
+				98DED337205A915B0066D22D /* glass_dif.png in CopyFiles */,
+				98DED338205A915B0066D22D /* hand_dif.png in CopyFiles */,
+				98DED339205A915B0066D22D /* hand_showroom_ddn.png in CopyFiles */,
+				98DED33A205A915B0066D22D /* hand_showroom_spec.png in CopyFiles */,
+				98DED33B205A915B0066D22D /* helmet_diff.png in CopyFiles */,
+				98DED33C205A915B0066D22D /* helmet_showroom_ddn.png in CopyFiles */,
+				98DED33D205A915B0066D22D /* leg_dif.png in CopyFiles */,
+				98DED33E205A915B0066D22D /* leg_showroom_ddn.png in CopyFiles */,
+				98DED33F205A915B0066D22D /* modelLoading.frag in CopyFiles */,
+				98DED340205A915B0066D22D /* modelLoading.vs in CopyFiles */,
 				98DED28A205A06CC0066D22D /* Asteroid.obj in CopyFiles */,
 				98DED28B205A06CC0066D22D /* Dragon.obj in CopyFiles */,
 				98DED2862059EF890066D22D /* android.frag in CopyFiles */,
@@ -85,6 +136,34 @@
 		98DED2812059EE4F0066D22D /* android.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = android.vert; sourceTree = "<group>"; };
 		98DED2822059EE500066D22D /* android.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = android.frag; sourceTree = "<group>"; };
 		98DED2832059EE500066D22D /* OBJObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJObject.h; sourceTree = "<group>"; };
+		98DED2DF205A871E0066D22D /* Shader_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader_class.h; sourceTree = "<group>"; };
+		98DED2E0205A884C0066D22D /* modelLoading.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = modelLoading.frag; sourceTree = "<group>"; };
+		98DED2E1205A884C0066D22D /* modelLoading.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = modelLoading.vs; sourceTree = "<group>"; };
+		98DED2E4205A88820066D22D /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		98DED2E5205A88B30066D22D /* libassimp.4.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.1.0.dylib; path = ../../usr/local/Cellar/assimp/4.1.0/lib/libassimp.4.1.0.dylib; sourceTree = "<group>"; };
+		98DED312205A89580066D22D /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		98DED313205A91030066D22D /* body_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body_dif.png; sourceTree = "<group>"; };
+		98DED314205A91030066D22D /* hand_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand_showroom_spec.png; sourceTree = "<group>"; };
+		98DED315205A91030066D22D /* body_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body_showroom_spec.png; sourceTree = "<group>"; };
+		98DED316205A91040066D22D /* arm_showroom_ddn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arm_showroom_ddn.png; sourceTree = "<group>"; };
+		98DED317205A91040066D22D /* helmet_showroom_ddn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helmet_showroom_ddn.png; sourceTree = "<group>"; };
+		98DED318205A91040066D22D /* body_showroom_ddn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body_showroom_ddn.png; sourceTree = "<group>"; };
+		98DED319205A91040066D22D /* glass_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glass_dif.png; sourceTree = "<group>"; };
+		98DED31A205A91040066D22D /* arm_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arm_showroom_spec.png; sourceTree = "<group>"; };
+		98DED31B205A91050066D22D /* glass_ddn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glass_ddn.png; sourceTree = "<group>"; };
+		98DED31C205A91050066D22D /* arm_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arm_dif.png; sourceTree = "<group>"; };
+		98DED31D205A91050066D22D /* hand_showroom_ddn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand_showroom_ddn.png; sourceTree = "<group>"; };
+		98DED31E205A91060066D22D /* hand_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand_dif.png; sourceTree = "<group>"; };
+		98DED31F205A91060066D22D /* leg_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leg_dif.png; sourceTree = "<group>"; };
+		98DED320205A91060066D22D /* leg_showroom_ddn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leg_showroom_ddn.png; sourceTree = "<group>"; };
+		98DED321205A91060066D22D /* helmet_diff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helmet_diff.png; sourceTree = "<group>"; };
+		98DED322205A91310066D22D /* helmet_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helmet_showroom_spec.png; sourceTree = "<group>"; };
+		98DED323205A91310066D22D /* cloud_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cloud_texture.jpg; sourceTree = "<group>"; };
+		98DED324205A91320066D22D /* heightmap1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = heightmap1.bmp; sourceTree = "<group>"; };
+		98DED325205A91320066D22D /* nanosuit.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nanosuit.mtl; sourceTree = "<group>"; };
+		98DED326205A91320066D22D /* nanosuit.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nanosuit.obj; sourceTree = "<group>"; };
+		98DED327205A91320066D22D /* leg_showroom_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leg_showroom_spec.png; sourceTree = "<group>"; };
+		98DED328205A91330066D22D /* nanosuit.blend */ = {isa = PBXFileReference; lastKnownFileType = file; path = nanosuit.blend; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DED2E6205A88B30066D22D /* libassimp.4.1.0.dylib in Frameworks */,
 				98066E0220535E9B0025BA30 /* libSDL2-2.0.0.dylib in Frameworks */,
 				98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */,
 				98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */,
@@ -121,6 +201,30 @@
 		98D21064200D6F8600B4D688 /* assignment0 */ = {
 			isa = PBXGroup;
 			children = (
+				98DED323205A91310066D22D /* cloud_texture.jpg */,
+				98DED324205A91320066D22D /* heightmap1.bmp */,
+				98DED322205A91310066D22D /* helmet_showroom_spec.png */,
+				98DED327205A91320066D22D /* leg_showroom_spec.png */,
+				98DED328205A91330066D22D /* nanosuit.blend */,
+				98DED325205A91320066D22D /* nanosuit.mtl */,
+				98DED326205A91320066D22D /* nanosuit.obj */,
+				98DED31C205A91050066D22D /* arm_dif.png */,
+				98DED316205A91040066D22D /* arm_showroom_ddn.png */,
+				98DED31A205A91040066D22D /* arm_showroom_spec.png */,
+				98DED313205A91030066D22D /* body_dif.png */,
+				98DED318205A91040066D22D /* body_showroom_ddn.png */,
+				98DED315205A91030066D22D /* body_showroom_spec.png */,
+				98DED31B205A91050066D22D /* glass_ddn.png */,
+				98DED319205A91040066D22D /* glass_dif.png */,
+				98DED31E205A91060066D22D /* hand_dif.png */,
+				98DED31D205A91050066D22D /* hand_showroom_ddn.png */,
+				98DED314205A91030066D22D /* hand_showroom_spec.png */,
+				98DED321205A91060066D22D /* helmet_diff.png */,
+				98DED317205A91040066D22D /* helmet_showroom_ddn.png */,
+				98DED31F205A91060066D22D /* leg_dif.png */,
+				98DED320205A91060066D22D /* leg_showroom_ddn.png */,
+				98DED2E0205A884C0066D22D /* modelLoading.frag */,
+				98DED2E1205A884C0066D22D /* modelLoading.vs */,
 				98DED2822059EE500066D22D /* android.frag */,
 				98DED2812059EE4F0066D22D /* android.vert */,
 				98DED27E2059EE4F0066D22D /* Asteroid.obj */,
@@ -140,7 +244,10 @@
 				98066DF7205305030025BA30 /* main.cpp */,
 				98066DF4205305020025BA30 /* main.h */,
 				98066DF6205305030025BA30 /* shader.cpp */,
+				98DED2DF205A871E0066D22D /* Shader_class.h */,
 				98066DF9205305030025BA30 /* shader.h */,
+				98DED2E4205A88820066D22D /* Model.h */,
+				98DED312205A89580066D22D /* Mesh.h */,
 				98066DF2205305020025BA30 /* Window.cpp */,
 				98066DF3205305020025BA30 /* Window.h */,
 				98066DFA205305030025BA30 /* Terrain.h */,
@@ -156,6 +263,7 @@
 		98D21076200D72EC00B4D688 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98DED2E5205A88B30066D22D /* libassimp.4.1.0.dylib */,
 				98066E0120535E9B0025BA30 /* libSDL2-2.0.0.dylib */,
 				98D21078200D730C00B4D688 /* libglfw.3.2.dylib */,
 				98D21077200D72EC00B4D688 /* OpenGL.framework */,
@@ -220,6 +328,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DED2E2205A88560066D22D /* modelLoading.frag in Sources */,
+				98DED2E3205A88560066D22D /* modelLoading.vs in Sources */,
 				98DED2842059EE500066D22D /* OBJObject.cpp in Sources */,
 				98066DFC205305030025BA30 /* shader.cpp in Sources */,
 				98066DFD205305030025BA30 /* main.cpp in Sources */,
@@ -351,6 +461,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/Developer/glfw-3.2.1/src",
 					/usr/local/Cellar/sdl2/2.0.8/lib,
+					/usr/local/Cellar/assimp/4.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -370,6 +481,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"/Developer/glfw-3.2.1/src",
 					/usr/local/Cellar/sdl2/2.0.8/lib,
+					/usr/local/Cellar/assimp/4.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -10,8 +10,8 @@
 #include <GL/glew.h>
 #endif
 #include <GLFW/glfw3.h>
-#include "Terrain.h"
 #include "shader.h"
+
 #include "BoundingBox.h"
 
 class Window

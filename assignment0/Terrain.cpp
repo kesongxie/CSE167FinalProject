@@ -1,11 +1,11 @@
 #include "Terrain.h"
 //#include "Window.h"
 #include "main.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
+//#include <SDL2/SDL.h>
+//#include <SDL2/SDL_opengl.h>
 #include <math.h>
-#include "stb_image.h"
 #include "PerlinNoise.hpp"
+#include "stb_image.h"
 
 #define HEIGHT_MAP_PATH "/Developer/FinalProject/assignment0/heightmap.bmp"
 bool notLoaded = true;

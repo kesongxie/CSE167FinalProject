@@ -1,4 +1,5 @@
 #include "window.h"
+#include "Terrain.h"
 #include "Skybox.hpp"
 #include "OBJObject.h"
 #include "PerlinNoise.hpp"
@@ -38,7 +39,7 @@ float delta = 0;
 
 
 // Default camera parameters
-glm::vec3 cam_pos(0.0f, 0.0f, 70.0f);		// e  | Position of camera
+glm::vec3 cam_pos(0.0f, 0.0f, 10.0f);		// e  | Position of camera
 glm::vec3 cam_look_at(0.0f, 0.0f, 0.0f);	// d  | This is where the camera looks at
 glm::vec3 cam_up(0.0f, 1.0f, 0.0f);			// up | What orientation "up" is
 
@@ -189,7 +190,7 @@ void Window::display_callback(GLFWwindow* window)
     // Now send these values to the shader program
     glUniformMatrix4fv(glGetUniformLocation(skyboxshaderProgram, "projection"), 1, GL_FALSE, &Window::P[0][0]);
     glUniformMatrix4fv(glGetUniformLocation(skyboxshaderProgram, "view"), 1, GL_FALSE, &Window::V[0][0]);
-    skybox->render();
+   // skybox->render();
     
     
     // --- TERRAIN
@@ -198,14 +199,14 @@ void Window::display_callback(GLFWwindow* window)
     glUseProgram(shaderProgram);
     
     // Render the cube
-    terrain->draw(shaderProgram);
+    //terrain->draw(shaderProgram);
     
     
     // DRAGON
     // render the dragon and the rock
     glUseProgram(objShaderProgram);
-    dragon->draw(objShaderProgram); // mock dragon
-    obj->draw(objShaderProgram); // mock asteroid
+    //dragon->draw(objShaderProgram); // mock dragon
+   // obj->draw(objShaderProgram); // mock asteroid
 
     
 
