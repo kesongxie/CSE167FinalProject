@@ -162,7 +162,7 @@ void Window::idle_callback()
         if (checkCollision(boxA, boxB)) {
             boxA->collide = true;
             boxB->collide = true;
-            // shaker the camera
+            // shake the camera
             float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
             cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
             V = glm::lookAt(cam_pos, cam_look_at, cam_up);

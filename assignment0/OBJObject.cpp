@@ -8,9 +8,12 @@ vector<BoundingBox*> Window::bbox_vector;
 
 OBJObject::OBJObject(const char *filepath)
 {
+    box = new BoundingBox();
+    angle = 0.0f;
     init_x = x_coord = 0;
     init_y = y_coord = 0;
     if(strcmp(filepath, "Asteroid.obj") == 0){
+        Window::bbox_vector.push_back(box); // to compare all bounding boxes' boundaries
         init_z = z_coord = -500;
         toWorld = glm::mat4(1.0f);
         toWorld = toWorld * glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
@@ -19,16 +22,9 @@ OBJObject::OBJObject(const char *filepath)
         init_z = z_coord = 0;
         toWorld = glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
         toWorld = toWorld * glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
-        toWorld_noRot = toWorld;
-    }
-    angle = 0.0f;
-    
-    box = new BoundingBox();
-    if(strcmp(filepath, "Asteroid.obj") == 0) {
-        Window::bbox_vector.push_back(box); // to compare all bounding boxes' boundaries
+        toWorld_noRot = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
     }
     
-
     parse(filepath);
     
     // Create array object and buffers. Remember to delete your buffers when the object is destroyed!
@@ -130,18 +126,32 @@ void OBJObject::parse(const char *filepath)
     
     // get a copy of vertices, keep track of all vertex postions after rotation
     rot_vertices = vertices;
+    dragon_vertices = vertices;
     
     // iterate thru all vertices to find maximum and minimum values of x,y,z coordinates,
     // and calculate the maximum dimension of either x, y, or z axis.
     for (int i=0; i<vertices.size(); i++) {
         glm::vec3 v = vertices[i];
-        if (v.x > max_x) max_x = v.x;
-        if (v.x < min_x) min_x = v.x;
-        if (v.y > max_y) max_y = v.y;
-        if (v.y < min_y) min_y = v.y;
-        if (v.z > max_z) max_z = v.z;
-        if (v.z < min_z) min_z = v.z;
+        if (strcmp(filepath, "Dragon.obj") == 0){
+            glm::vec3 new_v = glm::rotate(v, 180.0f / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+            dragon_vertices[i] = glm::vec3(new_v.x, new_v.y, new_v.z);
+            
+            if (new_v.x > max_x) max_x = new_v.x;
+            if (new_v.x < min_x) min_x = new_v.x;
+            if (new_v.y > max_y) max_y = new_v.y;
+            if (new_v.y < min_y) min_y = new_v.y;
+            if (new_v.z > max_z) max_z = new_v.z;
+            if (new_v.z < min_z) min_z = new_v.z;
+        } else {
+            if (v.x > max_x) max_x = v.x;
+            if (v.x < min_x) min_x = v.x;
+            if (v.y > max_y) max_y = v.y;
+            if (v.y < min_y) min_y = v.y;
+            if (v.z > max_z) max_z = v.z;
+            if (v.z < min_z) min_z = v.z;
+        }
     }
+
     //    max_dimension = max(max((max_x-min_x)/2, (max_y-min_y)/2), (max_z-min_z)/2);
     //
     //    // map vertices into a 2x2x2 cube
@@ -203,7 +213,7 @@ void OBJObject::move_x(float value)
 {
     x_coord += value;
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
-    toWorld_noRot = toWorld;
+    toWorld_noRot = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
     // update bounding box's boundaries
     box->max_x += value;
     box->min_x += value;
@@ -213,7 +223,7 @@ void OBJObject::move_y(float value)
 {
     y_coord += value;
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
-    toWorld_noRot = toWorld;
+    toWorld_noRot = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
     // update bounding box's boundaries
     box->max_y += value;
     box->min_y += value;
@@ -229,9 +239,15 @@ void OBJObject::move_z(float value)
     box->min_z += value;
     
     if(z_coord == 70){
+        // reset z-coordinate
         z_coord = init_z;
-        box->max_z = init_max_z;
-        box->min_z = init_min_z;
+        // reset boudning box
+        box->setBoundaries(init_max_x + x_coord, init_max_y + y_coord, init_max_z + z_coord, init_min_x + x_coord, init_min_y + y_coord, init_min_z + z_coord);
+        size = glm::vec3(init_max_x-init_min_x, init_max_y-init_min_y, init_max_z-init_min_z);
+        center = glm::vec3((init_min_x+init_max_x)/2, (init_min_y+init_max_y)/2, (init_min_z+init_max_z)/2);
+        transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
+        // reset rotation
+        toWorld = toWorld * glm::rotate(glm::mat4(1.0f), 0 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f)) * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f));
     }
 }
 

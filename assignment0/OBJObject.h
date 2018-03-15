@@ -38,6 +38,7 @@ public:
     std::vector<unsigned int> indices;
     std::vector<glm::vec3> vertices;
     std::vector<glm::vec3> rot_vertices;
+    std::vector<glm::vec3> dragon_vertices;
     std::vector<glm::vec3> normals;
     glm::mat4 toWorld;
     glm::mat4 toWorld_noRot;
