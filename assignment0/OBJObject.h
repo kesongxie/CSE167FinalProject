@@ -47,6 +47,8 @@ public:
     float angle; // currently rotated degrees
     
     // PA4: variables for BoundingBox
+    float init_max_x, init_max_y, init_max_z, init_min_x, init_min_y, init_min_z;
+    float max_x, max_y, max_z, min_x, min_y, min_z;
     BoundingBox * box;
     glm::vec3 size;
     glm::vec3 center;
@@ -57,12 +59,12 @@ public:
     GLuint uProjection, uModelview;
     
     OBJObject(const char* filepath);
-    OBJObject(const char* filepath, float x, float y, float z);
     ~OBJObject();
     
     void parse(const char* filepath);
     void draw(GLuint);
     
+    void followCursor(float, float);
     void move_x(float);
     void move_y(float);
     void move_z(float);

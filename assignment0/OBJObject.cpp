@@ -9,11 +9,17 @@ vector<BoundingBox*> Window::bbox_vector;
 OBJObject::OBJObject(const char *filepath)
 {
     init_x = x_coord = 0;
-    init_y = y_coord = 15;
+    init_y = y_coord = 0;
     if(strcmp(filepath, "Asteroid.obj") == 0){
-        init_z = z_coord = 500;
+        init_z = z_coord = -500;
+        toWorld = glm::mat4(1.0f);
+        toWorld = toWorld * glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+        toWorld_noRot = toWorld;
     } else {
         init_z = z_coord = 0;
+        toWorld = glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+        toWorld = toWorld * glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+        toWorld_noRot = toWorld;
     }
     angle = 0.0f;
     
@@ -22,9 +28,7 @@ OBJObject::OBJObject(const char *filepath)
         Window::bbox_vector.push_back(box); // to compare all bounding boxes' boundaries
     }
     
-//    toWorld = glm::mat4(1.0f);
-    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
-    toWorld_noRot = toWorld;
+
     parse(filepath);
     
     // Create array object and buffers. Remember to delete your buffers when the object is destroyed!
@@ -83,7 +87,6 @@ void OBJObject::parse(const char *filepath)
     FILE* fp;
     float r,g,b;
     unsigned int fx, fy, fz, ignore;
-    float max_x, max_y, max_z, min_x, min_y, min_z;
     // initialize values
     max_x = max_y = max_z = -numeric_limits<float>::max();
     min_x = min_y = min_z = numeric_limits<float>::max();
@@ -149,6 +152,13 @@ void OBJObject::parse(const char *filepath)
     //        vertices[i].z = v.z/max_dimension;
     //    }
     
+    init_max_x = max_x;
+    init_min_x = min_x;
+    init_max_y = max_y;
+    init_min_y = min_y;
+    init_max_z = max_z;
+    init_min_z = min_z;
+    
     // construct BoundingBox transformation matrix
     box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
     size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
@@ -183,10 +193,16 @@ void OBJObject::draw(GLuint shaderProgram)
     }
 }
 
+void OBJObject::followCursor(float x_val, float y_val)
+{
+    move_x(x_val);
+    move_y(y_val);
+}
+
 void OBJObject::move_x(float value)
 {
     x_coord += value;
-    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
     toWorld_noRot = toWorld;
     // update bounding box's boundaries
     box->max_x += value;
@@ -196,7 +212,7 @@ void OBJObject::move_x(float value)
 void OBJObject::move_y(float value)
 {
     y_coord += value;
-    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
     toWorld_noRot = toWorld;
     // update bounding box's boundaries
     box->max_y += value;
@@ -206,11 +222,17 @@ void OBJObject::move_y(float value)
 void OBJObject::move_z(float value)
 {
     z_coord += value;
-    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f));
     toWorld_noRot = toWorld;
     // update bounding box's boundaries
     box->max_z += value;
     box->min_z += value;
+    
+    if(z_coord == 70){
+        z_coord = init_z;
+        box->max_z = init_max_z;
+        box->min_z = init_min_z;
+    }
 }
 
 void OBJObject::spin(float deg)
@@ -218,7 +240,7 @@ void OBJObject::spin(float deg)
     angle += deg;
     if (angle > 360.0f || angle < -360.0f) angle = 0.0f;
     // If you haven't figured it out from the last project, this is how you fix spin's behavior
-    toWorld = toWorld * glm::rotate(glm::mat4(1.0f), angle / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    toWorld = toWorld * glm::rotate(glm::mat4(1.0f), angle / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f)) * glm::scale(glm::mat4(1.0f), glm::vec3(0.5f));
     
     float max_x, max_y, max_z, min_x, min_y, min_z;
     // initialize values
@@ -236,8 +258,10 @@ void OBJObject::spin(float deg)
         if (new_v.z > max_z) max_z = new_v.z;
         if (new_v.z < min_z) min_z = new_v.z;
     }
-    box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
-    size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
-    center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
+    
+    float scale = 0.5f;
+    box->setBoundaries(max_x*scale + x_coord, max_y*scale + y_coord, max_z*scale + z_coord, min_x*scale + x_coord, min_y*scale + y_coord, min_z*scale + z_coord);
+    size = glm::vec3(max_x*scale-min_x*scale, max_y*scale-min_y*scale, max_z*scale-min_z*scale);
+    center = glm::vec3((min_x*scale+max_x*scale)/2, (min_y*scale+max_y*scale)/2, (min_z*scale+max_z*scale)/2);
     transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
 }
