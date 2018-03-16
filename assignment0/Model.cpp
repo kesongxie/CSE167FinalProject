@@ -8,7 +8,11 @@
 #include "Model.hpp"
 #include "stb_image.h"
 
+
 using namespace std;
+//bool Window::bbox_display;
+//vector<BoundingBox*> Window::bbox_vector;
+
 
 unsigned int TextureFromFile(const char *path, const string &directory, bool gamma)
 {
@@ -78,6 +82,31 @@ void Model::loadModel(string const &path)
     directory = "";
     // process ASSIMP's root node recursively
     processNode(scene->mRootNode, scene);
+    
+    // get the bounding box
+    float max_x, max_y, max_z, min_x, min_y, min_z;
+    // initialize values
+    max_x = max_y = max_z = -numeric_limits<float>::max();
+    min_x = min_y = min_z = numeric_limits<float>::max();
+
+    // and calculate the maximum dimension of either x, y, or z axis.
+    for (int i=0; i<myVertices.size(); i++) {
+        glm::vec3 v = myVertices[i];
+        if (v.x > max_x) max_x = v.x;
+        if (v.x < min_x) min_x = v.x;
+        if (v.y > max_y) max_y = v.y;
+        if (v.y < min_y) min_y = v.y;
+        if (v.z > max_z) max_z = v.z;
+        if (v.z < min_z) min_z = v.z;
+    }
+    
+    // construct BoundingBox transformation matrix
+    box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
+//    size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
+//    center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
+//    transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
+    
+    
 }
 
 // processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).
@@ -116,6 +145,8 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
         vector.y = mesh->mVertices[i].y;
         vector.z = mesh->mVertices[i].z;
         vertex.Position = vector;
+        myVertices.push_back(vector);
+        
         // normals
         vector.x = mesh->mNormals[i].x;
         vector.y = mesh->mNormals[i].y;
@@ -211,3 +242,73 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type,
     }
     return textures;
 }
+
+
+void Model::move_x(float value)
+{
+    x_coord += value;
+    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    toWorld_noRot = toWorld;
+    
+    
+    // update bounding box's boundaries
+    box->max_x += value;
+    box->min_x += value;
+}
+
+void Model::move_y(float value)
+{
+    y_coord += value;
+    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    toWorld_noRot = toWorld;
+    // update bounding box's boundaries
+    box->max_y += value;
+    box->min_y += value;
+}
+
+void Model::move_z(float value)
+{
+    z_coord += value;
+    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+    toWorld_noRot = toWorld;
+    // update bounding box's boundaries
+    box->max_z += value;
+    box->min_z += value;
+    if(z_coord > 100) {
+        init_z = z_coord = -1000 + (rand() % 200);
+        init_x = x_coord =  rand() % 800 - 400;
+        init_y = y_coord =  rand() % 100 + 5;
+    }
+}
+
+/*
+void Model::spin(float deg)
+{
+    angle += deg;
+    if (angle > 360.0f || angle < -360.0f) angle = 0.0f;
+    // If you haven't figured it out from the last project, this is how you fix spin's behavior
+    toWorld = toWorld * glm::rotate(glm::mat4(1.0f), angle / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    
+    float max_x, max_y, max_z, min_x, min_y, min_z;
+    // initialize values
+    max_x = max_y = max_z = -numeric_limits<float>::max();
+    min_x = min_y = min_z = numeric_limits<float>::max();
+    for (int i=0; i<vertices.size(); i++) {
+        glm::vec3 old_v = rot_vertices[i];
+        glm::vec3 new_v = glm::rotate(old_v, deg / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+        rot_vertices[i] = glm::vec3(new_v.x, new_v.y, new_v.z);
+        
+        if (new_v.x > max_x) max_x = new_v.x;
+        if (new_v.x < min_x) min_x = new_v.x;
+        if (new_v.y > max_y) max_y = new_v.y;
+        if (new_v.y < min_y) min_y = new_v.y;
+        if (new_v.z > max_z) max_z = new_v.z;
+        if (new_v.z < min_z) min_z = new_v.z;
+    }
+    box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
+    size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
+    center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
+    transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
+}
+
+*/

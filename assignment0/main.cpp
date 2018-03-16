@@ -3,7 +3,6 @@
 
 
 GLFWwindow* window;
-float angle = 0;
 
 void error_callback(int error, const char* description)
 {
@@ -88,13 +87,7 @@ int main(void)
     // build and compile shaders
     // -------------------------
 
-    Shader ourShader("./modelLoading.vs", "./modelLoading.frag");
-    
-    // load models
-    // -----------
-    Model SS1("Low_poly_UFO.obj");
-    Model UFO("Low_poly_UFO.obj");
-    Model fighter("Viper-mk-IV-fighter.obj");
+ 
 
 
 
@@ -113,49 +106,6 @@ int main(void)
         Window::display_callback(window);
 		// Idle callback. Updating objects, etc. can be done here.
         Window::idle_callback();
-        
-        glEnable(GL_DEPTH_TEST);
-
-//        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-
-        // don't forget to enable shader before setting uniforms
-        ourShader.use();
-        
-        // view/projection transformations
-        // Now send these values to the shader program
-        glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "projection"), 1, GL_FALSE, &Window::P[0][0]);
-        glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "view"), 1, GL_FALSE, &Window::V[0][0]);
-
-
-        // render the loaded model
-        // this is the main chracter
-        angle -= 1.0f;
-        glm::mat4 model = glm::rotate(glm::mat4(1.0f), angle / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
-        glm::mat4 transform = model * glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -20.0f, 0.0f)); // translate it down so it's at the center of the scene
-        transform = glm::scale(transform, glm::vec3(0.6f, 0.6f, 0.6f));
-        glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "model"), 1, GL_FALSE, &transform[0][0]);
-        UFO.Draw(ourShader);
-        
-        
-        glm::mat4 transform_ss1 =  glm::rotate(glm::mat4(1.0f), 30 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f)) * glm::translate(glm::mat4(1.0f), glm::vec3(-200.0f, -20.0f, -400.0f)); // translate it down so it's at the center of the scene
-        transform_ss1 = glm::scale(transform_ss1, glm::vec3(20.0f, 20.0f, 20.0f));
-        glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "model"), 1, GL_FALSE, &transform_ss1[0][0]);
-        
-        SS1.Draw(ourShader);
-        glm::mat4 transform_ss2 =  glm::rotate(glm::mat4(1.0f), 30 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f)) * glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -20.0f, -400.0f)); // translate it down so it's at the center of the scene
-        transform_ss2 = glm::scale(transform_ss2, glm::vec3(20.0f, 20.0f, 20.0f));
-        glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "model"), 1, GL_FALSE, &transform_ss2[0][0]);
-        
-//        fighter.Draw(ourShader);
-        
-        
-        
-        
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-
-        
 	}
 
 	Window::clean_up();

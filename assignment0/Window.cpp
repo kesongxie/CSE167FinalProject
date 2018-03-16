@@ -6,6 +6,7 @@
 #include <chrono>
 #include <thread>
 #include "Model.hpp"
+#include "Shader_class.h"
 
 
 const char* window_title = "GLFW Starter Project";
@@ -14,6 +15,7 @@ Skybox * skybox;
 GLint shaderProgram;
 GLint skyboxshaderProgram;
 GLint objShaderProgram;
+Shader *ourShader;
 bool shaking = false;
 
 // obj
@@ -24,7 +26,13 @@ OBJObject * obj4;
 OBJObject * obj5;
 OBJObject * obj6;
 
-OBJObject * dragon;
+
+// load models
+Model *SS1;
+Model *UFO;
+Model *fighter;
+Model *character;
+
 
 // trackball variables
 double prev_x, prev_y;
@@ -37,6 +45,8 @@ float rotAngle;
 float delta = 0;
 float timeLast = 0;
 float degree = 0;
+float angle = 0;
+
 
 // On some systems you need to change this to the absolute path
 #define VERTEX_SHADER_PATH "./shader.vert"
@@ -62,6 +72,7 @@ int Window::height;
 glm::mat4 Window::P;
 glm::mat4 Window::V;
 PerlinNoise *noise;
+
 /*
 toWorld = glm::translate(glm::mat4(1.0f),  glm::vec3(0, 20, -2000));
 toWorld = glm::scale(glm::mat4(1.0f), glm::vec3(0.005, 0.005, 0.005)) * toWorld;
@@ -76,6 +87,7 @@ void Window::initialize_objects()
 	shaderProgram = LoadShaders(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);
     skyboxshaderProgram = LoadShaders(SKYBOX_VERTEX_SHADER_PATH, SKYBOX_FRAGMENT_SHADER_PATH);
     objShaderProgram = LoadShaders(OBJ_VERTEX_SHADER_PATH, OBJ_FRAGMENT_SHADER_PATH);
+    ourShader = new Shader("./modelLoading.vs", "./modelLoading.frag");
 
     skybox = new Skybox(skyboxshaderProgram);
     terrain = new Terrain(shaderProgram);
@@ -85,9 +97,11 @@ void Window::initialize_objects()
     obj4 = new OBJObject("Asteroid.obj");
     obj5 = new OBJObject("Asteroid.obj");
     obj6 = new OBJObject("Asteroid.obj");
-
-    dragon = new OBJObject("Dragon.obj");
-
+    
+    SS1 = new Model("Low_poly_UFO.obj");
+    UFO = new Model("Low_poly_UFO.obj");
+    fighter = new Model("Viper-mk-IV-fighter.obj");
+    character = UFO;
 }
 
 // Treat this as a destructor function. Delete dynamically allocated memory here.
@@ -96,7 +110,10 @@ void Window::clean_up()
 	delete(terrain);
     delete(skybox);
     delete(obj);
-    delete(dragon);
+    delete(ourShader);
+    delete(SS1);
+    delete(UFO);
+    delete(fighter);
 	glDeleteProgram(shaderProgram);
     glDeleteProgram(skyboxshaderProgram);
     glDeleteProgram(objShaderProgram);
@@ -187,7 +204,9 @@ void Window::idle_callback()
 
 
     // Iterate thru bounding boxes vector, use AABB to detect if any collide with dragon's boudning box. If any collide with dragon, set the colliding boxes’ collide flags to true (colliding boxes will be colored red via fragment shader).
-    BoundingBox * boxA = dragon->box;
+    BoundingBox * boxA = UFO->box;
+   
+    
     
     for(auto iter = bbox_vector.begin(); iter != bbox_vector.end(); iter++){
         BoundingBox * boxB = *iter;
@@ -241,18 +260,46 @@ void Window::display_callback(GLFWwindow* window)
     // DRAGON
     // render the dragon and the rock
     glUseProgram(objShaderProgram);
-//    dragon->draw(objShaderProgram); // mock dragon
     obj->draw(objShaderProgram); // mock asteroid
     obj2->draw(objShaderProgram); // mock asteroid
     obj3->draw(objShaderProgram); // mock asteroid
     obj4->draw(objShaderProgram); // mock asteroid
 
     
+    
+    glEnable(GL_DEPTH_TEST);
+
+    
+    // don't forget to enable shader before setting uniforms
+    ourShader->use();
+    
+    // view/projection transformations
+    // Now send these values to the shader program
+    glUniformMatrix4fv(glGetUniformLocation(ourShader->ID, "projection"), 1, GL_FALSE, &Window::P[0][0]);
+    glUniformMatrix4fv(glGetUniformLocation(ourShader->ID, "view"), 1, GL_FALSE, &Window::V[0][0]);
+    
+    
+    // render the loaded model
+    // this is the main chracter
+    angle -= 1.0f;
+    glm::mat4 transform = glm::rotate(glm::mat4(1.0f), angle / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f)) * glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -20.0f, 0.0f)); // translate it down so it's at the center of the scene
+    transform = glm::scale(transform, glm::vec3(0.6f, 0.6f, 0.6f));
+    glUniformMatrix4fv(glGetUniformLocation(ourShader->ID, "model"), 1, GL_FALSE, &transform[0][0]);
+    UFO->Draw(*ourShader);
+    
+    
+    // render the UFO at the top of the scene
+    glm::mat4 transform_ss1 =  glm::rotate(glm::mat4(1.0f), 30 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f)) * glm::translate(glm::mat4(1.0f), glm::vec3(-200.0f, -20.0f, -400.0f)); // translate it down so it's at the center of the scene
+    transform_ss1 = glm::scale(transform_ss1, glm::vec3(20.0f, 20.0f, 20.0f));
+    glUniformMatrix4fv(glGetUniformLocation(ourShader->ID, "model"), 1, GL_FALSE, &transform_ss1[0][0]);
+    SS1->Draw(*ourShader);
+    
+    
 
 	// Gets events, including input such as keyboard and mouse or window resizing
-//    glfwPollEvents();
-//    // Swap buffers
-//    glfwSwapBuffers(window);
+    glfwPollEvents();
+    // Swap buffers
+    glfwSwapBuffers(window);
 }
 
 
@@ -275,19 +322,19 @@ void Window::key_callback(GLFWwindow* window, int key, int scancode, int action,
     }
         if (key == GLFW_KEY_UP)
         {
-            dragon->move_y(1.0f);
+            character->move_y(1.0f);
         }
         if (key == GLFW_KEY_DOWN)
         {
-            dragon->move_y(-1.0f);
+            character->move_y(-1.0f);
         }
         if (key == GLFW_KEY_LEFT)
         {
-            dragon->move_x(-1.0f);
+            character->move_x(-1.0f);
         }
         if (key == GLFW_KEY_RIGHT)
         {
-            dragon->move_x(1.0f);
+            character->move_x(1.0f);
         }
     
 }

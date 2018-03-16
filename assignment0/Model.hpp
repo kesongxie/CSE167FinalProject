@@ -24,6 +24,8 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include "BoundingBox.h"
+
 using namespace std;
 
 unsigned int TextureFromFile(const char *path, const string &directory, bool gamma = false);
@@ -36,16 +38,40 @@ public:
     vector<Mesh> meshes;
     string directory;
     bool gammaCorrection;
+    BoundingBox * box;
+    glm::mat4 toWorld;
+    glm::mat4 toWorld_noRot;
+    std::vector<glm::vec3> myVertices;
+//    std::vector<glm::vec3> myrotVertices;
+
+    
     
     Model(string const &path, bool gamma = false) : gammaCorrection(gamma)
     {
+        box = new BoundingBox();
         loadModel(path);
     }
     
     // draws the model, and thus all its meshes
     void Draw(Shader shader);
     
+    
+    // movements
+    void move_x(float);
+    void move_y(float);
+    void move_z(float);
+    void spin(float);
+    
 private:
+    /* object's coordinates in window when initialized */
+    float init_x;
+    float init_y;
+    float init_z;
+    /* object's current coordinates in window */
+    float x_coord;
+    float y_coord;
+    float z_coord;
+    
     /*  Functions   */
     // loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.
     void loadModel(string const &path);
