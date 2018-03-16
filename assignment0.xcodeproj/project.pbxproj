@@ -17,6 +17,7 @@
 		984B1A572058DF02000BF5D6 /* Skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 984B1A552058DF02000BF5D6 /* Skybox.cpp */; };
 		984B1A5A2058DFD0000BF5D6 /* skybox.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 984B1A592058DFC7000BF5D6 /* skybox.frag */; };
 		984B1A5B2058DFD0000BF5D6 /* skybox.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 984B1A582058DFC6000BF5D6 /* skybox.vert */; };
+		98A5EF1A205B93F1003608CB /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF18205B93F1003608CB /* Model.cpp */; };
 		98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21077200D72EC00B4D688 /* OpenGL.framework */; };
 		98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21078200D730C00B4D688 /* libglfw.3.2.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98D873F920585B9E00472E29 /* PerlinNoise.cpp */; };
@@ -78,19 +79,6 @@
 		98DED36D205AA5780066D22D /* carlinga.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED356205AA5640066D22D /* carlinga.jpg */; };
 		98DED36E205AA5780066D22D /* engine-cover.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED357205AA5640066D22D /* engine-cover.jpg */; };
 		98DED36F205AA5780066D22D /* elicie.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED358205AA5640066D22D /* elicie.jpg */; };
-		98DED378205AB2E60066D22D /* Albedo.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED371205AB2DC0066D22D /* Albedo.jpg */; };
-		98DED379205AB2E60066D22D /* Metalness.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED372205AB2DC0066D22D /* Metalness.jpg */; };
-		98DED37A205AB2E60066D22D /* A2.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED373205AB2DC0066D22D /* A2.obj */; };
-		98DED37B205AB2E60066D22D /* A2.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED374205AB2DC0066D22D /* A2.mtl */; };
-		98DED37C205AB2E60066D22D /* Normal.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED375205AB2DC0066D22D /* Normal.jpg */; };
-		98DED37D205AB2E60066D22D /* Emission.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED376205AB2DC0066D22D /* Emission.jpg */; };
-		98DED37E205AB2E60066D22D /* Displacement.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED377205AB2DC0066D22D /* Displacement.jpg */; };
-		98DED399205AB8160066D22D /* Trident_UV_No_Dekol_Color.tif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED393205AB8090066D22D /* Trident_UV_No_Dekol_Color.tif */; };
-		98DED39A205AB8160066D22D /* Trident-A10.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED394205AB8090066D22D /* Trident-A10.mtl */; };
-		98DED39B205AB8160066D22D /* Trident_UV_Dekol_Color.tif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED395205AB8090066D22D /* Trident_UV_Dekol_Color.tif */; };
-		98DED39C205AB8160066D22D /* Trident-A10.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED396205AB8090066D22D /* Trident-A10.obj */; };
-		98DED39D205AB8160066D22D /* Trident_UV_Spec.tif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED397205AB8090066D22D /* Trident_UV_Spec.tif */; };
-		98DED39E205AB8160066D22D /* Trident_UV_Bump.tif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED398205AB8090066D22D /* Trident_UV_Bump.tif */; };
 		98DED3E5205ABA0F0066D22D /* HighresScreenshot00015.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A1205AB9EA0066D22D /* HighresScreenshot00015.png */; };
 		98DED3E6205ABA0F0066D22D /* HighresScreenshot00014.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A2205AB9EA0066D22D /* HighresScreenshot00014.png */; };
 		98DED3E7205ABA0F0066D22D /* HighresScreenshot00016.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3A3205AB9EA0066D22D /* HighresScreenshot00016.png */; };
@@ -150,6 +138,23 @@
 		98DED41D205ABA0F0066D22D /* Wing Down_BaseColor.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3E2205AB9EA0066D22D /* Wing Down_BaseColor.png */; };
 		98DED41E205ABA0F0066D22D /* Wing Down.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3E3205AB9EA0066D22D /* Wing Down.obj */; };
 		98DED41F205ABA0F0066D22D /* Wing Down_Roughness.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98DED3E4205AB9EA0066D22D /* Wing Down_Roughness.png */; };
+		98F1517C205B361B00AE653C /* Map__7_Normal_Bump.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F15173205B360000AE653C /* Map__7_Normal_Bump.tga */; };
+		98F1517D205B361B00AE653C /* Low_poly_UFO.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F15174205B360000AE653C /* Low_poly_UFO.mtl */; };
+		98F1517E205B361B00AE653C /* ufo_normal.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F15175205B360000AE653C /* ufo_normal.png */; };
+		98F1517F205B361B00AE653C /* ufo_diffuse2.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F15176205B360000AE653C /* ufo_diffuse2.png */; };
+		98F15180205B361B00AE653C /* ufo_diffuse2_glow.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F15177205B360000AE653C /* ufo_diffuse2_glow.png */; };
+		98F15181205B361B00AE653C /* ufo_diffuse_glow.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F15178205B360000AE653C /* ufo_diffuse_glow.png */; };
+		98F15182205B361B00AE653C /* ufo_diffuse.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F15179205B360000AE653C /* ufo_diffuse.png */; };
+		98F15183205B361B00AE653C /* Low_poly_UFO.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F1517A205B360000AE653C /* Low_poly_UFO.obj */; };
+		98F15184205B361B00AE653C /* ufo_spec.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F1517B205B360000AE653C /* ufo_spec.png */; };
+		98F151AC205B436C00AE653C /* SpaceShipUV.xcf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F151A4205B436300AE653C /* SpaceShipUV.xcf */; };
+		98F151AD205B436C00AE653C /* Spaceship.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F151A5205B436300AE653C /* Spaceship.obj */; };
+		98F151AE205B436C00AE653C /* SpaceShipSpecular.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F151A6205B436300AE653C /* SpaceShipSpecular.jpg */; };
+		98F151AF205B436C00AE653C /* Spaceship.mtl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F151A7205B436300AE653C /* Spaceship.mtl */; };
+		98F151B0205B436C00AE653C /* SpaceShipSpecular.xcf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F151A8205B436300AE653C /* SpaceShipSpecular.xcf */; };
+		98F151B1205B436C00AE653C /* SpaceShipNormal.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F151A9205B436300AE653C /* SpaceShipNormal.jpg */; };
+		98F151B2205B436C00AE653C /* SpaceShipUV.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F151AA205B436300AE653C /* SpaceShipUV.jpg */; };
+		98F151B3205B436C00AE653C /* NormalMap.fx in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98F151AB205B436300AE653C /* NormalMap.fx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -159,6 +164,23 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				98F151AC205B436C00AE653C /* SpaceShipUV.xcf in CopyFiles */,
+				98F151AD205B436C00AE653C /* Spaceship.obj in CopyFiles */,
+				98F151AE205B436C00AE653C /* SpaceShipSpecular.jpg in CopyFiles */,
+				98F151AF205B436C00AE653C /* Spaceship.mtl in CopyFiles */,
+				98F151B0205B436C00AE653C /* SpaceShipSpecular.xcf in CopyFiles */,
+				98F151B1205B436C00AE653C /* SpaceShipNormal.jpg in CopyFiles */,
+				98F151B2205B436C00AE653C /* SpaceShipUV.jpg in CopyFiles */,
+				98F151B3205B436C00AE653C /* NormalMap.fx in CopyFiles */,
+				98F1517C205B361B00AE653C /* Map__7_Normal_Bump.tga in CopyFiles */,
+				98F1517D205B361B00AE653C /* Low_poly_UFO.mtl in CopyFiles */,
+				98F1517E205B361B00AE653C /* ufo_normal.png in CopyFiles */,
+				98F1517F205B361B00AE653C /* ufo_diffuse2.png in CopyFiles */,
+				98F15180205B361B00AE653C /* ufo_diffuse2_glow.png in CopyFiles */,
+				98F15181205B361B00AE653C /* ufo_diffuse_glow.png in CopyFiles */,
+				98F15182205B361B00AE653C /* ufo_diffuse.png in CopyFiles */,
+				98F15183205B361B00AE653C /* Low_poly_UFO.obj in CopyFiles */,
+				98F15184205B361B00AE653C /* ufo_spec.png in CopyFiles */,
 				98DED3E5205ABA0F0066D22D /* HighresScreenshot00015.png in CopyFiles */,
 				98DED3E6205ABA0F0066D22D /* HighresScreenshot00014.png in CopyFiles */,
 				98DED3E7205ABA0F0066D22D /* HighresScreenshot00016.png in CopyFiles */,
@@ -218,19 +240,6 @@
 				98DED41D205ABA0F0066D22D /* Wing Down_BaseColor.png in CopyFiles */,
 				98DED41E205ABA0F0066D22D /* Wing Down.obj in CopyFiles */,
 				98DED41F205ABA0F0066D22D /* Wing Down_Roughness.png in CopyFiles */,
-				98DED399205AB8160066D22D /* Trident_UV_No_Dekol_Color.tif in CopyFiles */,
-				98DED39A205AB8160066D22D /* Trident-A10.mtl in CopyFiles */,
-				98DED39B205AB8160066D22D /* Trident_UV_Dekol_Color.tif in CopyFiles */,
-				98DED39C205AB8160066D22D /* Trident-A10.obj in CopyFiles */,
-				98DED39D205AB8160066D22D /* Trident_UV_Spec.tif in CopyFiles */,
-				98DED39E205AB8160066D22D /* Trident_UV_Bump.tif in CopyFiles */,
-				98DED378205AB2E60066D22D /* Albedo.jpg in CopyFiles */,
-				98DED379205AB2E60066D22D /* Metalness.jpg in CopyFiles */,
-				98DED37A205AB2E60066D22D /* A2.obj in CopyFiles */,
-				98DED37B205AB2E60066D22D /* A2.mtl in CopyFiles */,
-				98DED37C205AB2E60066D22D /* Normal.jpg in CopyFiles */,
-				98DED37D205AB2E60066D22D /* Emission.jpg in CopyFiles */,
-				98DED37E205AB2E60066D22D /* Displacement.jpg in CopyFiles */,
 				98DED359205AA5780066D22D /* Thumbs.db in CopyFiles */,
 				98DED35A205AA5780066D22D /* wing-up specular.jpg in CopyFiles */,
 				98DED35B205AA5780066D22D /* wing-up bump.jpg in CopyFiles */,
@@ -311,6 +320,8 @@
 		984B1A562058DF02000BF5D6 /* Skybox.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Skybox.hpp; sourceTree = "<group>"; };
 		984B1A582058DFC6000BF5D6 /* skybox.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = skybox.vert; sourceTree = "<group>"; };
 		984B1A592058DFC7000BF5D6 /* skybox.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = skybox.frag; sourceTree = "<group>"; };
+		98A5EF18205B93F1003608CB /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		98A5EF19205B93F1003608CB /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		98D21062200D6F8600B4D688 /* assignment0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = assignment0; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D21077200D72EC00B4D688 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		98D21078200D730C00B4D688 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = "../../../../Developer/glfw-3.2.1/src/libglfw.3.2.dylib"; sourceTree = "<group>"; };
@@ -329,7 +340,6 @@
 		98DED2DF205A871E0066D22D /* Shader_class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader_class.h; sourceTree = "<group>"; };
 		98DED2E0205A884C0066D22D /* modelLoading.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = modelLoading.frag; sourceTree = "<group>"; };
 		98DED2E1205A884C0066D22D /* modelLoading.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = modelLoading.vs; sourceTree = "<group>"; };
-		98DED2E4205A88820066D22D /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		98DED2E5205A88B30066D22D /* libassimp.4.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.1.0.dylib; path = ../../usr/local/Cellar/assimp/4.1.0/lib/libassimp.4.1.0.dylib; sourceTree = "<group>"; };
 		98DED312205A89580066D22D /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		98DED313205A91030066D22D /* body_dif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body_dif.png; sourceTree = "<group>"; };
@@ -377,19 +387,6 @@
 		98DED356205AA5640066D22D /* carlinga.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = carlinga.jpg; sourceTree = "<group>"; };
 		98DED357205AA5640066D22D /* engine-cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "engine-cover.jpg"; sourceTree = "<group>"; };
 		98DED358205AA5640066D22D /* elicie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = elicie.jpg; sourceTree = "<group>"; };
-		98DED371205AB2DC0066D22D /* Albedo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Albedo.jpg; sourceTree = "<group>"; };
-		98DED372205AB2DC0066D22D /* Metalness.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Metalness.jpg; sourceTree = "<group>"; };
-		98DED373205AB2DC0066D22D /* A2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = A2.obj; sourceTree = "<group>"; };
-		98DED374205AB2DC0066D22D /* A2.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = A2.mtl; sourceTree = "<group>"; };
-		98DED375205AB2DC0066D22D /* Normal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Normal.jpg; sourceTree = "<group>"; };
-		98DED376205AB2DC0066D22D /* Emission.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Emission.jpg; sourceTree = "<group>"; };
-		98DED377205AB2DC0066D22D /* Displacement.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Displacement.jpg; sourceTree = "<group>"; };
-		98DED393205AB8090066D22D /* Trident_UV_No_Dekol_Color.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Trident_UV_No_Dekol_Color.tif; sourceTree = "<group>"; };
-		98DED394205AB8090066D22D /* Trident-A10.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Trident-A10.mtl"; sourceTree = "<group>"; };
-		98DED395205AB8090066D22D /* Trident_UV_Dekol_Color.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Trident_UV_Dekol_Color.tif; sourceTree = "<group>"; };
-		98DED396205AB8090066D22D /* Trident-A10.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Trident-A10.obj"; sourceTree = "<group>"; };
-		98DED397205AB8090066D22D /* Trident_UV_Spec.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Trident_UV_Spec.tif; sourceTree = "<group>"; };
-		98DED398205AB8090066D22D /* Trident_UV_Bump.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Trident_UV_Bump.tif; sourceTree = "<group>"; };
 		98DED3A1205AB9EA0066D22D /* HighresScreenshot00015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighresScreenshot00015.png; sourceTree = "<group>"; };
 		98DED3A2205AB9EA0066D22D /* HighresScreenshot00014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighresScreenshot00014.png; sourceTree = "<group>"; };
 		98DED3A3205AB9EA0066D22D /* HighresScreenshot00016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighresScreenshot00016.png; sourceTree = "<group>"; };
@@ -449,6 +446,29 @@
 		98DED3E2205AB9EA0066D22D /* Wing Down_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing Down_BaseColor.png"; sourceTree = "<group>"; };
 		98DED3E3205AB9EA0066D22D /* Wing Down.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Wing Down.obj"; sourceTree = "<group>"; };
 		98DED3E4205AB9EA0066D22D /* Wing Down_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wing Down_Roughness.png"; sourceTree = "<group>"; };
+		98F15173205B360000AE653C /* Map__7_Normal_Bump.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Map__7_Normal_Bump.tga; sourceTree = "<group>"; };
+		98F15174205B360000AE653C /* Low_poly_UFO.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Low_poly_UFO.mtl; sourceTree = "<group>"; };
+		98F15175205B360000AE653C /* ufo_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_normal.png; sourceTree = "<group>"; };
+		98F15176205B360000AE653C /* ufo_diffuse2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_diffuse2.png; sourceTree = "<group>"; };
+		98F15177205B360000AE653C /* ufo_diffuse2_glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_diffuse2_glow.png; sourceTree = "<group>"; };
+		98F15178205B360000AE653C /* ufo_diffuse_glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_diffuse_glow.png; sourceTree = "<group>"; };
+		98F15179205B360000AE653C /* ufo_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_diffuse.png; sourceTree = "<group>"; };
+		98F1517A205B360000AE653C /* Low_poly_UFO.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Low_poly_UFO.obj; sourceTree = "<group>"; };
+		98F1517B205B360000AE653C /* ufo_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_spec.png; sourceTree = "<group>"; };
+		98F1518D205B3E9000AE653C /* SS1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SS1.obj; sourceTree = "<group>"; };
+		98F1518E205B3E9000AE653C /* HULL-S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HULL-S.jpg"; sourceTree = "<group>"; };
+		98F1518F205B3E9000AE653C /* HULL-I.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HULL-I.jpg"; sourceTree = "<group>"; };
+		98F15190205B3E9000AE653C /* HULL-N.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HULL-N.jpg"; sourceTree = "<group>"; };
+		98F15191205B3E9000AE653C /* HULL.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HULL.jpg; sourceTree = "<group>"; };
+		98F15192205B3E9000AE653C /* SS1.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SS1.mtl; sourceTree = "<group>"; };
+		98F151A4205B436300AE653C /* SpaceShipUV.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpaceShipUV.xcf; sourceTree = "<group>"; };
+		98F151A5205B436300AE653C /* Spaceship.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Spaceship.obj; sourceTree = "<group>"; };
+		98F151A6205B436300AE653C /* SpaceShipSpecular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SpaceShipSpecular.jpg; sourceTree = "<group>"; };
+		98F151A7205B436300AE653C /* Spaceship.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Spaceship.mtl; sourceTree = "<group>"; };
+		98F151A8205B436300AE653C /* SpaceShipSpecular.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpaceShipSpecular.xcf; sourceTree = "<group>"; };
+		98F151A9205B436300AE653C /* SpaceShipNormal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SpaceShipNormal.jpg; sourceTree = "<group>"; };
+		98F151AA205B436300AE653C /* SpaceShipUV.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SpaceShipUV.jpg; sourceTree = "<group>"; };
+		98F151AB205B436300AE653C /* NormalMap.fx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NormalMap.fx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,11 +506,12 @@
 		98D21064200D6F8600B4D688 /* assignment0 */ = {
 			isa = PBXGroup;
 			children = (
-				98DED370205AB2DC0066D22D /* asteroid */,
-				98DED392205AB8090066D22D /* airplane2 */,
+				98F151A3205B436300AE653C /* Spaceship */,
 				98DED341205AA5640066D22D /* airplane */,
+				98F1518C205B3E9000AE653C /* SS1 */,
 				98DED323205A91310066D22D /* cloud_texture.jpg */,
 				98DED39F205AB9EA0066D22D /* X-Wing Pack */,
+				98F15172205B360000AE653C /* Low_poly_ufo_OBJ */,
 				98DED324205A91320066D22D /* heightmap1.bmp */,
 				98DED322205A91310066D22D /* helmet_showroom_spec.png */,
 				98DED327205A91320066D22D /* leg_showroom_spec.png */,
@@ -532,11 +553,12 @@
 				98066DF5205305020025BA30 /* shader.vert */,
 				98066DF7205305030025BA30 /* main.cpp */,
 				98066DF4205305020025BA30 /* main.h */,
+				98066DF9205305030025BA30 /* shader.h */,
 				98066DF6205305030025BA30 /* shader.cpp */,
 				98DED2DF205A871E0066D22D /* Shader_class.h */,
-				98066DF9205305030025BA30 /* shader.h */,
-				98DED2E4205A88820066D22D /* Model.h */,
 				98DED312205A89580066D22D /* Mesh.h */,
+				98A5EF19205B93F1003608CB /* Model.hpp */,
+				98A5EF18205B93F1003608CB /* Model.cpp */,
 				98066DF2205305020025BA30 /* Window.cpp */,
 				98066DF3205305020025BA30 /* Window.h */,
 				98066DFA205305030025BA30 /* Terrain.h */,
@@ -588,33 +610,6 @@
 				98DED358205AA5640066D22D /* elicie.jpg */,
 			);
 			path = airplane;
-			sourceTree = "<group>";
-		};
-		98DED370205AB2DC0066D22D /* asteroid */ = {
-			isa = PBXGroup;
-			children = (
-				98DED371205AB2DC0066D22D /* Albedo.jpg */,
-				98DED372205AB2DC0066D22D /* Metalness.jpg */,
-				98DED373205AB2DC0066D22D /* A2.obj */,
-				98DED374205AB2DC0066D22D /* A2.mtl */,
-				98DED375205AB2DC0066D22D /* Normal.jpg */,
-				98DED376205AB2DC0066D22D /* Emission.jpg */,
-				98DED377205AB2DC0066D22D /* Displacement.jpg */,
-			);
-			path = asteroid;
-			sourceTree = "<group>";
-		};
-		98DED392205AB8090066D22D /* airplane2 */ = {
-			isa = PBXGroup;
-			children = (
-				98DED393205AB8090066D22D /* Trident_UV_No_Dekol_Color.tif */,
-				98DED394205AB8090066D22D /* Trident-A10.mtl */,
-				98DED395205AB8090066D22D /* Trident_UV_Dekol_Color.tif */,
-				98DED396205AB8090066D22D /* Trident-A10.obj */,
-				98DED397205AB8090066D22D /* Trident_UV_Spec.tif */,
-				98DED398205AB8090066D22D /* Trident_UV_Bump.tif */,
-			);
-			path = airplane2;
 			sourceTree = "<group>";
 		};
 		98DED39F205AB9EA0066D22D /* X-Wing Pack */ = {
@@ -763,6 +758,50 @@
 			path = "Wing down";
 			sourceTree = "<group>";
 		};
+		98F15172205B360000AE653C /* Low_poly_ufo_OBJ */ = {
+			isa = PBXGroup;
+			children = (
+				98F15173205B360000AE653C /* Map__7_Normal_Bump.tga */,
+				98F15174205B360000AE653C /* Low_poly_UFO.mtl */,
+				98F15175205B360000AE653C /* ufo_normal.png */,
+				98F15176205B360000AE653C /* ufo_diffuse2.png */,
+				98F15177205B360000AE653C /* ufo_diffuse2_glow.png */,
+				98F15178205B360000AE653C /* ufo_diffuse_glow.png */,
+				98F15179205B360000AE653C /* ufo_diffuse.png */,
+				98F1517A205B360000AE653C /* Low_poly_UFO.obj */,
+				98F1517B205B360000AE653C /* ufo_spec.png */,
+			);
+			path = Low_poly_ufo_OBJ;
+			sourceTree = "<group>";
+		};
+		98F1518C205B3E9000AE653C /* SS1 */ = {
+			isa = PBXGroup;
+			children = (
+				98F1518D205B3E9000AE653C /* SS1.obj */,
+				98F1518E205B3E9000AE653C /* HULL-S.jpg */,
+				98F1518F205B3E9000AE653C /* HULL-I.jpg */,
+				98F15190205B3E9000AE653C /* HULL-N.jpg */,
+				98F15191205B3E9000AE653C /* HULL.jpg */,
+				98F15192205B3E9000AE653C /* SS1.mtl */,
+			);
+			path = SS1;
+			sourceTree = "<group>";
+		};
+		98F151A3205B436300AE653C /* Spaceship */ = {
+			isa = PBXGroup;
+			children = (
+				98F151A4205B436300AE653C /* SpaceShipUV.xcf */,
+				98F151A5205B436300AE653C /* Spaceship.obj */,
+				98F151A6205B436300AE653C /* SpaceShipSpecular.jpg */,
+				98F151A7205B436300AE653C /* Spaceship.mtl */,
+				98F151A8205B436300AE653C /* SpaceShipSpecular.xcf */,
+				98F151A9205B436300AE653C /* SpaceShipNormal.jpg */,
+				98F151AA205B436300AE653C /* SpaceShipUV.jpg */,
+				98F151AB205B436300AE653C /* NormalMap.fx */,
+			);
+			path = Spaceship;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -826,6 +865,7 @@
 				98066DFC205305030025BA30 /* shader.cpp in Sources */,
 				98066DFD205305030025BA30 /* main.cpp in Sources */,
 				98066DFB205305030025BA30 /* Window.cpp in Sources */,
+				98A5EF1A205B93F1003608CB /* Model.cpp in Sources */,
 				98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */,
 				98066DFE205305030025BA30 /* Terrain.cpp in Sources */,
 				984B1A572058DF02000BF5D6 /* Skybox.cpp in Sources */,

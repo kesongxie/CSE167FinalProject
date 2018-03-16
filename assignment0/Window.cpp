@@ -5,6 +5,7 @@
 #include "PerlinNoise.hpp"
 #include <chrono>
 #include <thread>
+#include "Model.hpp"
 
 
 const char* window_title = "GLFW Starter Project";
@@ -20,6 +21,9 @@ OBJObject * obj;
 OBJObject * obj2;
 OBJObject * obj3;
 OBJObject * obj4;
+OBJObject * obj5;
+OBJObject * obj6;
+
 OBJObject * dragon;
 
 // trackball variables
@@ -46,7 +50,7 @@ float degree = 0;
 
 
 // Default camera parameters
-glm::vec3 cam_pos(0.0f, 0.0f, 100.0f);		// e  | Position of camera
+glm::vec3 cam_pos(0.0f, 0.0f, 60.0f);		// e  | Position of camera
 glm::vec3 cam_look_at(0.0f, 0.0f, 0.0f);	// d  | This is where the camera looks at
 glm::vec3 cam_up(0.0f, 1.0f, 0.0f);			// up | What orientation "up" is
 
@@ -79,6 +83,8 @@ void Window::initialize_objects()
     obj2 = new OBJObject("Asteroid.obj");
     obj3 = new OBJObject("Asteroid.obj");
     obj4 = new OBJObject("Asteroid.obj");
+    obj5 = new OBJObject("Asteroid.obj");
+    obj6 = new OBJObject("Asteroid.obj");
 
     dragon = new OBJObject("Dragon.obj");
 
@@ -168,13 +174,17 @@ void Window::idle_callback()
     obj2->move_z(30.0f);
     obj3->move_z(40.0f);
     obj4->move_z(10.0f);
+    obj5->move_z(25.0f);
+    obj6->move_z(80.0f);
 
 
     obj->spin(1.0f);
     obj2->spin(1.0f);
-
     obj3->spin(1.0f);
     obj4->spin(1.0f);
+    obj5->spin(3.0f);
+    obj6->spin(2.0f);
+
 
     // Iterate thru bounding boxes vector, use AABB to detect if any collide with dragon's boudning box. If any collide with dragon, set the colliding boxes’ collide flags to true (colliding boxes will be colored red via fragment shader).
     BoundingBox * boxA = dragon->box;
@@ -231,7 +241,7 @@ void Window::display_callback(GLFWwindow* window)
     // DRAGON
     // render the dragon and the rock
     glUseProgram(objShaderProgram);
-    dragon->draw(objShaderProgram); // mock dragon
+//    dragon->draw(objShaderProgram); // mock dragon
     obj->draw(objShaderProgram); // mock asteroid
     obj2->draw(objShaderProgram); // mock asteroid
     obj3->draw(objShaderProgram); // mock asteroid
