@@ -8,7 +8,6 @@
 #include "Model.hpp"
 #include "stb_image.h"
 
-
 using namespace std;
 //bool Window::bbox_display;
 //vector<BoundingBox*> Window::bbox_vector;
@@ -62,6 +61,11 @@ void Model::Draw(Shader shader)
 {
     for(unsigned int i = 0; i < meshes.size(); i++)
     meshes[i].Draw(shader);
+    
+    if (Window::bbox_display && displayBoundingBox) {
+        // toWorld_noRot * transform
+        box->draw(shader.ID, Window::V * toWorld * transform);
+    }
 }
 
 /*  Functions   */
@@ -83,6 +87,10 @@ void Model::loadModel(string const &path)
     // process ASSIMP's root node recursively
     processNode(scene->mRootNode, scene);
     
+    
+    toWorld = glm::mat4(1.0f);
+    toWorld_noRot = toWorld;
+
     // get the bounding box
     float max_x, max_y, max_z, min_x, min_y, min_z;
     // initialize values
@@ -100,11 +108,12 @@ void Model::loadModel(string const &path)
         if (v.z < min_z) min_z = v.z;
     }
     
+    
     // construct BoundingBox transformation matrix
     box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
-//    size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
-//    center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
-//    transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
+    size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
+    center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
+    transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
     
     
 }
@@ -247,9 +256,9 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type,
 void Model::move_x(float value)
 {
     x_coord += value;
-    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    toWorld = scaleTransform * glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
     toWorld_noRot = toWorld;
-    
+    center.x += value;
     
     // update bounding box's boundaries
     box->max_x += value;
@@ -259,8 +268,9 @@ void Model::move_x(float value)
 void Model::move_y(float value)
 {
     y_coord += value;
-    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
+    toWorld = scaleTransform * glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord)) * glm::rotate(glm::mat4(1.0f), 180 / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
     toWorld_noRot = toWorld;
+    center.y += value;
     // update bounding box's boundaries
     box->max_y += value;
     box->min_y += value;
@@ -268,17 +278,17 @@ void Model::move_y(float value)
 
 void Model::move_z(float value)
 {
-    z_coord += value;
-    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
-    toWorld_noRot = toWorld;
-    // update bounding box's boundaries
-    box->max_z += value;
-    box->min_z += value;
-    if(z_coord > 100) {
-        init_z = z_coord = -1000 + (rand() % 200);
-        init_x = x_coord =  rand() % 800 - 400;
-        init_y = y_coord =  rand() % 100 + 5;
-    }
+//    z_coord += value;
+//    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
+//    toWorld_noRot = toWorld;
+//    // update bounding box's boundaries
+//    box->max_z += value;
+//    box->min_z += value;
+//    if(z_coord > 100) {
+//        init_z = z_coord = -1000 + (rand() % 200);
+//        init_x = x_coord =  rand() % 800 - 400;
+//        init_y = y_coord =  rand() % 100 + 5;
+//    }
 }
 
 /*
@@ -312,3 +322,8 @@ void Model::spin(float deg)
 }
 
 */
+
+void Model::setScaleTransform(glm::mat4 scale) {
+    scaleTransform = scale;
+    toWorld = toWorld * scale;
+}

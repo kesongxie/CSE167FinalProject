@@ -17,7 +17,16 @@
 		984B1A572058DF02000BF5D6 /* Skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 984B1A552058DF02000BF5D6 /* Skybox.cpp */; };
 		984B1A5A2058DFD0000BF5D6 /* skybox.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 984B1A592058DFC7000BF5D6 /* skybox.frag */; };
 		984B1A5B2058DFD0000BF5D6 /* skybox.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 984B1A582058DFC6000BF5D6 /* skybox.vert */; };
+		9884CB9B205D092800457B1E /* sphere.obj in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CB9A205D092200457B1E /* sphere.obj */; };
+		9884CB9E205D0A6F00457B1E /* bullet-shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CB9C205D0A6600457B1E /* bullet-shader.frag */; };
+		9884CB9F205D0A6F00457B1E /* bullet-shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CB9D205D0A6700457B1E /* bullet-shader.vert */; };
+		9884CBA2205D109A00457B1E /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9884CBA0205D109A00457B1E /* Bullet.cpp */; };
 		98A5EF1A205B93F1003608CB /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF18205B93F1003608CB /* Model.cpp */; };
+		98A5EF1D205BB16F003608CB /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF1B205BB16F003608CB /* Particle.cpp */; };
+		98A5EF20205C43A2003608CB /* particle.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF1E205C4390003608CB /* particle.frag */; };
+		98A5EF21205C43A2003608CB /* particle.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF1F205C4390003608CB /* particle.vert */; };
+		98A5EF23205C4784003608CB /* particle.DDS in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF22205C4779003608CB /* particle.DDS */; };
+		98A5EF26205C48B5003608CB /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF24205C48B5003608CB /* Texture.cpp */; };
 		98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21077200D72EC00B4D688 /* OpenGL.framework */; };
 		98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21078200D730C00B4D688 /* libglfw.3.2.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98D873F920585B9E00472E29 /* PerlinNoise.cpp */; };
@@ -164,6 +173,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				9884CB9E205D0A6F00457B1E /* bullet-shader.frag in CopyFiles */,
+				9884CB9F205D0A6F00457B1E /* bullet-shader.vert in CopyFiles */,
+				9884CB9B205D092800457B1E /* sphere.obj in CopyFiles */,
+				98A5EF23205C4784003608CB /* particle.DDS in CopyFiles */,
+				98A5EF20205C43A2003608CB /* particle.frag in CopyFiles */,
+				98A5EF21205C43A2003608CB /* particle.vert in CopyFiles */,
 				98F151AC205B436C00AE653C /* SpaceShipUV.xcf in CopyFiles */,
 				98F151AD205B436C00AE653C /* Spaceship.obj in CopyFiles */,
 				98F151AE205B436C00AE653C /* SpaceShipSpecular.jpg in CopyFiles */,
@@ -320,8 +335,20 @@
 		984B1A562058DF02000BF5D6 /* Skybox.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Skybox.hpp; sourceTree = "<group>"; };
 		984B1A582058DFC6000BF5D6 /* skybox.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = skybox.vert; sourceTree = "<group>"; };
 		984B1A592058DFC7000BF5D6 /* skybox.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = skybox.frag; sourceTree = "<group>"; };
+		9884CB9A205D092200457B1E /* sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphere.obj; sourceTree = "<group>"; };
+		9884CB9C205D0A6600457B1E /* bullet-shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "bullet-shader.frag"; sourceTree = "<group>"; };
+		9884CB9D205D0A6700457B1E /* bullet-shader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "bullet-shader.vert"; sourceTree = "<group>"; };
+		9884CBA0205D109A00457B1E /* Bullet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		9884CBA1205D109A00457B1E /* Bullet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
 		98A5EF18205B93F1003608CB /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		98A5EF19205B93F1003608CB /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
+		98A5EF1B205BB16F003608CB /* Particle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
+		98A5EF1C205BB16F003608CB /* Particle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Particle.hpp; sourceTree = "<group>"; };
+		98A5EF1E205C4390003608CB /* particle.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.frag; sourceTree = "<group>"; };
+		98A5EF1F205C4390003608CB /* particle.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vert; sourceTree = "<group>"; };
+		98A5EF22205C4779003608CB /* particle.DDS */ = {isa = PBXFileReference; lastKnownFileType = file; path = particle.DDS; sourceTree = "<group>"; };
+		98A5EF24205C48B5003608CB /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		98A5EF25205C48B5003608CB /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		98D21062200D6F8600B4D688 /* assignment0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = assignment0; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D21077200D72EC00B4D688 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		98D21078200D730C00B4D688 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = "../../../../Developer/glfw-3.2.1/src/libglfw.3.2.dylib"; sourceTree = "<group>"; };
@@ -455,12 +482,6 @@
 		98F15179205B360000AE653C /* ufo_diffuse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_diffuse.png; sourceTree = "<group>"; };
 		98F1517A205B360000AE653C /* Low_poly_UFO.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Low_poly_UFO.obj; sourceTree = "<group>"; };
 		98F1517B205B360000AE653C /* ufo_spec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo_spec.png; sourceTree = "<group>"; };
-		98F1518D205B3E9000AE653C /* SS1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SS1.obj; sourceTree = "<group>"; };
-		98F1518E205B3E9000AE653C /* HULL-S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HULL-S.jpg"; sourceTree = "<group>"; };
-		98F1518F205B3E9000AE653C /* HULL-I.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HULL-I.jpg"; sourceTree = "<group>"; };
-		98F15190205B3E9000AE653C /* HULL-N.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "HULL-N.jpg"; sourceTree = "<group>"; };
-		98F15191205B3E9000AE653C /* HULL.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HULL.jpg; sourceTree = "<group>"; };
-		98F15192205B3E9000AE653C /* SS1.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SS1.mtl; sourceTree = "<group>"; };
 		98F151A4205B436300AE653C /* SpaceShipUV.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpaceShipUV.xcf; sourceTree = "<group>"; };
 		98F151A5205B436300AE653C /* Spaceship.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Spaceship.obj; sourceTree = "<group>"; };
 		98F151A6205B436300AE653C /* SpaceShipSpecular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SpaceShipSpecular.jpg; sourceTree = "<group>"; };
@@ -508,15 +529,20 @@
 			children = (
 				98F151A3205B436300AE653C /* Spaceship */,
 				98DED341205AA5640066D22D /* airplane */,
-				98F1518C205B3E9000AE653C /* SS1 */,
 				98DED323205A91310066D22D /* cloud_texture.jpg */,
 				98DED39F205AB9EA0066D22D /* X-Wing Pack */,
 				98F15172205B360000AE653C /* Low_poly_ufo_OBJ */,
 				98DED324205A91320066D22D /* heightmap1.bmp */,
 				98DED322205A91310066D22D /* helmet_showroom_spec.png */,
 				98DED327205A91320066D22D /* leg_showroom_spec.png */,
+				9884CB9C205D0A6600457B1E /* bullet-shader.frag */,
+				9884CB9D205D0A6700457B1E /* bullet-shader.vert */,
 				98DED328205A91330066D22D /* nanosuit.blend */,
 				98DED325205A91320066D22D /* nanosuit.mtl */,
+				98A5EF1E205C4390003608CB /* particle.frag */,
+				98A5EF1F205C4390003608CB /* particle.vert */,
+				98A5EF22205C4779003608CB /* particle.DDS */,
+				9884CB9A205D092200457B1E /* sphere.obj */,
 				98DED326205A91320066D22D /* nanosuit.obj */,
 				98DED31C205A91050066D22D /* arm_dif.png */,
 				98DED316205A91040066D22D /* arm_showroom_ddn.png */,
@@ -567,6 +593,12 @@
 				98D873FA20585B9E00472E29 /* PerlinNoise.hpp */,
 				984B1A562058DF02000BF5D6 /* Skybox.hpp */,
 				984B1A552058DF02000BF5D6 /* Skybox.cpp */,
+				98A5EF1C205BB16F003608CB /* Particle.hpp */,
+				98A5EF1B205BB16F003608CB /* Particle.cpp */,
+				98A5EF25205C48B5003608CB /* Texture.hpp */,
+				9884CBA1205D109A00457B1E /* Bullet.hpp */,
+				9884CBA0205D109A00457B1E /* Bullet.cpp */,
+				98A5EF24205C48B5003608CB /* Texture.cpp */,
 			);
 			path = assignment0;
 			sourceTree = "<group>";
@@ -774,19 +806,6 @@
 			path = Low_poly_ufo_OBJ;
 			sourceTree = "<group>";
 		};
-		98F1518C205B3E9000AE653C /* SS1 */ = {
-			isa = PBXGroup;
-			children = (
-				98F1518D205B3E9000AE653C /* SS1.obj */,
-				98F1518E205B3E9000AE653C /* HULL-S.jpg */,
-				98F1518F205B3E9000AE653C /* HULL-I.jpg */,
-				98F15190205B3E9000AE653C /* HULL-N.jpg */,
-				98F15191205B3E9000AE653C /* HULL.jpg */,
-				98F15192205B3E9000AE653C /* SS1.mtl */,
-			);
-			path = SS1;
-			sourceTree = "<group>";
-		};
 		98F151A3205B436300AE653C /* Spaceship */ = {
 			isa = PBXGroup;
 			children = (
@@ -860,12 +879,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				98DED2E2205A88560066D22D /* modelLoading.frag in Sources */,
+				98A5EF1D205BB16F003608CB /* Particle.cpp in Sources */,
 				98DED2E3205A88560066D22D /* modelLoading.vs in Sources */,
 				98DED2842059EE500066D22D /* OBJObject.cpp in Sources */,
 				98066DFC205305030025BA30 /* shader.cpp in Sources */,
+				98A5EF26205C48B5003608CB /* Texture.cpp in Sources */,
 				98066DFD205305030025BA30 /* main.cpp in Sources */,
 				98066DFB205305030025BA30 /* Window.cpp in Sources */,
 				98A5EF1A205B93F1003608CB /* Model.cpp in Sources */,
+				9884CBA2205D109A00457B1E /* Bullet.cpp in Sources */,
 				98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */,
 				98066DFE205305030025BA30 /* Terrain.cpp in Sources */,
 				984B1A572058DF02000BF5D6 /* Skybox.cpp in Sources */,

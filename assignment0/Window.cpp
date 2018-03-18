@@ -7,6 +7,7 @@
 #include <thread>
 #include "Model.hpp"
 #include "Shader_class.h"
+#include "Bullet.hpp"
 
 
 const char* window_title = "GLFW Starter Project";
@@ -14,6 +15,7 @@ Terrain * terrain;
 Skybox * skybox;
 GLint shaderProgram;
 GLint skyboxshaderProgram;
+GLint bulletshaderProgram;
 GLint objShaderProgram;
 Shader *ourShader;
 bool shaking = false;
@@ -25,6 +27,12 @@ OBJObject * obj3;
 OBJObject * obj4;
 OBJObject * obj5;
 OBJObject * obj6;
+Bullet * bullet_1;
+Bullet * bullet_2;
+Bullet * bullet_3;
+Bullet * bullet_4;
+Bullet * bullet_5;
+
 
 
 // load models
@@ -52,6 +60,10 @@ float angle = 0;
 #define VERTEX_SHADER_PATH "./shader.vert"
 #define FRAGMENT_SHADER_PATH "./shader.frag"
 
+#define BULLET_VERTEX_SHADER_PATH "./bullet-shader.vert"
+#define BULLET_FRAGMENT_SHADER_PATH "./bullet-shader.frag"
+
+
 #define SKYBOX_VERTEX_SHADER_PATH "./skybox.vert"
 #define SKYBOX_FRAGMENT_SHADER_PATH "./skybox.frag"
 
@@ -73,10 +85,8 @@ glm::mat4 Window::P;
 glm::mat4 Window::V;
 PerlinNoise *noise;
 
-/*
-toWorld = glm::translate(glm::mat4(1.0f),  glm::vec3(0, 20, -2000));
-toWorld = glm::scale(glm::mat4(1.0f), glm::vec3(0.005, 0.005, 0.005)) * toWorld;
- */
+#define MAX_BULLET_NUM 5
+std::vector<Bullet> bullets;
 
 void Window::initialize_objects()
 {
@@ -85,6 +95,7 @@ void Window::initialize_objects()
 
 	// Load the shader program. Make sure you have the correct filepath up top
 	shaderProgram = LoadShaders(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);
+
     skyboxshaderProgram = LoadShaders(SKYBOX_VERTEX_SHADER_PATH, SKYBOX_FRAGMENT_SHADER_PATH);
     objShaderProgram = LoadShaders(OBJ_VERTEX_SHADER_PATH, OBJ_FRAGMENT_SHADER_PATH);
     ourShader = new Shader("./modelLoading.vs", "./modelLoading.frag");
@@ -98,10 +109,52 @@ void Window::initialize_objects()
     obj5 = new OBJObject("Asteroid.obj");
     obj6 = new OBJObject("Asteroid.obj");
     
+    
     SS1 = new Model("Low_poly_UFO.obj");
+    SS1->displayBoundingBox = false;
     UFO = new Model("Low_poly_UFO.obj");
+    UFO->setScaleTransform(glm::scale(glm::mat4(1.0f), glm::vec3(0.6f, 0.6f, 0.6f)));
     fighter = new Model("Viper-mk-IV-fighter.obj");
     character = UFO;
+    
+    glm::vec3 bulletInitPos = UFO->center;
+    for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
+        bullets.push_back(Bullet(new OBJObject("Sphere.obj"), UFO));
+    }
+
+}
+
+void drawActiveBullet() {
+    for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
+        if(bullets[i].isActive) {
+            bullets[i].draw();
+        }
+    }
+}
+
+void recycleBullet() {
+    for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
+        bullets[i].recycleIfNeeded();
+    }
+}
+
+void moveActiveBullet() {
+    for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
+        if(bullets[i].isActive) {
+            glm::vec3 diretion(0.0, 1.0, -20.0);
+            bullets[i].move(diretion);
+        }
+    }
+}
+
+void shootBullet() {
+    for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
+        // find the next not active bullet and shoot it
+        if(!bullets[i].isActive) {
+            bullets[i].isActive = true;
+            break;
+        }
+    }
 }
 
 // Treat this as a destructor function. Delete dynamically allocated memory here.
@@ -201,39 +254,71 @@ void Window::idle_callback()
     obj4->spin(1.0f);
     obj5->spin(3.0f);
     obj6->spin(2.0f);
-
+    
+    moveActiveBullet();
+    recycleBullet();
+    
 
     // Iterate thru bounding boxes vector, use AABB to detect if any collide with dragon's boudning box. If any collide with dragon, set the colliding boxes’ collide flags to true (colliding boxes will be colored red via fragment shader).
     BoundingBox * boxA = UFO->box;
-   
+    
+//    for(auto iter = bbox_vector.begin(); iter != bbox_vector.end(); iter++){
+//        BoundingBox * boxB = *iter;
+//        if (checkCollision(boxA, boxB)) {
+//            boxA->collide = true;
+//            boxB->collide = true;
+//            // shaker the camera
+////            float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
+////            cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
+////            V = glm::lookAt(cam_pos, cam_look_at, cam_up);
+//            timeLast += 1;
+//        } else {
+//            boxA->collide = false;
+//            boxB->collide = false;
+//            if(timeLast > 5) {
+//                timeLast = 0;
+//                V = glm::lookAt(cam_pos_before_collison, cam_look_at, cam_up);
+//            }
+//        }
+//    }
     
     
     for(auto iter = bbox_vector.begin(); iter != bbox_vector.end(); iter++){
         BoundingBox * boxB = *iter;
-        if (checkCollision(boxA, boxB)) {
-            boxA->collide = true;
-            boxB->collide = true;
-            // shaker the camera
-            float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
-            cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
-            V = glm::lookAt(cam_pos, cam_look_at, cam_up);
-            timeLast += 1;
-        } else {
-            boxA->collide = false;
-            boxB->collide = false;
-            if(timeLast > 5) {
-                timeLast = 0;
-                V = glm::lookAt(cam_pos_before_collison, cam_look_at, cam_up);
+        for(auto iter = bullets.begin(); iter != bullets.end(); iter++){
+            BoundingBox * boxA =  iter->obj->box;
+            if (checkCollision(boxA, boxB)) {
+                boxA->collide = true;
+                boxB->collide = true;
+                // shaker the camera
+                //            float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
+                //            cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
+                //            V = glm::lookAt(cam_pos, cam_look_at, cam_up);
+                timeLast += 1;
+            } else {
+                boxA->collide = false;
+                boxB->collide = false;
+                if(timeLast > 5) {
+                    timeLast = 0;
+                    V = glm::lookAt(cam_pos_before_collison, cam_look_at, cam_up);
+                }
             }
         }
+
     }
+    
+    
+    
+    // check collision between bullet and asteroid
+    
+    
     terrain->update();
 }
 
 void Window::display_callback(GLFWwindow* window)
 {
 	// Clear the color and depth buffers
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     
     // SKYBOX
@@ -254,7 +339,10 @@ void Window::display_callback(GLFWwindow* window)
     glUseProgram(shaderProgram);
     
     // Render the cube
-   terrain->draw(shaderProgram);
+    terrain->draw(shaderProgram);
+    drawActiveBullet();
+    
+
     
     
     // DRAGON
@@ -282,8 +370,8 @@ void Window::display_callback(GLFWwindow* window)
     // render the loaded model
     // this is the main chracter
     angle -= 1.0f;
-    glm::mat4 transform = glm::rotate(glm::mat4(1.0f), angle / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f)) * glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -20.0f, 0.0f)); // translate it down so it's at the center of the scene
-    transform = glm::scale(transform, glm::vec3(0.6f, 0.6f, 0.6f));
+    
+    glm::mat4 transform = glm::rotate(UFO->toWorld, angle / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f)) * glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
     glUniformMatrix4fv(glGetUniformLocation(ourShader->ID, "model"), 1, GL_FALSE, &transform[0][0]);
     UFO->Draw(*ourShader);
     
@@ -297,9 +385,6 @@ void Window::display_callback(GLFWwindow* window)
     
 
 	// Gets events, including input such as keyboard and mouse or window resizing
-    glfwPollEvents();
-    // Swap buffers
-    glfwSwapBuffers(window);
 }
 
 
@@ -319,23 +404,29 @@ void Window::key_callback(GLFWwindow* window, int key, int scancode, int action,
         {
             Window::bbox_display = !Window::bbox_display;
         }
+        if (key == GLFW_KEY_SPACE) {
+            shootBullet();
+        }
+        
     }
         if (key == GLFW_KEY_UP)
         {
-            character->move_y(1.0f);
+            character->move_y(2.0f);
         }
         if (key == GLFW_KEY_DOWN)
         {
-            character->move_y(-1.0f);
+            character->move_y(-2.0f);
         }
         if (key == GLFW_KEY_LEFT)
         {
-            character->move_x(-1.0f);
+            character->move_x(-2.0f);
         }
         if (key == GLFW_KEY_RIGHT)
         {
-            character->move_x(1.0f);
+            character->move_x(2.0f);
         }
+        
+    
     
 }
 
@@ -421,4 +512,6 @@ bool Window::checkCollision(BoundingBox* a, BoundingBox* b)
     (a->min_z <= b->max_z && a->max_z >= b->min_z);
 }
 
-
+glm::vec3 Window::getCurrentCameraPos() {
+    return cam_pos;
+}

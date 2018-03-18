@@ -25,6 +25,8 @@
 #include <map>
 #include <vector>
 #include "BoundingBox.h"
+#include "Window.h"
+
 
 using namespace std;
 
@@ -42,12 +44,15 @@ public:
     glm::mat4 toWorld;
     glm::mat4 toWorld_noRot;
     std::vector<glm::vec3> myVertices;
-//    std::vector<glm::vec3> myrotVertices;
-
-    
+    glm::vec3 size;
+    glm::vec3 center;
+    glm::mat4 transform;
+    float originZ;
+    bool displayBoundingBox;
     
     Model(string const &path, bool gamma = false) : gammaCorrection(gamma)
     {
+        displayBoundingBox = true;
         box = new BoundingBox();
         loadModel(path);
     }
@@ -61,6 +66,7 @@ public:
     void move_y(float);
     void move_z(float);
     void spin(float);
+    void setScaleTransform(glm::mat4 scale);
     
 private:
     /* object's coordinates in window when initialized */
@@ -71,6 +77,7 @@ private:
     float x_coord;
     float y_coord;
     float z_coord;
+    glm::mat4 scaleTransform;
     
     /*  Functions   */
     // loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.
@@ -81,6 +88,7 @@ private:
     
     Mesh processMesh(aiMesh *mesh, const aiScene *scene);
     vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type, string typeName);
+    
 };
 
 

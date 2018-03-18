@@ -41,6 +41,7 @@ public:
     static bool bbox_display;
     static std::vector<BoundingBox*> bbox_vector;
     static bool checkCollision(BoundingBox*, BoundingBox*);
+    static glm::vec3 getCurrentCameraPos();
 };
 
 #endif

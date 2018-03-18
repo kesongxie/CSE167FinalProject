@@ -8,6 +8,7 @@ vector<BoundingBox*> Window::bbox_vector;
 
 OBJObject::OBJObject(const char *filepath)
 {
+    movementTransform = glm::mat4(1.0f);
     init_x = x_coord = 0;
     init_y = y_coord = 15;
     if(strcmp(filepath, "Asteroid.obj") == 0){
@@ -184,7 +185,7 @@ void OBJObject::draw(GLuint shaderProgram)
     glBindVertexArray(0);
     
     if (Window::bbox_display) {
-        box->draw(shaderProgram, Window::V * toWorld_noRot * transform);
+        box->draw(shaderProgram, Window::V * toWorld * transform);
     }
 }
 
@@ -211,6 +212,7 @@ void OBJObject::move_y(float value)
 void OBJObject::move_z(float value)
 {
     z_coord += value;
+//    movementTransform = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
     toWorld_noRot = toWorld;
     // update bounding box's boundaries
