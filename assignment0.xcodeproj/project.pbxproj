@@ -23,6 +23,11 @@
 		9884CBA2205D109A00457B1E /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9884CBA0205D109A00457B1E /* Bullet.cpp */; };
 		9884CBA4205E1BC600457B1E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9884CBA3205E1BC600457B1E /* OpenAL.framework */; };
 		9884CBA7205E1CBD00457B1E /* AudioManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9884CBA5205E1CBD00457B1E /* AudioManager.cpp */; };
+		9884CBAB205E274400457B1E /* explosion.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CBA9205E273D00457B1E /* explosion.wav */; };
+		9884CBAC205E274400457B1E /* flying.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CBAA205E273D00457B1E /* flying.wav */; };
+		9884CBAE205E368000457B1E /* libglut.3.10.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9884CBAD205E368000457B1E /* libglut.3.10.0.dylib */; };
+		9884CBB0205E37E200457B1E /* libalut.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9884CBAF205E37E200457B1E /* libalut.0.dylib */; };
+		9884CBB2205E3AAA00457B1E /* bots.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CBB1205E3AA700457B1E /* bots.wav */; };
 		98A5EF1A205B93F1003608CB /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF18205B93F1003608CB /* Model.cpp */; };
 		98A5EF1D205BB16F003608CB /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF1B205BB16F003608CB /* Particle.cpp */; };
 		98A5EF20205C43A2003608CB /* particle.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF1E205C4390003608CB /* particle.frag */; };
@@ -175,6 +180,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				9884CBB2205E3AAA00457B1E /* bots.wav in CopyFiles */,
+				9884CBAB205E274400457B1E /* explosion.wav in CopyFiles */,
+				9884CBAC205E274400457B1E /* flying.wav in CopyFiles */,
 				9884CB9E205D0A6F00457B1E /* bullet-shader.frag in CopyFiles */,
 				9884CB9F205D0A6F00457B1E /* bullet-shader.vert in CopyFiles */,
 				9884CB9B205D092800457B1E /* sphere.obj in CopyFiles */,
@@ -345,6 +353,11 @@
 		9884CBA3205E1BC600457B1E /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		9884CBA5205E1CBD00457B1E /* AudioManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioManager.cpp; sourceTree = "<group>"; };
 		9884CBA6205E1CBD00457B1E /* AudioManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AudioManager.hpp; sourceTree = "<group>"; };
+		9884CBA9205E273D00457B1E /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		9884CBAA205E273D00457B1E /* flying.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flying.wav; sourceTree = "<group>"; };
+		9884CBAD205E368000457B1E /* libglut.3.10.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglut.3.10.0.dylib; path = ../../usr/local/Cellar/freeglut/3.0.0/lib/libglut.3.10.0.dylib; sourceTree = "<group>"; };
+		9884CBAF205E37E200457B1E /* libalut.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libalut.0.dylib; path = ../../usr/local/Cellar/freealut/1.1.0/lib/libalut.0.dylib; sourceTree = "<group>"; };
+		9884CBB1205E3AA700457B1E /* bots.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bots.wav; sourceTree = "<group>"; };
 		98A5EF18205B93F1003608CB /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		98A5EF19205B93F1003608CB /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		98A5EF1B205BB16F003608CB /* Particle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
@@ -502,6 +515,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9884CBB0205E37E200457B1E /* libalut.0.dylib in Frameworks */,
+				9884CBAE205E368000457B1E /* libglut.3.10.0.dylib in Frameworks */,
 				9884CBA4205E1BC600457B1E /* OpenAL.framework in Frameworks */,
 				98DED2E6205A88B30066D22D /* libassimp.4.1.0.dylib in Frameworks */,
 				98066E0220535E9B0025BA30 /* libSDL2-2.0.0.dylib in Frameworks */,
@@ -513,6 +528,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9884CBA8205E273D00457B1E /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				9884CBB1205E3AA700457B1E /* bots.wav */,
+				9884CBA9205E273D00457B1E /* explosion.wav */,
+				9884CBAA205E273D00457B1E /* flying.wav */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		98D21059200D6F8600B4D688 = {
 			isa = PBXGroup;
 			children = (
@@ -533,6 +558,7 @@
 		98D21064200D6F8600B4D688 /* assignment0 */ = {
 			isa = PBXGroup;
 			children = (
+				9884CBA8205E273D00457B1E /* Audio */,
 				98F151A3205B436300AE653C /* Spaceship */,
 				98DED341205AA5640066D22D /* airplane */,
 				98DED323205A91310066D22D /* cloud_texture.jpg */,
@@ -614,6 +640,8 @@
 		98D21076200D72EC00B4D688 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9884CBAF205E37E200457B1E /* libalut.0.dylib */,
+				9884CBAD205E368000457B1E /* libglut.3.10.0.dylib */,
 				9884CBA3205E1BC600457B1E /* OpenAL.framework */,
 				98DED2E5205A88B30066D22D /* libassimp.4.1.0.dylib */,
 				98066E0120535E9B0025BA30 /* libSDL2-2.0.0.dylib */,
@@ -1021,11 +1049,14 @@
 					/Developer/glm,
 					"/Developer/glfw-3.2.1/include",
 					/usr/local/include,
+					/Developer/freealut/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"/Developer/glfw-3.2.1/src",
 					/usr/local/Cellar/sdl2/2.0.8/lib,
 					/usr/local/Cellar/assimp/4.1.0/lib,
+					/usr/local/Cellar/freeglut/3.0.0/lib,
+					/usr/local/Cellar/freealut/1.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1041,11 +1072,14 @@
 					/Developer/glm,
 					"/Developer/glfw-3.2.1/include",
 					/usr/local/include,
+					/Developer/freealut/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"/Developer/glfw-3.2.1/src",
 					/usr/local/Cellar/sdl2/2.0.8/lib,
 					/usr/local/Cellar/assimp/4.1.0/lib,
+					/usr/local/Cellar/freeglut/3.0.0/lib,
+					/usr/local/Cellar/freealut/1.1.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

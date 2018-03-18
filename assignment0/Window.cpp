@@ -8,6 +8,8 @@
 #include "Model.hpp"
 #include "Shader_class.h"
 #include "Bullet.hpp"
+#include "AudioManager.hpp"
+#define EXPLODE_MUSIC_PATH "explosion.wav"
 
 
 const char* window_title = "GLFW Starter Project";
@@ -285,6 +287,9 @@ void Window::idle_callback()
 //                V = glm::lookAt(cam_pos, cam_look_at, cam_up);
                 timeLast += 1;
                 std:: cout << "bingo" << std::endl;
+                AudioManager::openALPlay(EXPLODE_MUSIC_PATH, false);
+                
+                
             } else {
                 boxA->collide = false;
                 boxB->collide = false;

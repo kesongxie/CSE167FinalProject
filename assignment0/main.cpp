@@ -1,7 +1,7 @@
 #include "main.h"
 #include "Model.hpp"
 #include "Texture.hpp"
-#include <OpenAL/OpenAL.h>
+#include "AudioManager.hpp"
 
 GLFWwindow* window;
 
@@ -383,8 +383,13 @@ void setUp() {
 }
 
 
+
+
+
 int main(void)
 {
+    AudioManager::playBackgroundMusic();
+
 	// Create the GLFW window
 	window = Window::create_window(1280, 760);
 	// Print OpenGL and GLSL versions
