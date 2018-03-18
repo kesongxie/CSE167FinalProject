@@ -114,10 +114,14 @@ void print_versions()
 #endif
 }
 
+void displayExplode(glm::vec3 position) {
+    
+}
+
 
 void setUp() {
     // Dark blue background
-//    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
     // Enable depth test
     glEnable(GL_DEPTH_TEST);
@@ -180,12 +184,16 @@ void setUp() {
     double lastTime = glfwGetTime();
     do
     {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-      
-        // Clear the screen
         
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_DEPTH_TEST);
+        glDepthMask(GL_TRUE);
+        Window::display_callback(window);
+        Window::idle_callback();
+
+        
+        // Clear the screen
+//        glDepthMask(GL_FALSE);
         
         double currentTime = glfwGetTime();
         double delta = currentTime - lastTime;
@@ -202,9 +210,9 @@ void setUp() {
         // Generate 10 new particule each millisecond,
         // but limit this to 16 ms (60 fps), or if you have 1 long frame (1sec),
         // newparticles will be huge and the next frame even longer.
-        int newparticles = (int)(delta*10000.0);
-        if (newparticles > (int)(0.016f*10000.0))
-        newparticles = (int)(0.016f*10000.0);
+        int newparticles = (int)(delta*100.0);
+        if (newparticles > (int)(0.016f*100.0))
+        newparticles = (int)(0.016f*100.0);
         
         for(int i=0; i<newparticles; i++){
             int particleIndex = FindUnusedParticle();
@@ -220,21 +228,15 @@ void setUp() {
                                             );
             
             ParticlesContainer[particleIndex].speed = maindir + randomdir*spread;
-            
-            
             // Very bad way to generate a random color
-//            ParticlesContainer[particleIndex].r = rand() % 256;
-//            ParticlesContainer[particleIndex].g = rand() % 256;
-//            ParticlesContainer[particleIndex].b = rand() % 256;
-            ParticlesContainer[particleIndex].r = 210;
-            ParticlesContainer[particleIndex].g = 109;
-            ParticlesContainer[particleIndex].b = 44;
-            ParticlesContainer[particleIndex].a = (rand() % 256) / 3;
-            
-
-            ParticlesContainer[particleIndex].a = (rand() % 256) / 3;
-            
-            ParticlesContainer[particleIndex].size = (rand()%1000)/2000.0f + 0.1f;
+//            ParticlesContainer[particleIndex].r = 210;
+//            ParticlesContainer[particleIndex].g = 109;
+//            ParticlesContainer[particleIndex].b = 44;
+            ParticlesContainer[particleIndex].r = 255;
+            ParticlesContainer[particleIndex].g = 255;
+            ParticlesContainer[particleIndex].b = 255;
+            ParticlesContainer[particleIndex].a = (rand() % 256);
+            ParticlesContainer[particleIndex].size = (rand()%1000)/4000.0f;
             
         }
         
@@ -354,11 +356,6 @@ void setUp() {
         glDisableVertexAttribArray(1);
         glDisableVertexAttribArray(2);
 
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        Window::display_callback(window);
-        Window::idle_callback();
-//
 
         
         // Swap buffers
@@ -402,16 +399,18 @@ int main(void)
 	Window::initialize_objects();
     
     
-    while (!glfwWindowShouldClose(window))
-    {
-        // Main render display callback. Rendering of objects is done here.
-        Window::display_callback(window);
-        // Idle callback. Updating objects, etc. can be done here.
-        Window::idle_callback();
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-
+    setUp();
+//
+//    while (!glfwWindowShouldClose(window))
+//    {
+//        // Main render display callback. Rendering of objects is done here.
+//        Window::display_callback(window);
+//        // Idle callback. Updating objects, etc. can be done here.
+//        Window::idle_callback();
+//        glfwSwapBuffers(window);
+//        glfwPollEvents();
+//    }
+//
 	Window::clean_up();
 	// Destroy the window
 	glfwDestroyWindow(window);

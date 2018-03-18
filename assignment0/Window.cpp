@@ -150,6 +150,7 @@ void shootBullet() {
         // find the next not active bullet and shoot it
         if(!bullets[i].isActive) {
             bullets[i].isActive = true;
+            AudioManager::openALPlay("44.wav", false);
             break;
         }
     }
@@ -240,7 +241,7 @@ void Window::idle_callback()
     // modify the camera position
     
     for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
-        asteroids[i]->move_z(20 + rand() % 20);
+        asteroids[i]->move_z(20 + rand() % 40);
         asteroids[i]->spin(1 + rand() % 3);
     }
 
@@ -312,20 +313,22 @@ void Window::idle_callback()
 void Window::display_callback(GLFWwindow* window)
 {
 	// Clear the color and depth buffers
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     
+//    glDepthMask(d);
+
     // SKYBOX
     glUseProgram(skyboxshaderProgram);
     glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
-    
+
     // Now send these values to the shader program
     glUniformMatrix4fv(glGetUniformLocation(skyboxshaderProgram, "projection"), 1, GL_FALSE, &Window::P[0][0]);
     degree += 1.0f;
     glm::mat4 model = Window::V * glm::rotate(glm::mat4(1.0f), degree / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
     glUniformMatrix4fv(glGetUniformLocation(skyboxshaderProgram, "view"), 1, GL_FALSE, &model[0][0]);
     skybox->render();
-    
+
     
     // --- TERRAIN
     // Use the shader of programID
@@ -346,8 +349,6 @@ void Window::display_callback(GLFWwindow* window)
         asteroids[i]->draw(objShaderProgram);
     }
     
-    glEnable(GL_DEPTH_TEST);
-
     
     // don't forget to enable shader before setting uniforms
     ourShader->use();
@@ -357,7 +358,7 @@ void Window::display_callback(GLFWwindow* window)
     glUniformMatrix4fv(glGetUniformLocation(ourShader->ID, "projection"), 1, GL_FALSE, &Window::P[0][0]);
     glUniformMatrix4fv(glGetUniformLocation(ourShader->ID, "view"), 1, GL_FALSE, &Window::V[0][0]);
     
-    
+   
     // render the loaded model
     // this is the main chracter
     angle -= 1.0f;
