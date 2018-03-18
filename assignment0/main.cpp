@@ -1,7 +1,7 @@
 #include "main.h"
 #include "Model.hpp"
 #include "Texture.hpp"
-
+#include <OpenAL/OpenAL.h>
 
 GLFWwindow* window;
 
@@ -114,7 +114,7 @@ void print_versions()
 #endif
 }
 
-/*
+
 void setUp() {
     // Dark blue background
 //    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -182,10 +182,10 @@ void setUp() {
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-      /*
+      
         // Clear the screen
         
-//        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_DEPTH_TEST);
         
         double currentTime = glfwGetTime();
         double delta = currentTime - lastTime;
@@ -350,14 +350,15 @@ void setUp() {
         glVertexAttribDivisor(2, 1); // color : one per quad                                  -> 1
         
         glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, ParticlesCount);
-        
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
         glDisableVertexAttribArray(2);
- 
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
         Window::display_callback(window);
         Window::idle_callback();
-
+//
 
         
         // Swap buffers
@@ -380,7 +381,7 @@ void setUp() {
     glDeleteVertexArrays(1, &VertexArrayID);
 
 }
-*/
+
 
 int main(void)
 {

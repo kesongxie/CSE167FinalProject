@@ -20,7 +20,8 @@ Bullet::Bullet(OBJObject *bulletObj, Model *t){
     transform = glm::mat4(1.0f);
     bulletshaderProgram = LoadShaders(OBJ_VERTEX_SHADER_PATH, OBJ_FRAGMENT_SHADER_PATH);
     obj = bulletObj;
-    initTransform = glm::translate(glm::mat4(1.0f), glm::vec3(0, target->center.y + 10, 0)) * glm::scale(glm::mat4(1.0f), glm::vec3(3.0, 3.0, 3.0));;
+    initTransform = glm::translate(glm::mat4(1.0f), glm::vec3(0, target->center.y + 10, 0)) * glm::scale(glm::mat4(1.0f), glm::vec3(3.0, 3.0, 3.0));
+    this->obj->transform = glm::scale(glm::mat4(1.0f), glm::vec3(6.0, 6.0, 6.0));
     obj->toWorld = initTransform;
 }
 
@@ -46,7 +47,7 @@ void Bullet::move(glm::vec3 direction) {
 }
 
 void Bullet::recycleIfNeeded() {
-    if(shootingDistance > 200) {
+    if(shootingDistance > 500) {
         isActive = false;
         shootingDistance = 0;
         transform = glm::mat4(1.0f);

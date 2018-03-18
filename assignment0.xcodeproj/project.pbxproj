@@ -21,6 +21,8 @@
 		9884CB9E205D0A6F00457B1E /* bullet-shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CB9C205D0A6600457B1E /* bullet-shader.frag */; };
 		9884CB9F205D0A6F00457B1E /* bullet-shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CB9D205D0A6700457B1E /* bullet-shader.vert */; };
 		9884CBA2205D109A00457B1E /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9884CBA0205D109A00457B1E /* Bullet.cpp */; };
+		9884CBA4205E1BC600457B1E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9884CBA3205E1BC600457B1E /* OpenAL.framework */; };
+		9884CBA7205E1CBD00457B1E /* AudioManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9884CBA5205E1CBD00457B1E /* AudioManager.cpp */; };
 		98A5EF1A205B93F1003608CB /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF18205B93F1003608CB /* Model.cpp */; };
 		98A5EF1D205BB16F003608CB /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF1B205BB16F003608CB /* Particle.cpp */; };
 		98A5EF20205C43A2003608CB /* particle.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF1E205C4390003608CB /* particle.frag */; };
@@ -340,6 +342,9 @@
 		9884CB9D205D0A6700457B1E /* bullet-shader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "bullet-shader.vert"; sourceTree = "<group>"; };
 		9884CBA0205D109A00457B1E /* Bullet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
 		9884CBA1205D109A00457B1E /* Bullet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bullet.hpp; sourceTree = "<group>"; };
+		9884CBA3205E1BC600457B1E /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		9884CBA5205E1CBD00457B1E /* AudioManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioManager.cpp; sourceTree = "<group>"; };
+		9884CBA6205E1CBD00457B1E /* AudioManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AudioManager.hpp; sourceTree = "<group>"; };
 		98A5EF18205B93F1003608CB /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		98A5EF19205B93F1003608CB /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		98A5EF1B205BB16F003608CB /* Particle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
@@ -497,6 +502,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9884CBA4205E1BC600457B1E /* OpenAL.framework in Frameworks */,
 				98DED2E6205A88B30066D22D /* libassimp.4.1.0.dylib in Frameworks */,
 				98066E0220535E9B0025BA30 /* libSDL2-2.0.0.dylib in Frameworks */,
 				98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */,
@@ -599,6 +605,8 @@
 				9884CBA1205D109A00457B1E /* Bullet.hpp */,
 				9884CBA0205D109A00457B1E /* Bullet.cpp */,
 				98A5EF24205C48B5003608CB /* Texture.cpp */,
+				9884CBA6205E1CBD00457B1E /* AudioManager.hpp */,
+				9884CBA5205E1CBD00457B1E /* AudioManager.cpp */,
 			);
 			path = assignment0;
 			sourceTree = "<group>";
@@ -606,6 +614,7 @@
 		98D21076200D72EC00B4D688 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9884CBA3205E1BC600457B1E /* OpenAL.framework */,
 				98DED2E5205A88B30066D22D /* libassimp.4.1.0.dylib */,
 				98066E0120535E9B0025BA30 /* libSDL2-2.0.0.dylib */,
 				98D21078200D730C00B4D688 /* libglfw.3.2.dylib */,
@@ -884,6 +893,7 @@
 				98DED2842059EE500066D22D /* OBJObject.cpp in Sources */,
 				98066DFC205305030025BA30 /* shader.cpp in Sources */,
 				98A5EF26205C48B5003608CB /* Texture.cpp in Sources */,
+				9884CBA7205E1CBD00457B1E /* AudioManager.cpp in Sources */,
 				98066DFD205305030025BA30 /* main.cpp in Sources */,
 				98066DFB205305030025BA30 /* Window.cpp in Sources */,
 				98A5EF1A205B93F1003608CB /* Model.cpp in Sources */,

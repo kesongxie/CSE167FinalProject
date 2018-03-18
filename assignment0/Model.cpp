@@ -327,3 +327,5 @@ void Model::setScaleTransform(glm::mat4 scale) {
     scaleTransform = scale;
     toWorld = toWorld * scale;
 }
+
+

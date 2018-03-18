@@ -27,12 +27,6 @@ OBJObject * obj3;
 OBJObject * obj4;
 OBJObject * obj5;
 OBJObject * obj6;
-Bullet * bullet_1;
-Bullet * bullet_2;
-Bullet * bullet_3;
-Bullet * bullet_4;
-Bullet * bullet_5;
-
 
 
 // load models
@@ -86,7 +80,11 @@ glm::mat4 Window::V;
 PerlinNoise *noise;
 
 #define MAX_BULLET_NUM 5
+#define MAX_ASTEROID_NUM 6
+
 std::vector<Bullet> bullets;
+std::vector<OBJObject *> asteroids;
+
 
 void Window::initialize_objects()
 {
@@ -102,13 +100,10 @@ void Window::initialize_objects()
 
     skybox = new Skybox(skyboxshaderProgram);
     terrain = new Terrain(shaderProgram);
-    obj = new OBJObject("Asteroid.obj");
-    obj2 = new OBJObject("Asteroid.obj");
-    obj3 = new OBJObject("Asteroid.obj");
-    obj4 = new OBJObject("Asteroid.obj");
-    obj5 = new OBJObject("Asteroid.obj");
-    obj6 = new OBJObject("Asteroid.obj");
     
+    for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
+        asteroids.push_back(new OBJObject("Asteroid.obj"));
+    }
     
     SS1 = new Model("Low_poly_UFO.obj");
     SS1->displayBoundingBox = false;
@@ -116,11 +111,12 @@ void Window::initialize_objects()
     UFO->setScaleTransform(glm::scale(glm::mat4(1.0f), glm::vec3(0.6f, 0.6f, 0.6f)));
     fighter = new Model("Viper-mk-IV-fighter.obj");
     character = UFO;
+    UFO->move_y(-40);
     
-    glm::vec3 bulletInitPos = UFO->center;
     for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
         bullets.push_back(Bullet(new OBJObject("Sphere.obj"), UFO));
     }
+    
 
 }
 
@@ -141,7 +137,7 @@ void recycleBullet() {
 void moveActiveBullet() {
     for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
         if(bullets[i].isActive) {
-            glm::vec3 diretion(0.0, 1.0, -20.0);
+            glm::vec3 diretion(0.0, 3.0, -20.0);
             bullets[i].move(diretion);
         }
     }
@@ -240,20 +236,12 @@ void Window::idle_callback()
 {
 	// Call the update function the cube
     // modify the camera position
-    obj->move_z(20.0f);
-    obj2->move_z(30.0f);
-    obj3->move_z(40.0f);
-    obj4->move_z(10.0f);
-    obj5->move_z(25.0f);
-    obj6->move_z(80.0f);
+    
+    for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
+        asteroids[i]->move_z(20 + rand() % 20);
+        asteroids[i]->spin(1 + rand() % 3);
+    }
 
-
-    obj->spin(1.0f);
-    obj2->spin(1.0f);
-    obj3->spin(1.0f);
-    obj4->spin(1.0f);
-    obj5->spin(3.0f);
-    obj6->spin(2.0f);
     
     moveActiveBullet();
     recycleBullet();
@@ -262,39 +250,41 @@ void Window::idle_callback()
     // Iterate thru bounding boxes vector, use AABB to detect if any collide with dragon's boudning box. If any collide with dragon, set the colliding boxes’ collide flags to true (colliding boxes will be colored red via fragment shader).
     BoundingBox * boxA = UFO->box;
     
-//    for(auto iter = bbox_vector.begin(); iter != bbox_vector.end(); iter++){
-//        BoundingBox * boxB = *iter;
-//        if (checkCollision(boxA, boxB)) {
-//            boxA->collide = true;
-//            boxB->collide = true;
-//            // shaker the camera
-////            float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
-////            cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
-////            V = glm::lookAt(cam_pos, cam_look_at, cam_up);
-//            timeLast += 1;
-//        } else {
-//            boxA->collide = false;
-//            boxB->collide = false;
-//            if(timeLast > 5) {
-//                timeLast = 0;
-//                V = glm::lookAt(cam_pos_before_collison, cam_look_at, cam_up);
-//            }
-//        }
-//    }
-    
-    
     for(auto iter = bbox_vector.begin(); iter != bbox_vector.end(); iter++){
         BoundingBox * boxB = *iter;
+        if (checkCollision(boxA, boxB)) {
+            boxA->collide = true;
+            boxB->collide = true;
+            // shaker the camera
+            float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
+//            cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
+//            V = glm::lookAt(cam_pos, cam_look_at, cam_up);
+//            timeLast += 1;
+        } else {
+            boxA->collide = false;
+            boxB->collide = false;
+            if(timeLast > 5) {
+                timeLast = 0;
+                V = glm::lookAt(cam_pos_before_collison, cam_look_at, cam_up);
+            }
+        }
+    }
+    
+    
+ for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
+     BoundingBox * boxB = asteroids[i]->box;
         for(auto iter = bullets.begin(); iter != bullets.end(); iter++){
             BoundingBox * boxA =  iter->obj->box;
             if (checkCollision(boxA, boxB)) {
                 boxA->collide = true;
                 boxB->collide = true;
+                asteroids[i]->resetZ();
                 // shaker the camera
-                //            float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
-                //            cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
-                //            V = glm::lookAt(cam_pos, cam_look_at, cam_up);
+//                float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
+//                cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
+//                V = glm::lookAt(cam_pos, cam_look_at, cam_up);
                 timeLast += 1;
+                std:: cout << "bingo" << std::endl;
             } else {
                 boxA->collide = false;
                 boxB->collide = false;
@@ -304,7 +294,6 @@ void Window::idle_callback()
                 }
             }
         }
-
     }
     
     
@@ -348,12 +337,9 @@ void Window::display_callback(GLFWwindow* window)
     // DRAGON
     // render the dragon and the rock
     glUseProgram(objShaderProgram);
-    obj->draw(objShaderProgram); // mock asteroid
-    obj2->draw(objShaderProgram); // mock asteroid
-    obj3->draw(objShaderProgram); // mock asteroid
-    obj4->draw(objShaderProgram); // mock asteroid
-
-    
+    for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
+        asteroids[i]->draw(objShaderProgram);
+    }
     
     glEnable(GL_DEPTH_TEST);
 

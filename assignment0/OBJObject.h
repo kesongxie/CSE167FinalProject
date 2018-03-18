@@ -53,7 +53,8 @@ public:
     glm::mat4 transform;
     glm::mat4 movementTransform;
     float originZ;
-    
+    void resetZ();
+
     // These variables are needed for the shader program
     GLuint VBO, VAO, NBO, EBO;
     GLuint uProjection, uModelview;
