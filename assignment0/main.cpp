@@ -191,171 +191,168 @@ void setUp() {
         Window::display_callback(window);
         Window::idle_callback();
 
-        
-        // Clear the screen
-//        glDepthMask(GL_FALSE);
-        
-        double currentTime = glfwGetTime();
-        double delta = currentTime - lastTime;
-        lastTime = currentTime;
-        
-        
-        glm::mat4 ProjectionMatrix = Window::P;
-        glm::mat4 ViewMatrix = Window::V;
-        
-        glm::vec3 CameraPosition = Window::getCurrentCameraPos();
-        glm::mat4 ViewProjectionMatrix = ProjectionMatrix * ViewMatrix;
-        
-        
-        // Generate 10 new particule each millisecond,
-        // but limit this to 16 ms (60 fps), or if you have 1 long frame (1sec),
-        // newparticles will be huge and the next frame even longer.
-        int newparticles = (int)(delta*100.0);
-        if (newparticles > (int)(0.016f*100.0))
-        newparticles = (int)(0.016f*100.0);
-        
-        for(int i=0; i<newparticles; i++){
-            int particleIndex = FindUnusedParticle();
-            ParticlesContainer[particleIndex].life = 5.0f; // This particle will live 5 seconds.
-            ParticlesContainer[particleIndex].pos = glm::vec3(0, 0, 40.0f);
+        if(Window::showExplode) {
+            double currentTime = glfwGetTime();
+            double delta = currentTime - lastTime;
+            lastTime = currentTime;
             
-            float spread = 1.5f;
-            glm::vec3 maindir = glm::vec3(0.0f, 0.0f, 4.0f);
-            glm::vec3 randomdir = glm::vec3(
-                                            (rand()%2000 - 1000.0f)/1000.0f,
-                                            (rand()%2000 - 1000.0f)/1000.0f,
-                                            (rand()%2000 - 1000.0f)/1000.0f
-                                            );
             
-            ParticlesContainer[particleIndex].speed = maindir + randomdir*spread;
-            // Very bad way to generate a random color
-//            ParticlesContainer[particleIndex].r = 210;
-//            ParticlesContainer[particleIndex].g = 109;
-//            ParticlesContainer[particleIndex].b = 44;
-            ParticlesContainer[particleIndex].r = 255;
-            ParticlesContainer[particleIndex].g = 255;
-            ParticlesContainer[particleIndex].b = 255;
-            ParticlesContainer[particleIndex].a = (rand() % 256);
-            ParticlesContainer[particleIndex].size = (rand()%1000)/4000.0f;
+            glm::mat4 ProjectionMatrix = Window::P;
+            glm::mat4 ViewMatrix = Window::V;
             
-        }
-        
-        
-        
-        // Simulate all particles
-        int ParticlesCount = 0;
-        for(int i=0; i<MaxParticles; i++){
+            glm::vec3 CameraPosition = Window::getCurrentCameraPos();
+            glm::mat4 ViewProjectionMatrix = ProjectionMatrix * ViewMatrix;
             
-            Particle& p = ParticlesContainer[i]; // shortcut
             
-            if(p.life > 0.0f){
+            // Generate 10 new particule each millisecond,
+            // but limit this to 16 ms (60 fps), or if you have 1 long frame (1sec),
+            // newparticles will be huge and the next frame even longer.
+            int newparticles = (int)(delta*2000.0);
+            if (newparticles > (int)(0.016f*2000.0))
+            newparticles = (int)(0.016f* 2000.0);
+            
+            for(int i=0; i<newparticles; i++){
+                int particleIndex = FindUnusedParticle();
+                ParticlesContainer[particleIndex].life = 5.0f; // This particle will live 5 seconds.
+                ParticlesContainer[particleIndex].pos = glm::vec3(Window::explodePosition.x, Window::explodePosition.y, 20.0f);
                 
-                // Decrease life
-                p.life -= delta;
-                if (p.life > 0.0f){
-                    
-                    // Simulate simple physics : gravity only, no collisions
-                    p.speed += glm::vec3(0.0f,-9.81f, 0.0f) * (float)delta * 0.5f;
-                    p.pos += p.speed * (float)delta;
-                    p.cameradistance = glm::length( p.pos - CameraPosition );
-                    //ParticlesContainer[i].pos += glm::vec3(0.0f,10.0f, 0.0f) * (float)delta;
-                    
-                    // Fill the GPU buffer
-                    g_particule_position_size_data[4*ParticlesCount+0] = p.pos.x;
-                    g_particule_position_size_data[4*ParticlesCount+1] = p.pos.y;
-                    g_particule_position_size_data[4*ParticlesCount+2] = p.pos.z;
-                    g_particule_position_size_data[4*ParticlesCount+3] = p.size;
-                    
-                    g_particule_color_data[4*ParticlesCount+0] = p.r;
-                    g_particule_color_data[4*ParticlesCount+1] = p.g;
-                    g_particule_color_data[4*ParticlesCount+2] = p.b;
-                    g_particule_color_data[4*ParticlesCount+3] = p.a;
-                    
-                }else{
-                    // Particles that just died will be put at the end of the buffer in SortParticles();
-                    p.cameradistance = -1.0f;
-                }
+                float spread = 5.5f;
+                glm::vec3 maindir = glm::vec3((rand() % 100) / 400.0f, (rand() % 100) / 300.0f, (rand() % 100) / 200.0f);
+                glm::vec3 randomdir = glm::vec3(
+                                                (rand()%2000 - 1000.0f)/1000.0f,
+                                                (rand()%2000 - 1000.0f)/1000.0f,
+                                                (rand()%2000 - 1000.0f)/1000.0f
+                                                );
                 
-                ParticlesCount++;
+                ParticlesContainer[particleIndex].speed = maindir + randomdir*spread;
+                // Very bad way to generate a random color
+                ParticlesContainer[particleIndex].r = 210;
+                ParticlesContainer[particleIndex].g = 109;
+                ParticlesContainer[particleIndex].b = 44;
+//                ParticlesContainer[particleIndex].r = 255;
+//                ParticlesContainer[particleIndex].g = 255;
+//                ParticlesContainer[particleIndex].b = 255;
+                ParticlesContainer[particleIndex].a = (rand() % 256);
+                ParticlesContainer[particleIndex].size = (rand()%1000)/4000.0f + 0.1;
                 
             }
+            
+            
+            
+            // Simulate all particles
+            int ParticlesCount = 0;
+            for(int i=0; i<MaxParticles; i++){
+                
+                Particle& p = ParticlesContainer[i]; // shortcut
+                
+                if(p.life > 0.0f){
+                    
+                    // Decrease life
+                    p.life -= delta;
+                    if (p.life > 0.0f){
+                        
+                        // Simulate simple physics : gravity only, no collisions
+                        p.speed += glm::vec3(0.0f,-9.81f, 0.0f) * (float)delta * 0.5f;
+                        p.pos += p.speed * (float)delta;
+                        p.cameradistance = glm::length( p.pos - CameraPosition );
+                        //ParticlesContainer[i].pos += glm::vec3(0.0f,10.0f, 0.0f) * (float)delta;
+                        
+                        // Fill the GPU buffer
+                        g_particule_position_size_data[4*ParticlesCount+0] = p.pos.x;
+                        g_particule_position_size_data[4*ParticlesCount+1] = p.pos.y;
+                        g_particule_position_size_data[4*ParticlesCount+2] = p.pos.z;
+                        g_particule_position_size_data[4*ParticlesCount+3] = p.size;
+                        
+                        g_particule_color_data[4*ParticlesCount+0] = p.r;
+                        g_particule_color_data[4*ParticlesCount+1] = p.g;
+                        g_particule_color_data[4*ParticlesCount+2] = p.b;
+                        g_particule_color_data[4*ParticlesCount+3] = p.a;
+                        
+                    }else{
+                        // Particles that just died will be put at the end of the buffer in SortParticles();
+                        p.cameradistance = -1.0f;
+                    }
+                    
+                    ParticlesCount++;
+                    
+                }
+            }
+            
+            SortParticles();
+            //printf("%d ",ParticlesCount);
+            
+            glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
+            glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
+            glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLfloat) * 4, g_particule_position_size_data);
+            
+            glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
+            glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), NULL, GL_STREAM_DRAW);
+            glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLubyte) * 4, g_particule_color_data);
+            
+            
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            
+            // Use our shader
+            glUseProgram(programID);
+            
+            // Bind our texture in Texture Unit 0
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, Texture);
+            // Set our "myTextureSampler" sampler to use Texture Unit 0
+            glUniform1i(TextureID, 0);
+            
+            // Same as the billboards tutorial
+            glUniform3f(CameraRight_worldspace_ID, ViewMatrix[0][0], ViewMatrix[1][0], ViewMatrix[2][0]);
+            glUniform3f(CameraUp_worldspace_ID   , ViewMatrix[0][1], ViewMatrix[1][1], ViewMatrix[2][1]);
+            
+            glUniformMatrix4fv(ViewProjMatrixID, 1, GL_FALSE, &ViewProjectionMatrix[0][0]);
+            
+            // 1rst attribute buffer : vertices
+            glEnableVertexAttribArray(0);
+            glBindBuffer(GL_ARRAY_BUFFER, billboard_vertex_buffer);
+            glVertexAttribPointer(
+                                  0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
+                                  3,                  // size
+                                  GL_FLOAT,           // type
+                                  GL_FALSE,           // normalized?
+                                  0,                  // stride
+                                  (void*)0            // array buffer offset
+                                  );
+            
+            // 2nd attribute buffer : positions of particles' centers
+            glEnableVertexAttribArray(1);
+            glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
+            glVertexAttribPointer(
+                                  1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
+                                  4,                                // size : x + y + z + size => 4
+                                  GL_FLOAT,                         // type
+                                  GL_FALSE,                         // normalized?
+                                  0,                                // stride
+                                  (void*)0                          // array buffer offset
+                                  );
+            
+            // 3rd attribute buffer : particles' colors
+            glEnableVertexAttribArray(2);
+            glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
+            glVertexAttribPointer(
+                                  2,                                // attribute. No particular reason for 1, but must match the layout in the shader.
+                                  4,                                // size : r + g + b + a => 4
+                                  GL_UNSIGNED_BYTE,                 // type
+                                  GL_TRUE,                          // normalized?    *** YES, this means that the unsigned char[4] will be accessible with a vec4 (floats) in the shader ***
+                                  0,                                // stride
+                                  (void*)0                          // array buffer offset
+                                  );
+            
+            glVertexAttribDivisor(0, 0); // particles vertices : always reuse the same 4 vertices -> 0
+            glVertexAttribDivisor(1, 1); // positions : one per quad (its center)                 -> 1
+            glVertexAttribDivisor(2, 1); // color : one per quad                                  -> 1
+            
+            glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, ParticlesCount);
+            glDisableVertexAttribArray(0);
+            glDisableVertexAttribArray(1);
+            glDisableVertexAttribArray(2);
         }
-        
-        SortParticles();
-        //printf("%d ",ParticlesCount);
-        
-        glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-        glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLfloat), NULL, GL_STREAM_DRAW);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLfloat) * 4, g_particule_position_size_data);
-        
-        glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-        glBufferData(GL_ARRAY_BUFFER, MaxParticles * 4 * sizeof(GLubyte), NULL, GL_STREAM_DRAW);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLubyte) * 4, g_particule_color_data);
-        
-        
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        
-        // Use our shader
-        glUseProgram(programID);
-        
-        // Bind our texture in Texture Unit 0
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, Texture);
-        // Set our "myTextureSampler" sampler to use Texture Unit 0
-        glUniform1i(TextureID, 0);
-        
-        // Same as the billboards tutorial
-        glUniform3f(CameraRight_worldspace_ID, ViewMatrix[0][0], ViewMatrix[1][0], ViewMatrix[2][0]);
-        glUniform3f(CameraUp_worldspace_ID   , ViewMatrix[0][1], ViewMatrix[1][1], ViewMatrix[2][1]);
-        
-        glUniformMatrix4fv(ViewProjMatrixID, 1, GL_FALSE, &ViewProjectionMatrix[0][0]);
-        
-        // 1rst attribute buffer : vertices
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, billboard_vertex_buffer);
-        glVertexAttribPointer(
-                              0,                  // attribute. No particular reason for 0, but must match the layout in the shader.
-                              3,                  // size
-                              GL_FLOAT,           // type
-                              GL_FALSE,           // normalized?
-                              0,                  // stride
-                              (void*)0            // array buffer offset
-                              );
-        
-        // 2nd attribute buffer : positions of particles' centers
-        glEnableVertexAttribArray(1);
-        glBindBuffer(GL_ARRAY_BUFFER, particles_position_buffer);
-        glVertexAttribPointer(
-                              1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
-                              4,                                // size : x + y + z + size => 4
-                              GL_FLOAT,                         // type
-                              GL_FALSE,                         // normalized?
-                              0,                                // stride
-                              (void*)0                          // array buffer offset
-                              );
-        
-        // 3rd attribute buffer : particles' colors
-        glEnableVertexAttribArray(2);
-        glBindBuffer(GL_ARRAY_BUFFER, particles_color_buffer);
-        glVertexAttribPointer(
-                              2,                                // attribute. No particular reason for 1, but must match the layout in the shader.
-                              4,                                // size : r + g + b + a => 4
-                              GL_UNSIGNED_BYTE,                 // type
-                              GL_TRUE,                          // normalized?    *** YES, this means that the unsigned char[4] will be accessible with a vec4 (floats) in the shader ***
-                              0,                                // stride
-                              (void*)0                          // array buffer offset
-                              );
-        
-        glVertexAttribDivisor(0, 0); // particles vertices : always reuse the same 4 vertices -> 0
-        glVertexAttribDivisor(1, 1); // positions : one per quad (its center)                 -> 1
-        glVertexAttribDivisor(2, 1); // color : one per quad                                  -> 1
-        
-        glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, ParticlesCount);
-        glDisableVertexAttribArray(0);
-        glDisableVertexAttribArray(1);
-        glDisableVertexAttribArray(2);
-
 
         
         // Swap buffers

@@ -79,6 +79,11 @@ int Window::height;
 
 glm::mat4 Window::P;
 glm::mat4 Window::V;
+
+
+bool Window::showExplode;
+glm::vec3 Window::explodePosition;
+
 PerlinNoise *noise;
 
 #define MAX_BULLET_NUM 5
@@ -90,7 +95,7 @@ std::vector<OBJObject *> asteroids;
 
 void Window::initialize_objects()
 {
-    
+    Window::showExplode = false;
     noise = new PerlinNoise(1.1, 0.1, 2.0, 3, 4);
 
 	// Load the shader program. Make sure you have the correct filepath up top
@@ -289,7 +294,8 @@ void Window::idle_callback()
                 timeLast += 1;
                 std:: cout << "bingo" << std::endl;
                 AudioManager::openALPlay(EXPLODE_MUSIC_PATH, false);
-                
+                Window::showExplode = true;
+                Window::explodePosition = asteroids[i]->center;
                 
             } else {
                 boxA->collide = false;

@@ -29,6 +29,7 @@
 		9884CBB0205E37E200457B1E /* libalut.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9884CBAF205E37E200457B1E /* libalut.0.dylib */; };
 		9884CBB2205E3AAA00457B1E /* bots.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CBB1205E3AA700457B1E /* bots.wav */; };
 		9884CBB4205E533700457B1E /* 44.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CBB3205E533000457B1E /* 44.wav */; };
+		9884CBB6205FB81300457B1E /* cbxt5-moiee.dds in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CBB5205FB80D00457B1E /* cbxt5-moiee.dds */; };
 		98A5EF1A205B93F1003608CB /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF18205B93F1003608CB /* Model.cpp */; };
 		98A5EF1D205BB16F003608CB /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF1B205BB16F003608CB /* Particle.cpp */; };
 		98A5EF20205C43A2003608CB /* particle.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF1E205C4390003608CB /* particle.frag */; };
@@ -181,6 +182,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				9884CBB6205FB81300457B1E /* cbxt5-moiee.dds in CopyFiles */,
 				9884CBB4205E533700457B1E /* 44.wav in CopyFiles */,
 				9884CBB2205E3AAA00457B1E /* bots.wav in CopyFiles */,
 				9884CBAB205E274400457B1E /* explosion.wav in CopyFiles */,
@@ -361,6 +363,7 @@
 		9884CBAF205E37E200457B1E /* libalut.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libalut.0.dylib; path = ../../usr/local/Cellar/freealut/1.1.0/lib/libalut.0.dylib; sourceTree = "<group>"; };
 		9884CBB1205E3AA700457B1E /* bots.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bots.wav; sourceTree = "<group>"; };
 		9884CBB3205E533000457B1E /* 44.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 44.wav; sourceTree = "<group>"; };
+		9884CBB5205FB80D00457B1E /* cbxt5-moiee.dds */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cbxt5-moiee.dds"; sourceTree = "<group>"; };
 		98A5EF18205B93F1003608CB /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		98A5EF19205B93F1003608CB /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		98A5EF1B205BB16F003608CB /* Particle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
@@ -570,6 +573,7 @@
 				98F15172205B360000AE653C /* Low_poly_ufo_OBJ */,
 				98DED324205A91320066D22D /* heightmap1.bmp */,
 				98DED322205A91310066D22D /* helmet_showroom_spec.png */,
+				9884CBB5205FB80D00457B1E /* cbxt5-moiee.dds */,
 				98DED327205A91320066D22D /* leg_showroom_spec.png */,
 				9884CB9C205D0A6600457B1E /* bullet-shader.frag */,
 				9884CB9D205D0A6700457B1E /* bullet-shader.vert */,

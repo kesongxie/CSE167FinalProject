@@ -21,6 +21,8 @@ public:
 	static int height;
 	static glm::mat4 P; // P for projection
 	static glm::mat4 V; // V for view
+    static bool showExplode;
+    static glm::vec3 explodePosition;
 	static void initialize_objects();
 	static void clean_up();
 	static GLFWwindow* create_window(int width, int height);
@@ -33,6 +35,8 @@ public:
     static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos);
     static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
+    
+    
     // trackball mapping
     static glm::vec3 trackballMapping(double, double);
     // get current cam position
