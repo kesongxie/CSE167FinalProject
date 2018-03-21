@@ -82,6 +82,8 @@ int Window::height;
 
 glm::mat4 Window::P;
 glm::mat4 Window::V;
+int Window::terrainMode;
+int Window::normalColoring;
 
 
 bool Window::showExplode;
@@ -100,8 +102,9 @@ std::vector<OBJObject *> asteroids;
 void Window::initialize_objects()
 {
     Window::showExplode = false;
+    Window::normalColoring = 1;
     noise = new PerlinNoise(1.1, 0.1, 2.0, 3, 4);
-
+    Window::terrainMode = 3;
 	// Load the shader program. Make sure you have the correct filepath up top
 	shaderProgram = LoadShaders(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);
 
@@ -250,7 +253,7 @@ void Window::idle_callback()
     // modify the camera position
     
     for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
-        asteroids[i]->move_z(5 + rand() % 20);
+        asteroids[i]->move_z(20 + rand() % 20);
         asteroids[i]->spin(1 + rand() % 3);
     }
 
@@ -286,9 +289,6 @@ void Window::idle_callback()
         }
     }
     
-    
-//    std::cout << "UFO to center x: " << UFO->center.x << std::endl;
-    
     for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
         BoundingBox * boxB = asteroids[i]->box;
         for(auto iter = bullets.begin(); iter != bullets.end(); iter++){
@@ -301,7 +301,6 @@ void Window::idle_callback()
                     AudioManager::openALPlay(EXPLODE_MUSIC_PATH, false);
                     Window::showExplode = true;
                     // get the position of the UFO
-//                    Window::UFOCenter = UFO->center;
                     Window::UFOCenter = glm::vec3(asteroids[i]->x_coord, asteroids[i]->y_coord, asteroids[i]->z_coord);
                 } else {
                     boxB->collide = false;
@@ -328,9 +327,6 @@ void Window::display_callback(GLFWwindow* window)
 	// Clear the color and depth buffers
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    
-//    glDepthMask(d);
-
     // SKYBOX
     glUseProgram(skyboxshaderProgram);
     glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
@@ -349,6 +345,7 @@ void Window::display_callback(GLFWwindow* window)
     glUseProgram(shaderProgram);
     
     // Render the cube
+    terrain->heightMapMode = terrainMode;
     terrain->draw(shaderProgram);
     drawActiveBullet();
     
@@ -412,27 +409,37 @@ void Window::key_callback(GLFWwindow* window, int key, int scancode, int action,
         if (key == GLFW_KEY_SPACE) {
             shootBullet();
         }
+        if (key == GLFW_KEY_R) {
+            Window::normalColoring = 1 - Window::normalColoring;
+        }
         
     }
-        if (key == GLFW_KEY_UP)
-        {
-            character->move_y(2.0f);
-        }
-        if (key == GLFW_KEY_DOWN)
-        {
-            character->move_y(-2.0f);
-        }
-        if (key == GLFW_KEY_LEFT)
-        {
-            character->move_x(-2.0f);
-        }
-        if (key == GLFW_KEY_RIGHT)
-        {
-            character->move_x(2.0f);
-        }
-        
-    
-    
+    if (key == GLFW_KEY_UP)
+    {
+        character->move_y(2.0f);
+    }
+    if (key == GLFW_KEY_DOWN)
+    {
+        character->move_y(-2.0f);
+    }
+    if (key == GLFW_KEY_LEFT)
+    {
+        character->move_x(-2.0f);
+    }
+    if (key == GLFW_KEY_RIGHT)
+    {
+        character->move_x(2.0f);
+    }
+   
+    // switch terrain mode
+    // 1, 2 for different height map, 3 for using perlin noise to get height
+    if (key == GLFW_KEY_1) {
+        Window::terrainMode = 1;
+    } else if (key == GLFW_KEY_2) {
+        Window::terrainMode = 2;
+    } else if (key == GLFW_KEY_3) {
+        Window::terrainMode = 3;
+    }
 }
 
 void Window::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)

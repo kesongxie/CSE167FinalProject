@@ -18,6 +18,7 @@ uniform mat4 modelview;
 // extra outputs as you need.
 out vec3 objVpos;
 out vec3 objNormal;
+out vec4 vSpace;
 
 void main()
 {
@@ -25,4 +26,5 @@ void main()
     gl_Position = projection * modelview * vec4(position.x, position.y, position.z, 1.0);
     objVpos = position;
     objNormal = normal;
+    vSpace = modelview * vec4(position,1);
 }

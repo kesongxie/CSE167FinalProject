@@ -22,13 +22,22 @@ out float sampleExtraOutput;
 out vec4 inColor;
 out vec2 texCoord;
 
+//rim shading
+out vec3 objVpos;
+out vec3 objNormal;
+
+// fog param
+out vec4 vSpace;
+
+
 void main()
 {
     // OpenGL maintains the D matrix so you only need to multiply by P, V (aka C inverse), and M
     gl_Position = projection * modelview * vec4(position.x, position.y, position.z, 1.0);
     sampleExtraOutput = 1.0f;
-   
-//    inColor = vec4(position.y, position.y, position.y, 1.0);
+    vSpace = modelview * vec4(position,1);
+    objVpos = position;
+    objNormal = normals;
     inColor = vec4(20.0f / 255.0, 96.0 / 255.0f, 172.0 / 255.0f, 1.0);
 //    inColor = vec4(normals.x, normals.y, normals.z, 1.0);
 //    texCoord = v_texCoord;

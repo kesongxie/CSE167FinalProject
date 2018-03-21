@@ -386,7 +386,7 @@ void setUp() {
 
 int main(void)
 {
-    AudioManager::playBackgroundMusic();
+//    AudioManager::playBackgroundMusic();
 
 	// Create the GLFW window
 	window = Window::create_window(1280, 760);

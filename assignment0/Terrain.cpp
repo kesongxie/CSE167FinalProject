@@ -1,17 +1,20 @@
 #include "Terrain.h"
-//#include "Window.h"
 #include "main.h"
-//#include <SDL2/SDL.h>
-//#include <SDL2/SDL_opengl.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 #include <math.h>
 #include "PerlinNoise.hpp"
 #include "stb_image.h"
 
-#define HEIGHT_MAP_PATH "/Developer/FinalProject/assignment0/heightmap.bmp"
+#define HEIGHT_MAP_PATH "/Developer/FinalProject/assignment0/heightmap1.bmp"
+#define HEIGHT_MAP_PATH_1 "/Developer/FinalProject/assignment0/heightmap.bmp"
+
 bool notLoaded = true;
 
 Terrain::Terrain(GLint shaderProgram)
 {
+    toWorldNoSpinSet = false;
+    toWorldNoMoveSet = false;
     offset = 0;
     this->loadTerrain();
 
@@ -122,13 +125,9 @@ void Terrain::draw(GLuint shaderProgram)
 
     glBindTexture(GL_TEXTURE_2D, textureBuffer);
 
-
-    
 	// Tell OpenGL to draw with triangles, using 36 indices, the type of the indices, and the offset to start from
 	glDrawElements(GL_TRIANGLE_STRIP, indices.size(), GL_UNSIGNED_INT, 0);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-    
     
     
     // Unbind the VAO when we're done so we don't accidentally draw extra stuff or tamper with its bound buffers
@@ -137,49 +136,30 @@ void Terrain::draw(GLuint shaderProgram)
 
 
 void Terrain::loadTerrain() {
+//    if(heightMapMode == 1) {
+//        loadTerrainWithHeightMap(HEIGHT_MAP_PATH);
+//    } else if(heightMapMode == 2) {
+//        loadTerrainWithHeightMap(HEIGHT_MAP_PATH_1);
+//    } else {
+//        loadTerrain(0);
+//    }
     loadTerrain(0);
+
 }
 
 
 void Terrain::loadTerrain(float zOffset) {
-//    SDL_Surface* img = SDL_LoadBMP(HEIGHT_MAP_PATH);
-    
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(0, -20, -20.0));
     width = 100;
     height = 10000;
     float scale = 2;
-//    float offset = 2;
-//
-//    uint8_t *pixels = (uint8_t *) img->pixels;
-//    float scale_x = ((float) img->w) / (width - 1);
-//    float scale_z = ((float) img->h) / (height - 1);
-
     
     // (double _persistence, double _frequency, double _amplitude, int _octaves, int _randomseed);
     PerlinNoise *noise = new PerlinNoise(1.1, 0.1, 2.0, 3, 4);
     for(unsigned int z = 0; z < height; z++) {
         for(unsigned int x = 0; x < width; x++) {
             glm::vec3 point = glm::vec3(x, 0, z);
-            
-            /*
-            // get the height
-            int img_x = (int) truncf(x * scale_x);
-            int img_y = (int) truncf(z * scale_z);
-            float h = pixels[img_y * img->pitch + img_x * 4];
-            
-            
-            // Normalize height to [-1, 1]
-            h = h / 127.5 - 1.0f;
-            
-            // Apply scale
-            h *= scale;
-            
-            // Apply height offset
-            h += offset;
-            point.y = h;
-            */
             point.y = noise->GetHeight(x, z) * 4.0;
-//            point.y = rand() % 2 - 1;
             vertices.push_back(point);
         }
     }
@@ -196,6 +176,57 @@ void Terrain::loadTerrain(float zOffset) {
     }
     getIndices();
 }
+
+
+void Terrain::loadTerrainWithHeightMap(const char *filename) {
+    SDL_Surface* img = SDL_LoadBMP(filename);
+    
+    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(0, -20, -20.0));
+    width = 225;
+    height = 255;
+    float scale = 8;
+    float offset = 6;
+    
+    uint8_t *pixels = (uint8_t *) img->pixels;
+    float scale_x = ((float) img->w) / (width - 1);
+    float scale_z = ((float) img->h) / (height - 1);
+    
+    
+    // (double _persistence, double _frequency, double _amplitude, int _octaves, int _randomseed);
+    //    PerlinNoise *noise = new PerlinNoise(1.1, 0.1, 2.0, 3, 4);
+    for(unsigned int z = 0; z < height; z++) {
+        for(unsigned int x = 0; x < width; x++) {
+            glm::vec3 point = glm::vec3(x, 0, z);
+            
+            // get the height
+            int img_x = (int) truncf(x * scale_x);
+            int img_y = (int) truncf(z * scale_z);
+            float h = pixels[img_y * img->pitch + img_x * 4];
+            h = h / 127.5 - 1.0f;
+            
+            // Apply scale
+            h *= scale;
+            
+            // Apply height offset
+            h += offset;
+            point.y = h;
+            vertices.push_back(point);
+        }
+    }
+    
+    
+    for(int i = 0; i < vertices.size(); i++) {
+        vertices[i].x -= width / 2.0;
+        vertices[i].z -= height / 2.0;
+    }
+    
+//    for(int i = 0; i < vertices.size(); i++) {
+//        vertices[i].x *= scale;
+//        vertices[i].z *= scale;
+//    }
+    getIndices();
+}
+
 
 
 void Terrain::getIndices() {
@@ -263,20 +294,36 @@ glm::vec3 Terrain::calculateNormal(int i) {
 
 void Terrain::update()
 {
-//    spin(1.0f);
-    move(1.0f);
-    
+      move(1.0f);
+    /*
+    if(heightMapMode == 3) {
+        if(!isSwitchModeSet) {
+            toWorld = toWorldNoSpin; // reset the mode
+            isSwitchModeSet = true;
+        }
+
+        if(!toWorldNoMoveSet) {
+            toWorldNoMove = toWorld ;
+            toWorldNoMoveSet = true;
+        }
+        move(1.0f);
+    } else {
+        if(!toWorldNoSpinSet) {
+            toWorldNoSpin = toWorld ;
+            toWorldNoSpinSet = true;
+        }
+        spin(1.0f);
+    }*/
 }
 
 void Terrain::spin(float deg)
 {
-	// If you haven't figured it out from the last project, this is how you fix spin's behavior
+    // If you haven't figured it out from the last project, this is how you fix spin's behavior
 	toWorld = toWorld * glm::rotate(glm::mat4(1.0f), 1.0f / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 void Terrain::move(float delta) {
     offset -= delta;
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, delta)) * toWorld;
-
 }
 

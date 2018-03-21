@@ -174,6 +174,8 @@ void OBJObject::draw(GLuint shaderProgram)
     // Now send these values to the shader program
     glUniformMatrix4fv(uProjection, 1, GL_FALSE, &Window::P[0][0]);
     glUniformMatrix4fv(uModelview, 1, GL_FALSE, &modelview[0][0]);
+    glUniform1i(glGetUniformLocation(shaderProgram, "usingNormalColoring"), Window::normalColoring);
+    
     
     // Now draw the cube. We simply need to bind the VAO associated with it.
     glBindVertexArray(VAO);

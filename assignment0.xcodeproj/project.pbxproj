@@ -661,8 +661,6 @@
 				98DED320205A91060066D22D /* leg_showroom_ddn.png */,
 				98DED2E0205A884C0066D22D /* modelLoading.frag */,
 				98DED2E1205A884C0066D22D /* modelLoading.vs */,
-				98DED2822059EE500066D22D /* android.frag */,
-				98DED2812059EE4F0066D22D /* android.vert */,
 				98DED27E2059EE4F0066D22D /* Asteroid.obj */,
 				98DED27A2059EE4E0066D22D /* bbox.frag */,
 				98DED27D2059EE4F0066D22D /* bbox.vert */,
@@ -673,6 +671,8 @@
 				984B1A582058DFC6000BF5D6 /* skybox.vert */,
 				983E98F92053E4AC004BC2E6 /* stb_image.h */,
 				98066E04205367550025BA30 /* heightmap.bmp */,
+				98DED2822059EE500066D22D /* android.frag */,
+				98DED2812059EE4F0066D22D /* android.vert */,
 				98066DF1205305020025BA30 /* shader.frag */,
 				98066DF5205305020025BA30 /* shader.vert */,
 				98066DF7205305030025BA30 /* main.cpp */,
@@ -1112,7 +1112,7 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7H5DJ8MJAZ;
+				DEVELOPMENT_TEAM = 2ATYTS9SNC;
 				HEADER_SEARCH_PATHS = (
 					/Developer/glm,
 					"/Developer/glfw-3.2.1/include",
@@ -1135,7 +1135,7 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7H5DJ8MJAZ;
+				DEVELOPMENT_TEAM = 2ATYTS9SNC;
 				HEADER_SEARCH_PATHS = (
 					/Developer/glm,
 					"/Developer/glfw-3.2.1/include",

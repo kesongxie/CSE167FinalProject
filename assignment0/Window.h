@@ -22,6 +22,7 @@ public:
 	static glm::mat4 P; // P for projection
 	static glm::mat4 V; // V for view
     static bool showExplode;
+    static int normalColoring;
     static glm::vec3 explodePosition;
     static glm::vec3 UFOCenter;
     static void initialize_objects();
@@ -35,9 +36,8 @@ public:
     static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
     static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos);
     static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+    static int terrainMode;
 
-    
-    
     // trackball mapping
     static glm::vec3 trackballMapping(double, double);
     // get current cam position

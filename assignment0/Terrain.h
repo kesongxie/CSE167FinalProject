@@ -23,10 +23,17 @@ public:
     std::vector<glm::vec3> vertices;
     std::vector<unsigned int> indices;
     std::vector<glm::vec3> normals;
+    
     Terrain(GLint shaderProgram);
 	~Terrain();
 
 	glm::mat4 toWorld;
+    glm::mat4 toWorldNoSpin;
+    glm::mat4 toWorldNoMove;
+    bool toWorldNoSpinSet;
+    bool toWorldNoMoveSet;
+    bool isSwitchModeSet = false;
+    
 	void draw(GLuint);
 	void update();
 	void spin(float);
@@ -41,6 +48,9 @@ public:
 	// These variables are needed for the shader program
 	GLuint VBO, VAO, EBO, normalbuffer, textureBuffer;
 	GLuint uProjection, uModelview;
+    void loadTerrainWithHeightMap(const char *filename);
+    int heightMapMode;
+    
 private:
     // get the height value from the heightmap based on the terrain x and z position
     // calculate the normal
