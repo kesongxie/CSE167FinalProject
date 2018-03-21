@@ -113,8 +113,7 @@ void Window::initialize_objects()
     ourShader = new Shader("./modelLoading.vs", "./modelLoading.frag");
 
     skybox = new Skybox(skyboxshaderProgram);
-    terrain = new Terrain(shaderProgram);
-    
+    terrain = new Terrain(shaderProgram, Window::terrainMode);
     for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
         asteroids.push_back(new OBJObject("Asteroid.obj"));
     }
@@ -344,12 +343,8 @@ void Window::display_callback(GLFWwindow* window)
     glDisable(GL_CULL_FACE);
     glUseProgram(shaderProgram);
     
-    // Render the cube
-    terrain->heightMapMode = terrainMode;
     terrain->draw(shaderProgram);
     drawActiveBullet();
-    
-
     
     
     // DRAGON
@@ -412,6 +407,18 @@ void Window::key_callback(GLFWwindow* window, int key, int scancode, int action,
         if (key == GLFW_KEY_R) {
             Window::normalColoring = 1 - Window::normalColoring;
         }
+        // switch terrain mode
+        // 1, 2 for different height map, 3 for using perlin noise to get height
+        if (key == GLFW_KEY_1) {
+            terrain->heightMapMode = 1;
+            terrain->loadTerrain();
+        } else if (key == GLFW_KEY_2) {
+            terrain->heightMapMode = 2;
+            terrain->loadTerrain();
+        } else if (key == GLFW_KEY_3) {
+            terrain->heightMapMode = 3;
+            terrain->loadTerrain();
+        }
         
     }
     if (key == GLFW_KEY_UP)
@@ -431,15 +438,7 @@ void Window::key_callback(GLFWwindow* window, int key, int scancode, int action,
         character->move_x(2.0f);
     }
    
-    // switch terrain mode
-    // 1, 2 for different height map, 3 for using perlin noise to get height
-    if (key == GLFW_KEY_1) {
-        Window::terrainMode = 1;
-    } else if (key == GLFW_KEY_2) {
-        Window::terrainMode = 2;
-    } else if (key == GLFW_KEY_3) {
-        Window::terrainMode = 3;
-    }
+    
 }
 
 void Window::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)

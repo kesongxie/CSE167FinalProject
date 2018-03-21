@@ -11,11 +11,12 @@
 
 bool notLoaded = true;
 
-Terrain::Terrain(GLint shaderProgram)
+Terrain::Terrain(GLint shaderProgram, int terrainMode)
 {
     toWorldNoSpinSet = false;
     toWorldNoMoveSet = false;
     offset = 0;
+    heightMapMode = terrainMode;
     this->loadTerrain();
 
     // Create array object and buffers. Remember to delete your buffers when the object is destroyed!
@@ -136,15 +137,16 @@ void Terrain::draw(GLuint shaderProgram)
 
 
 void Terrain::loadTerrain() {
-//    if(heightMapMode == 1) {
-//        loadTerrainWithHeightMap(HEIGHT_MAP_PATH);
-//    } else if(heightMapMode == 2) {
-//        loadTerrainWithHeightMap(HEIGHT_MAP_PATH_1);
-//    } else {
-//        loadTerrain(0);
-//    }
-    loadTerrain(0);
-
+//    vertices.clear();
+//    normals.clear();
+//    indices.clear();
+    if(heightMapMode == 1) {
+        loadTerrainWithHeightMap(HEIGHT_MAP_PATH);
+    } else if(heightMapMode == 2) {
+        loadTerrainWithHeightMap(HEIGHT_MAP_PATH_1);
+    } else {
+        loadTerrain(0);
+    }
 }
 
 
@@ -180,7 +182,6 @@ void Terrain::loadTerrain(float zOffset) {
 
 void Terrain::loadTerrainWithHeightMap(const char *filename) {
     SDL_Surface* img = SDL_LoadBMP(filename);
-    
     toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(0, -20, -20.0));
     width = 225;
     height = 255;
@@ -220,10 +221,6 @@ void Terrain::loadTerrainWithHeightMap(const char *filename) {
         vertices[i].z -= height / 2.0;
     }
     
-//    for(int i = 0; i < vertices.size(); i++) {
-//        vertices[i].x *= scale;
-//        vertices[i].z *= scale;
-//    }
     getIndices();
 }
 
@@ -295,10 +292,11 @@ glm::vec3 Terrain::calculateNormal(int i) {
 void Terrain::update()
 {
       move(1.0f);
-    /*
+/*
     if(heightMapMode == 3) {
         if(!isSwitchModeSet) {
-            toWorld = toWorldNoSpin; // reset the mode
+            toWorld = toWorldNoSpin;
+            // reset the mode
             isSwitchModeSet = true;
         }
 

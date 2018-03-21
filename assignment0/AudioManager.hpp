@@ -49,7 +49,7 @@ public:
     }
     
     static void playBackgroundMusic() {
-        openALPlay("bots.wav", true);
+        openALPlay("bg2.wav", true);
         openALPlay("flying.wav", true);
     }
     

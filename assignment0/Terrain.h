@@ -24,7 +24,7 @@ public:
     std::vector<unsigned int> indices;
     std::vector<glm::vec3> normals;
     
-    Terrain(GLint shaderProgram);
+    Terrain(GLint shaderProgram, int terrainMode);
 	~Terrain();
 
 	glm::mat4 toWorld;
