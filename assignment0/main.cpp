@@ -22,6 +22,7 @@ struct Particle{
 const int MaxParticles = 100000;
 Particle ParticlesContainer[MaxParticles];
 int LastUsedParticle = 0;
+int explodedDisplayDuration = 0;
 
 // Finds a Particle in ParticlesContainer which isn't used yet.
 // (i.e. life < 0);
@@ -191,7 +192,8 @@ void setUp() {
         Window::display_callback(window);
         Window::idle_callback();
 
-        if(Window::showExplode) {
+        if(Window::showExplode && explodedDisplayDuration < 10) {
+            explodedDisplayDuration += 1;
             double currentTime = glfwGetTime();
             double delta = currentTime - lastTime;
             lastTime = currentTime;
@@ -207,36 +209,30 @@ void setUp() {
             // Generate 10 new particule each millisecond,
             // but limit this to 16 ms (60 fps), or if you have 1 long frame (1sec),
             // newparticles will be huge and the next frame even longer.
-            int newparticles = (int)(delta*2000.0);
-            if (newparticles > (int)(0.016f*2000.0))
-            newparticles = (int)(0.016f* 2000.0);
+            int newparticles = (int)(delta*1000.0);
+            if (newparticles > (int)(0.016f*1000.0))
+            newparticles = (int)(0.016f* 1000.0);
             
+            std::cout << "center: " << Window::UFOCenter.x << std::endl;
             for(int i=0; i<newparticles; i++){
                 int particleIndex = FindUnusedParticle();
                 ParticlesContainer[particleIndex].life = 5.0f; // This particle will live 5 seconds.
-                ParticlesContainer[particleIndex].pos = glm::vec3(Window::explodePosition.x, Window::explodePosition.y, 20.0f);
-                
-                float spread = 5.5f;
+                ParticlesContainer[particleIndex].pos = glm::vec3(Window::UFOCenter.x, 0, Window::UFOCenter.z - 2);
+                float spread = 20.5f;
                 glm::vec3 maindir = glm::vec3((rand() % 100) / 400.0f, (rand() % 100) / 300.0f, (rand() % 100) / 200.0f);
                 glm::vec3 randomdir = glm::vec3(
                                                 (rand()%2000 - 1000.0f)/1000.0f,
                                                 (rand()%2000 - 1000.0f)/1000.0f,
                                                 (rand()%2000 - 1000.0f)/1000.0f
                                                 );
-                
                 ParticlesContainer[particleIndex].speed = maindir + randomdir*spread;
                 // Very bad way to generate a random color
                 ParticlesContainer[particleIndex].r = 210;
                 ParticlesContainer[particleIndex].g = 109;
                 ParticlesContainer[particleIndex].b = 44;
-//                ParticlesContainer[particleIndex].r = 255;
-//                ParticlesContainer[particleIndex].g = 255;
-//                ParticlesContainer[particleIndex].b = 255;
                 ParticlesContainer[particleIndex].a = (rand() % 256);
                 ParticlesContainer[particleIndex].size = (rand()%1000)/4000.0f + 0.1;
-                
             }
-            
             
             
             // Simulate all particles
@@ -290,7 +286,7 @@ void setUp() {
             glBufferSubData(GL_ARRAY_BUFFER, 0, ParticlesCount * sizeof(GLubyte) * 4, g_particule_color_data);
             
             
-            glEnable(GL_BLEND);
+//            glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             
             // Use our shader
@@ -352,6 +348,9 @@ void setUp() {
             glDisableVertexAttribArray(0);
             glDisableVertexAttribArray(1);
             glDisableVertexAttribArray(2);
+        } else {
+            Window::showExplode = false;
+            explodedDisplayDuration = 0;
         }
 
         

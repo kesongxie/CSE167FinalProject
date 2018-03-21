@@ -23,7 +23,8 @@ public:
 	static glm::mat4 V; // V for view
     static bool showExplode;
     static glm::vec3 explodePosition;
-	static void initialize_objects();
+    static glm::vec3 UFOCenter;
+    static void initialize_objects();
 	static void clean_up();
 	static GLFWwindow* create_window(int width, int height);
 	static void resize_callback(GLFWwindow* window, int width, int height);

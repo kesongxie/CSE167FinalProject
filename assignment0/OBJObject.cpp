@@ -177,7 +177,7 @@ void OBJObject::draw(GLuint shaderProgram)
     glBindVertexArray(0);
     
     if (Window::bbox_display) {
-        box->draw(shaderProgram, Window::V * toWorld * transform);
+        box->draw(shaderProgram, Window::V * toWorld_noRot * transform);
     }
 }
 

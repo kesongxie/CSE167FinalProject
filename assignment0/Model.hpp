@@ -62,6 +62,7 @@ public:
     
     
     // movements
+    void followCursor(float, float);
     void move_x(float);
     void move_y(float);
     void move_z(float);

@@ -274,6 +274,12 @@ void Model::move_y(float value)
     box->min_y += value;
 }
 
+void Model::followCursor(float x_val, float y_val)
+{
+    move_x(x_val);
+    move_y(y_val);
+}
+
 void Model::move_z(float value)
 {
 //    z_coord += value;

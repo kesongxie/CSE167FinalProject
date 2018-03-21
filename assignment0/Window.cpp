@@ -85,6 +85,7 @@ glm::mat4 Window::V;
 
 bool Window::showExplode;
 glm::vec3 Window::explodePosition;
+glm::vec3 Window::UFOCenter;
 
 PerlinNoise *noise;
 
@@ -146,7 +147,7 @@ void recycleBullet() {
 void moveActiveBullet() {
     for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
         if(bullets[i].isActive) {
-            glm::vec3 diretion(0.0, 3.0, -20.0);
+            glm::vec3 diretion(0.0, 5.0, -20.0);
             bullets[i].move(diretion);
         }
     }
@@ -260,6 +261,7 @@ void Window::idle_callback()
     // Iterate thru bounding boxes vector, use AABB to detect if any collide with dragon's boudning box. If any collide with dragon, set the colliding boxes’ collide flags to true (colliding boxes will be colored red via fragment shader).
     BoundingBox * boxA = UFO->box;
     
+    
     for(auto iter = bbox_vector.begin(); iter != bbox_vector.end(); iter++){
         BoundingBox * boxB = *iter;
         if (checkCollision(boxA, boxB)) {
@@ -283,41 +285,33 @@ void Window::idle_callback()
         }
     }
     
-    /*
- for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
-     BoundingBox * boxB = asteroids[i]->box;
+    
+//    std::cout << "UFO to center x: " << UFO->center.x << std::endl;
+    
+    for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
+        BoundingBox * boxB = asteroids[i]->box;
         for(auto iter = bullets.begin(); iter != bullets.end(); iter++){
-            BoundingBox * boxA =  iter->obj->box;
-            if (checkCollision(boxA, boxB)) {
-                boxA->collide = true;
-                boxB->collide = true;
-                asteroids[i]->resetZ();
-                // shaker the camera
-//                float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
-//                cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
-//                V = glm::lookAt(cam_pos, cam_look_at, cam_up);
-                timeLast += 1;
-                std:: cout << "bingo" << std::endl;
-                AudioManager::openALPlay(EXPLODE_MUSIC_PATH, false);
-                Window::showExplode = true;
-                Window::explodePosition = asteroids[i]->center;
-                
-            } else {
-                boxA->collide = false;
-                boxB->collide = false;
-                if(timeLast > 5) {
-                    timeLast = 0;
-                    V = glm::lookAt(cam_pos_before_collison, cam_look_at, cam_up);
+            if(iter->isActive) {
+                BoundingBox * boxA = iter->obj->box;
+                if (!boxA->collide && !boxB->collide && checkCollision(boxA, boxB)) {
+                    boxA->collide = true;
+                    boxB->collide = true;
+                    asteroids[i]->resetZ();
+                    AudioManager::openALPlay(EXPLODE_MUSIC_PATH, false);
+                    Window::showExplode = true;
+                    // get the position of the UFO
+                    Window::UFOCenter = UFO->center;
+                } else {
+                    boxA->collide = false;
+                    boxB->collide = false;
                 }
             }
         }
     }
-    */
+    
     
     
     // check collision between bullet and asteroid
-    
-    
     terrain->update();
 }
 
