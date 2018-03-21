@@ -145,8 +145,14 @@ void OBJObject::parse(const char *filepath)
         if (v.z > max_z) max_z = v.z;
         if (v.z < min_z) min_z = v.z;
     }
- 
     
+    init_max_x = max_x;
+    init_min_x = min_x;
+    init_max_y = max_y;
+    init_min_y = min_y;
+    init_max_z = max_z;
+    init_min_z = min_z;
+ 
     // construct BoundingBox transformation matrix
     box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
     size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
@@ -214,6 +220,12 @@ void OBJObject::move_z(float value)
         init_z = z_coord = -1000 + (rand() % 200);
         init_x = x_coord =  rand() % 800 - 400;
         init_y = y_coord =  rand() % 100 + 5;
+        
+        // reset boudning box
+        box->setBoundaries(init_max_x + x_coord, init_max_y + y_coord, init_max_z + z_coord, init_min_x + x_coord, init_min_y + y_coord, init_min_z + z_coord);
+        size = glm::vec3(init_max_x-init_min_x, init_max_y-init_min_y, init_max_z-init_min_z);
+        center = glm::vec3((init_min_x+init_max_x)/2, (init_min_y+init_max_y)/2, (init_min_z+init_max_z)/2);
+        transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
     }
 }
 

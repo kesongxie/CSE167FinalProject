@@ -332,4 +332,6 @@ void Model::setScaleTransform(glm::mat4 scale) {
     toWorld = toWorld * scale;
 }
 
-
+glm::vec3 Model::modelPos() {
+    return glm::vec3(x_coord, y_coord, z_coord);
+}

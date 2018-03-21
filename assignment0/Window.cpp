@@ -93,7 +93,7 @@ PerlinNoise *noise;
 #define MAX_BULLET_NUM 5
 #define MAX_ASTEROID_NUM 6
 
-std::vector<Bullet> bullets;
+std::vector<Bullet *> bullets;
 std::vector<OBJObject *> asteroids;
 
 
@@ -125,7 +125,7 @@ void Window::initialize_objects()
     UFO->move_y(-40);
     
     for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
-        bullets.push_back(Bullet(new OBJObject("Sphere.obj"), UFO));
+        bullets.push_back(new Bullet(new OBJObject("Sphere.obj"), UFO));
     }
     
 
@@ -133,23 +133,23 @@ void Window::initialize_objects()
 
 void drawActiveBullet() {
     for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
-        if(bullets[i].isActive) {
-            bullets[i].draw();
+        if(bullets[i]->isActive) {
+            bullets[i]->draw();
         }
     }
 }
 
 void recycleBullet() {
     for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
-        bullets[i].recycleIfNeeded();
+        bullets[i]->recycleIfNeeded();
     }
 }
 
 void moveActiveBullet() {
     for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
-        if(bullets[i].isActive) {
+        if(bullets[i]->isActive) {
             glm::vec3 diretion(0.0, 5.0, -20.0);
-            bullets[i].move(diretion);
+            bullets[i]->move(diretion);
         }
     }
 }
@@ -157,8 +157,8 @@ void moveActiveBullet() {
 void shootBullet() {
     for(unsigned int i = 0; i < MAX_BULLET_NUM; i++) {
         // find the next not active bullet and shoot it
-        if(!bullets[i].isActive) {
-            bullets[i].isActive = true;
+        if(!bullets[i]->isActive) {
+            bullets[i]->isActive = true;
             AudioManager::openALPlay("44.wav", false);
             break;
         }
@@ -292,8 +292,8 @@ void Window::idle_callback()
     for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
         BoundingBox * boxB = asteroids[i]->box;
         for(auto iter = bullets.begin(); iter != bullets.end(); iter++){
-            if(iter->isActive) {
-                BoundingBox * boxA = iter->obj->box;
+            if((*iter)->isActive) {
+                BoundingBox * boxA = (*iter)->obj->box;
                 if (!boxA->collide && !boxB->collide && checkCollision(boxA, boxB)) {
                     boxA->collide = true;
                     boxB->collide = true;
@@ -301,10 +301,17 @@ void Window::idle_callback()
                     AudioManager::openALPlay(EXPLODE_MUSIC_PATH, false);
                     Window::showExplode = true;
                     // get the position of the UFO
-                    Window::UFOCenter = UFO->center;
+//                    Window::UFOCenter = UFO->center;
+                    Window::UFOCenter = glm::vec3(asteroids[i]->x_coord, asteroids[i]->y_coord, asteroids[i]->z_coord);
                 } else {
-                    boxA->collide = false;
                     boxB->collide = false;
+                    if(timeLast > 3 && boxA->collide) {
+                        timeLast = 0;
+                        boxA->collide = false;
+                    }
+                }
+                if(boxA->collide) {
+                    timeLast += 1;
                 }
             }
         }

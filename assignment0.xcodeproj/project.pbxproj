@@ -1112,7 +1112,7 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2ATYTS9SNC;
+				DEVELOPMENT_TEAM = 7H5DJ8MJAZ;
 				HEADER_SEARCH_PATHS = (
 					/Developer/glm,
 					"/Developer/glfw-3.2.1/include",
@@ -1135,7 +1135,7 @@
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2ATYTS9SNC;
+				DEVELOPMENT_TEAM = 7H5DJ8MJAZ;
 				HEADER_SEARCH_PATHS = (
 					/Developer/glm,
 					"/Developer/glfw-3.2.1/include",

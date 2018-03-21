@@ -29,12 +29,13 @@ private:
     float init_x;
     float init_y;
     float init_z;
+    
+public:
     /* object's current coordinates in window */
     float x_coord;
     float y_coord;
     float z_coord;
     
-public:
     std::vector<unsigned int> indices;
     std::vector<glm::vec3> vertices;
     std::vector<glm::vec3> rot_vertices;
@@ -47,6 +48,7 @@ public:
     float angle; // currently rotated degrees
     
     // PA4: variables for BoundingBox
+    float init_max_x, init_max_y, init_max_z, init_min_x, init_min_y, init_min_z;
     BoundingBox * box;
     glm::vec3 size;
     glm::vec3 center;

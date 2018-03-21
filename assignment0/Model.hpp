@@ -69,6 +69,8 @@ public:
     void spin(float);
     void setScaleTransform(glm::mat4 scale);
     
+    glm::vec3 modelPos();
+    
 private:
     /* object's coordinates in window when initialized */
     float init_x;

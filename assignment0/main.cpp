@@ -196,7 +196,7 @@ void setUp() {
         Window::display_callback(window);
         Window::idle_callback();
 
-        if(Window::showExplode && explodedDisplayDuration < 10) {
+        if(Window::showExplode && explodedDisplayDuration < 50) {
             explodedDisplayDuration += 1;
             double currentTime = glfwGetTime();
             double delta = currentTime - lastTime;
@@ -221,7 +221,8 @@ void setUp() {
             for(int i=0; i<newparticles; i++){
                 int particleIndex = FindUnusedParticle();
                 ParticlesContainer[particleIndex].life = 5.0f; // This particle will live 5 seconds.
-                ParticlesContainer[particleIndex].pos = glm::vec3(Window::UFOCenter.x, 0, Window::UFOCenter.z - 2);
+//                ParticlesContainer[particleIndex].pos = glm::vec3(Window::UFOCenter.x, Window::UFOCenter.y, Window::UFOCenter.z);
+                ParticlesContainer[particleIndex].pos = glm::vec3(Window::UFOCenter.x/20, Window::UFOCenter.y/20, -10);
                 float spread = 20.5f;
                 glm::vec3 maindir = glm::vec3((rand() % 100) / 400.0f, (rand() % 100) / 300.0f, (rand() % 100) / 200.0f);
                 glm::vec3 randomdir = glm::vec3(

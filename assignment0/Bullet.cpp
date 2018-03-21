@@ -52,6 +52,8 @@ void Bullet::move(glm::vec3 direction) {
     transform = glm::translate(glm::mat4(1.0f), direction) * transform;
     this->obj->toWorld = transform * this->obj->toWorld;
     this->obj->toWorld_noRot = this->obj->toWorld;
+    BoundingBox * bb = this->obj->box;
+    bb->setBoundaries(bb->max_x + direction.x, bb->max_y + direction.y, bb->max_z + direction.z, bb->min_x + direction.x, bb->min_y + direction.y, bb->min_z + direction.z);
 }
 
 void Bullet::recycleIfNeeded() {
@@ -60,5 +62,9 @@ void Bullet::recycleIfNeeded() {
         shootingDistance = 0;
         transform = glm::mat4(1.0f);
         this->obj->toWorld = glm::mat4(1.0f);
+        this->obj->toWorld_noRot = this->obj->toWorld;
+        OBJObject * o = this->obj;
+        BoundingBox * bb = this->obj->box;
+        bb->setBoundaries(o->init_max_x, o->init_max_y, o->init_max_z, o->init_min_x, o->init_min_y, o->init_min_z);
     }
 }
