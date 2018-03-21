@@ -37,6 +37,18 @@
 		98A5EF23205C4784003608CB /* particle.DDS in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF22205C4779003608CB /* particle.DDS */; };
 		98A5EF26205C48B5003608CB /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF24205C48B5003608CB /* Texture.cpp */; };
 		98A7DA052061E93B00A36715 /* crash.WAV in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA042061E93600A36715 /* crash.WAV */; };
+		98A7DA1320620ABD00A36715 /* purplenebula_lf.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA0720620AAE00A36715 /* purplenebula_lf.tga */; };
+		98A7DA1420620ABD00A36715 /* purplenebula_up.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA0820620AAE00A36715 /* purplenebula_up.tga */; };
+		98A7DA1520620ABD00A36715 /* purplenebula_bk.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA0920620AAE00A36715 /* purplenebula_bk.tga */; };
+		98A7DA1620620ABD00A36715 /* purplenebula_rt.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA0A20620AAE00A36715 /* purplenebula_rt.tga */; };
+		98A7DA1720620ABD00A36715 /* purplenebula_dn.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA0B20620AAE00A36715 /* purplenebula_dn.tga */; };
+		98A7DA1820620ABD00A36715 /* purplenebula_ft.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA0C20620AAE00A36715 /* purplenebula_ft.tga */; };
+		98A7DA1920620ABD00A36715 /* sgod_dn.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA0D20620AAE00A36715 /* sgod_dn.tga */; };
+		98A7DA1A20620ABD00A36715 /* sgod_rt.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA0E20620AAE00A36715 /* sgod_rt.tga */; };
+		98A7DA1B20620ABD00A36715 /* sgod_ft.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA0F20620AAE00A36715 /* sgod_ft.tga */; };
+		98A7DA1C20620ABD00A36715 /* sgod_up.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA1020620AAE00A36715 /* sgod_up.tga */; };
+		98A7DA1D20620ABD00A36715 /* sgod_lf.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA1120620AAE00A36715 /* sgod_lf.tga */; };
+		98A7DA1E20620ABD00A36715 /* sgod_bk.tga in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA1220620AAE00A36715 /* sgod_bk.tga */; };
 		98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21077200D72EC00B4D688 /* OpenGL.framework */; };
 		98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21078200D730C00B4D688 /* libglfw.3.2.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98D873F920585B9E00472E29 /* PerlinNoise.cpp */; };
@@ -183,6 +195,18 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				98A7DA1320620ABD00A36715 /* purplenebula_lf.tga in CopyFiles */,
+				98A7DA1420620ABD00A36715 /* purplenebula_up.tga in CopyFiles */,
+				98A7DA1520620ABD00A36715 /* purplenebula_bk.tga in CopyFiles */,
+				98A7DA1620620ABD00A36715 /* purplenebula_rt.tga in CopyFiles */,
+				98A7DA1720620ABD00A36715 /* purplenebula_dn.tga in CopyFiles */,
+				98A7DA1820620ABD00A36715 /* purplenebula_ft.tga in CopyFiles */,
+				98A7DA1920620ABD00A36715 /* sgod_dn.tga in CopyFiles */,
+				98A7DA1A20620ABD00A36715 /* sgod_rt.tga in CopyFiles */,
+				98A7DA1B20620ABD00A36715 /* sgod_ft.tga in CopyFiles */,
+				98A7DA1C20620ABD00A36715 /* sgod_up.tga in CopyFiles */,
+				98A7DA1D20620ABD00A36715 /* sgod_lf.tga in CopyFiles */,
+				98A7DA1E20620ABD00A36715 /* sgod_bk.tga in CopyFiles */,
 				98A7DA052061E93B00A36715 /* crash.WAV in CopyFiles */,
 				9884CBB6205FB81300457B1E /* cbxt5-moiee.dds in CopyFiles */,
 				9884CBB4205E533700457B1E /* 44.wav in CopyFiles */,
@@ -376,6 +400,18 @@
 		98A5EF24205C48B5003608CB /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		98A5EF25205C48B5003608CB /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		98A7DA042061E93600A36715 /* crash.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.WAV; sourceTree = "<group>"; };
+		98A7DA0720620AAE00A36715 /* purplenebula_lf.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = purplenebula_lf.tga; sourceTree = "<group>"; };
+		98A7DA0820620AAE00A36715 /* purplenebula_up.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = purplenebula_up.tga; sourceTree = "<group>"; };
+		98A7DA0920620AAE00A36715 /* purplenebula_bk.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = purplenebula_bk.tga; sourceTree = "<group>"; };
+		98A7DA0A20620AAE00A36715 /* purplenebula_rt.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = purplenebula_rt.tga; sourceTree = "<group>"; };
+		98A7DA0B20620AAE00A36715 /* purplenebula_dn.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = purplenebula_dn.tga; sourceTree = "<group>"; };
+		98A7DA0C20620AAE00A36715 /* purplenebula_ft.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = purplenebula_ft.tga; sourceTree = "<group>"; };
+		98A7DA0D20620AAE00A36715 /* sgod_dn.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sgod_dn.tga; sourceTree = "<group>"; };
+		98A7DA0E20620AAE00A36715 /* sgod_rt.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sgod_rt.tga; sourceTree = "<group>"; };
+		98A7DA0F20620AAE00A36715 /* sgod_ft.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sgod_ft.tga; sourceTree = "<group>"; };
+		98A7DA1020620AAE00A36715 /* sgod_up.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sgod_up.tga; sourceTree = "<group>"; };
+		98A7DA1120620AAE00A36715 /* sgod_lf.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sgod_lf.tga; sourceTree = "<group>"; };
+		98A7DA1220620AAE00A36715 /* sgod_bk.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = sgod_bk.tga; sourceTree = "<group>"; };
 		98D21062200D6F8600B4D688 /* assignment0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = assignment0; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D21077200D72EC00B4D688 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		98D21078200D730C00B4D688 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = "../../../../Developer/glfw-3.2.1/src/libglfw.3.2.dylib"; sourceTree = "<group>"; };
@@ -549,6 +585,25 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		98A7DA0620620AAE00A36715 /* texture */ = {
+			isa = PBXGroup;
+			children = (
+				98A7DA0720620AAE00A36715 /* purplenebula_lf.tga */,
+				98A7DA0820620AAE00A36715 /* purplenebula_up.tga */,
+				98A7DA0920620AAE00A36715 /* purplenebula_bk.tga */,
+				98A7DA0A20620AAE00A36715 /* purplenebula_rt.tga */,
+				98A7DA0B20620AAE00A36715 /* purplenebula_dn.tga */,
+				98A7DA0C20620AAE00A36715 /* purplenebula_ft.tga */,
+				98A7DA0D20620AAE00A36715 /* sgod_dn.tga */,
+				98A7DA0E20620AAE00A36715 /* sgod_rt.tga */,
+				98A7DA0F20620AAE00A36715 /* sgod_ft.tga */,
+				98A7DA1020620AAE00A36715 /* sgod_up.tga */,
+				98A7DA1120620AAE00A36715 /* sgod_lf.tga */,
+				98A7DA1220620AAE00A36715 /* sgod_bk.tga */,
+			);
+			path = texture;
+			sourceTree = "<group>";
+		};
 		98D21059200D6F8600B4D688 = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +624,7 @@
 		98D21064200D6F8600B4D688 /* assignment0 */ = {
 			isa = PBXGroup;
 			children = (
+				98A7DA0620620AAE00A36715 /* texture */,
 				9884CBA8205E273D00457B1E /* Audio */,
 				98F151A3205B436300AE653C /* Spaceship */,
 				98DED341205AA5640066D22D /* airplane */,

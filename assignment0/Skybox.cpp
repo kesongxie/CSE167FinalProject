@@ -58,12 +58,12 @@ float skyboxVertices[] = {
 
 std::vector<std::string> faces
 {
-    "/Developer/CSE167Assignment2backup/assignment0/texture/purplenebula_ft.tga", // left
-    "/Developer/CSE167Assignment2backup/assignment0/texture/purplenebula_bk.tga", // right
-    "/Developer/CSE167Assignment2backup/assignment0/texture/purplenebula_up.tga", // up
-    "/Developer/CSE167Assignment2backup/assignment0/texture/purplenebula_dn.tga", // down
-    "/Developer/CSE167Assignment2backup/assignment0/texture/purplenebula_rt.tga", // front
-    "/Developer/CSE167Assignment2backup/assignment0/texture/purplenebula_lf.tga" // back
+    "purplenebula_ft.tga", // left
+    "purplenebula_bk.tga", // right
+    "purplenebula_up.tga", // up
+    "purplenebula_dn.tga", // down
+    "purplenebula_rt.tga", // front
+    "purplenebula_lf.tga" // back
 };
 
 

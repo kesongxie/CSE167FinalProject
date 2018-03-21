@@ -45,6 +45,7 @@ double prev_x, prev_y;
 double curr_x, curr_y;
 glm::vec3 curPoint, lastPoint;
 bool rot = false;
+bool drag = false;
 
 glm::vec3 rotAxis;
 float rotAngle;
@@ -433,13 +434,13 @@ void Window::mouse_button_callback(GLFWwindow* window, int button, int action, i
     {
         // Check if mouse left button is pressed, enter rotation mode
         if (button == GLFW_MOUSE_BUTTON_LEFT) {
-            rot = true;
+            drag = true;
             glfwGetCursorPos(window, &prev_x, &prev_y);
         }
     } else if (action == GLFW_RELEASE) {
         // Check if mouse left button is released, exit rotation mode
         if (button == GLFW_MOUSE_BUTTON_LEFT) {
-            rot = false;
+            drag = false;
         }
     }
 }
@@ -449,6 +450,10 @@ void Window::cursor_pos_callback(GLFWwindow* window, double xpos, double ypos)
     curr_x = xpos;
     curr_y = ypos;
     
+    if (drag) {
+        if (curr_x == prev_x && curr_y == prev_y) return;
+        character->followCursor((curr_x - prev_x)/20, -(curr_y - prev_y)/20);
+    }
     if (rot) {
         lastPoint = trackballMapping(prev_x, prev_y);
         curPoint = trackballMapping(curr_x, curr_y);
