@@ -10,6 +10,8 @@
 #include "Bullet.hpp"
 #include "AudioManager.hpp"
 #define EXPLODE_MUSIC_PATH "explosion.wav"
+#define CRASH_MUSIC_PATH "crash.WAV"
+
 
 
 const char* window_title = "GLFW Starter Project";
@@ -246,7 +248,7 @@ void Window::idle_callback()
     // modify the camera position
     
     for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
-        asteroids[i]->move_z(20 + rand() % 40);
+        asteroids[i]->move_z(5 + rand() % 20);
         asteroids[i]->spin(1 + rand() % 3);
     }
 
@@ -264,21 +266,24 @@ void Window::idle_callback()
             boxA->collide = true;
             boxB->collide = true;
             // shaker the camera
-            float offset = (float)(rand() % 2 - 0.5) * 4 / (rand() % 10 - 0.5);
-//            cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
-//            V = glm::lookAt(cam_pos, cam_look_at, cam_up);
-//            timeLast += 1;
+            float offset = (float)(rand() % 2 - 0.5) * 4 / 10;
+            cam_pos = glm::vec3(cam_pos.x + offset, cam_pos.y + offset, cam_pos.z);
+            V = glm::lookAt(cam_pos, cam_look_at, cam_up);
+            AudioManager::openALPlay(CRASH_MUSIC_PATH, false);
         } else {
-            boxA->collide = false;
             boxB->collide = false;
-            if(timeLast > 5) {
+            if(timeLast > 5 && boxA->collide) {
                 timeLast = 0;
+                boxA->collide = false;
                 V = glm::lookAt(cam_pos_before_collison, cam_look_at, cam_up);
             }
         }
+        if(boxA->collide) {
+            timeLast += 1;
+        }
     }
     
-    
+    /*
  for(unsigned int i = 0; i < MAX_ASTEROID_NUM; i++) {
      BoundingBox * boxB = asteroids[i]->box;
         for(auto iter = bullets.begin(); iter != bullets.end(); iter++){
@@ -307,7 +312,7 @@ void Window::idle_callback()
             }
         }
     }
-    
+    */
     
     
     // check collision between bullet and asteroid

@@ -28,18 +28,21 @@
 #include <string>
 #include <vector>
 
-/*
+
 class Particle {
 public:
+    glm::vec3 position;
+    glm::vec3 velocity;
+    float gravityEffect;
+    float scale, rotation;
+    float lifeLength; // Remaining life of the particle. if < 0 : dead and unused.
+    //    unsigned char r,g,b,a; // Color
+    float elapsedTime;
     Particle();
     void update();
     int ParticlesCount;
     void render();
-private:
-    glm::vec3 pos, speed;
-    unsigned char r,g,b,a; // Color
-    float size, angle, weight;
-    float life; // Remaining life of the particle. if < 0 : dead and unused.
+  
 };
 
 static const GLfloat g_vertex_buffer_data[] = {
@@ -47,7 +50,7 @@ static const GLfloat g_vertex_buffer_data[] = {
     0.5f, -0.5f, 0.0f,
     -0.5f, 0.5f, 0.0f,
     0.5f, 0.5f, 0.0f,
-};*/
+};
 
 
 

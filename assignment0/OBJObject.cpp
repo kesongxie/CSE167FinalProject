@@ -145,15 +145,7 @@ void OBJObject::parse(const char *filepath)
         if (v.z > max_z) max_z = v.z;
         if (v.z < min_z) min_z = v.z;
     }
-    //    max_dimension = max(max((max_x-min_x)/2, (max_y-min_y)/2), (max_z-min_z)/2);
-    //
-    //    // map vertices into a 2x2x2 cube
-    //    for (int i=0; i<vertices.size(); i++) {
-    //        glm::vec3 v = vertices[i];
-    //        vertices[i].x = v.x/max_dimension;
-    //        vertices[i].y = v.y/max_dimension;
-    //        vertices[i].z = v.z/max_dimension;
-    //    }
+ 
     
     // construct BoundingBox transformation matrix
     box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);

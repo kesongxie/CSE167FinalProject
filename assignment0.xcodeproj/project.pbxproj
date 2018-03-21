@@ -36,6 +36,7 @@
 		98A5EF21205C43A2003608CB /* particle.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF1F205C4390003608CB /* particle.vert */; };
 		98A5EF23205C4784003608CB /* particle.DDS in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF22205C4779003608CB /* particle.DDS */; };
 		98A5EF26205C48B5003608CB /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF24205C48B5003608CB /* Texture.cpp */; };
+		98A7DA052061E93B00A36715 /* crash.WAV in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A7DA042061E93600A36715 /* crash.WAV */; };
 		98D2107A200D734D00B4D688 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21077200D72EC00B4D688 /* OpenGL.framework */; };
 		98D2107B200D746D00B4D688 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D21078200D730C00B4D688 /* libglfw.3.2.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		98D873FB20585B9E00472E29 /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98D873F920585B9E00472E29 /* PerlinNoise.cpp */; };
@@ -182,6 +183,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				98A7DA052061E93B00A36715 /* crash.WAV in CopyFiles */,
 				9884CBB6205FB81300457B1E /* cbxt5-moiee.dds in CopyFiles */,
 				9884CBB4205E533700457B1E /* 44.wav in CopyFiles */,
 				9884CBB2205E3AAA00457B1E /* bots.wav in CopyFiles */,
@@ -373,6 +375,7 @@
 		98A5EF22205C4779003608CB /* particle.DDS */ = {isa = PBXFileReference; lastKnownFileType = file; path = particle.DDS; sourceTree = "<group>"; };
 		98A5EF24205C48B5003608CB /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		98A5EF25205C48B5003608CB /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
+		98A7DA042061E93600A36715 /* crash.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.WAV; sourceTree = "<group>"; };
 		98D21062200D6F8600B4D688 /* assignment0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = assignment0; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D21077200D72EC00B4D688 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		98D21078200D730C00B4D688 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = "../../../../Developer/glfw-3.2.1/src/libglfw.3.2.dylib"; sourceTree = "<group>"; };
@@ -537,6 +540,7 @@
 		9884CBA8205E273D00457B1E /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				98A7DA042061E93600A36715 /* crash.WAV */,
 				9884CBB3205E533000457B1E /* 44.wav */,
 				9884CBB1205E3AA700457B1E /* bots.wav */,
 				9884CBA9205E273D00457B1E /* explosion.wav */,

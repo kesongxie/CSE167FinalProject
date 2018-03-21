@@ -24,7 +24,7 @@ const GLushort bbox_indices[6][6] = {
 BoundingBox::BoundingBox()
 {
     bbox_toWorld = glm::mat4(1.0f);
-    
+    collide = false;
     bboxShaderProgram = LoadShaders(BBOX_VERTEX_SHADER_PATH, BBOX_FRAGMENT_SHADER_PATH);
     
     // Create array object and buffers. Remember to delete your buffers when the object is destroyed!

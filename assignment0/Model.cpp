@@ -114,8 +114,6 @@ void Model::loadModel(string const &path)
     size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
     center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
     transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
-    
-    
 }
 
 // processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).

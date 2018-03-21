@@ -22,6 +22,12 @@ Bullet::Bullet(OBJObject *bulletObj, Model *t){
     obj = bulletObj;
     initTransform = glm::translate(glm::mat4(1.0f), glm::vec3(0, target->center.y + 10, 0)) * glm::scale(glm::mat4(1.0f), glm::vec3(3.0, 3.0, 3.0));
     this->obj->transform = glm::scale(glm::mat4(1.0f), glm::vec3(6.0, 6.0, 6.0));
+    this->obj->box->max_x *= 6;
+    this->obj->box->min_x *= 6;
+    this->obj->box->max_y *= 6;
+    this->obj->box->min_y *= 6;
+    this->obj->box->max_z *= 6;
+    this->obj->box->min_z *= 6;
     obj->toWorld = initTransform;
 }
 
