@@ -260,9 +260,6 @@ void Terrain::getIndices() {
 
 
 glm::vec3 Terrain::calculateNormal(int i) {
-    return glm::vec3(1.0f);
-    
-    /*
     int left = i - 1;
     int right = i + 1;
     int top = i - width;
@@ -272,46 +269,26 @@ glm::vec3 Terrain::calculateNormal(int i) {
     float hr = 0;
     float ht = 0;
     float hb = 0;
-    if( left >= 0 && left < width * length) {
+    if( left >= 0 && left < width * height) {
         hl = vertices[left].y;
     }
-    if( right >= 0 && right < width * length) {
+    if( right >= 0 && right < width * height) {
         hr = vertices[right].y;
     }
-    if( top >= 0 && top < width * length) {
+    if( top >= 0 && top < width * height) {
         ht = vertices[top].y;
     }
-    if( bottom >= 0 && bottom < width * length) {
+    if( bottom >= 0 && bottom < width * height) {
         hb = vertices[bottom].y;
     }
     int y = rand() % 4;
     float mag = sqrt(pow(hl - hr, 2) + pow(y, 2) + pow(hb - ht, 2));
-    return glm::vec3((hl - hr) / mag, (y) / mag, (hb - ht) / mag);*/
+    return glm::vec3((hl - hr) / mag, (y) / mag, (hb - ht) / mag);
 }
 
 void Terrain::update()
 {
       move(1.0f);
-/*
-    if(heightMapMode == 3) {
-        if(!isSwitchModeSet) {
-            toWorld = toWorldNoSpin;
-            // reset the mode
-            isSwitchModeSet = true;
-        }
-
-        if(!toWorldNoMoveSet) {
-            toWorldNoMove = toWorld ;
-            toWorldNoMoveSet = true;
-        }
-        move(1.0f);
-    } else {
-        if(!toWorldNoSpinSet) {
-            toWorldNoSpin = toWorld ;
-            toWorldNoSpinSet = true;
-        }
-        spin(1.0f);
-    }*/
 }
 
 void Terrain::spin(float deg)
