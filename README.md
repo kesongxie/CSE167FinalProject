@@ -8,8 +8,8 @@ Team members: Kesong Xie and Ryan Keng
 ### Technical features
   * Procedurally generated terrain (2 pts)  
   * Collision detection with bounding boxes (2 pts)  
-  * Linear Fog
-  * Particle System
+  * Linear Fog (1 pt)
+  * Particle System (1 pt)
   
 ### Link to YouTube
 https://www.youtube.com/watch?v=1M4k4EFHPi8
