@@ -7,15 +7,35 @@ in float sampleExtraOutput;
 
 in vec4 inColor;
 
-// You can output many things. The first vec4 type output determines the color of the fragment
-out vec4 color;
+uniform sampler2D texture1;
+uniform mat4 projection;
+uniform mat4 modelview;
+
+out vec4 FragColor;
 in vec2 texCoord;
-uniform sampler2D atexture;
+in vec4 vSpace;
+
+// rim shading
+in vec3 objVpos;
+in vec3 objNormal;
+
+// fog param
+vec3 fogColor = vec3(0, 0, 0);
+float FogDensity = 0.8;
+float dist = 0;
+float fogFactor = 0;
+
 
 
 void main()
 {
     // Color everything a hot pink color. An alpha of 1.0f means it is not transparent.
 //    color = vec4(1.0f, 0.41f, 0.7f, sampleExtraOutput);
-    color = texture(atexture, texCoord);
+//    color = texture(texture1, texCoord);
+//    FragColor = inColor;
+    // linear fog
+    dist = abs(vSpace.z);
+    fogFactor = (1000 - dist)/1000;
+    fogFactor = clamp( fogFactor, 0.0, 1.0 );
+    FragColor = mix(vec4(fogColor,1), inColor, fogFactor);
 }
