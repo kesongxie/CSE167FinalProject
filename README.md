@@ -1,9 +1,9 @@
-# CSE 167 Final Project: Dragon VS Asteroids
+# CSE 167 Final Project: UFO vs. Asteroids
 
 Team members: Kesong Xie and Ryan Keng
 
 ### Description
-  * Objective: Control the dragon to dodge the asteroids, shoot beams to destroy asteroids  
+  * Objective: Control the UFO to dodge the asteroids, shoot bullets to destroy asteroids
   
 ### Technical features
   * Procedurally generated terrain (2 pts)  
