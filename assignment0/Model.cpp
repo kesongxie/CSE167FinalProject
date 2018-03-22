@@ -16,7 +16,6 @@ using namespace std;
 unsigned int TextureFromFile(const char *path, const string &directory, bool gamma)
 {
     string filename = string(path);
-    //    filename = directory + '/' + filename;
     
     unsigned int textureID;
     glGenTextures(1, &textureID);
@@ -84,7 +83,7 @@ void Model::loadModel(string const &path)
     // retrieve the directory path of the filepath
     //        directory = path.substr(0, path.find_last_of('/'));
     directory = "";
-    // process ASSIMP's root node recursively
+    
     processNode(scene->mRootNode, scene);
     
     
@@ -97,7 +96,6 @@ void Model::loadModel(string const &path)
     max_x = max_y = max_z = -numeric_limits<float>::max();
     min_x = min_y = min_z = numeric_limits<float>::max();
 
-    // and calculate the maximum dimension of either x, y, or z axis.
     for (int i=0; i<myVertices.size(); i++) {
         glm::vec3 v = myVertices[i];
         if (v.x > max_x) max_x = v.x;
@@ -109,25 +107,20 @@ void Model::loadModel(string const &path)
     }
     
     
-    // construct BoundingBox transformation matrix
     box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
     size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
     center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
     transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
 }
 
-// processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).
 void Model::processNode(aiNode *node, const aiScene *scene)
 {
     // process each mesh located at the current node
     for(unsigned int i = 0; i < node->mNumMeshes; i++)
     {
-        // the node object only contains indices to index the actual objects in the scene.
-        // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
         meshes.push_back(processMesh(mesh, scene));
     }
-    // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
     for(unsigned int i = 0; i < node->mNumChildren; i++)
     {
         processNode(node->mChildren[i], scene);
@@ -142,11 +135,10 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
     vector<unsigned int> indices;
     vector<Texture> textures;
     
-    // Walk through each of the mesh's vertices
     for(unsigned int i = 0; i < mesh->mNumVertices; i++)
     {
         Vertex vertex;
-        glm::vec3 vector; // we declare a placeholder vector since assimp uses its own vector class that doesn't directly convert to glm's vec3 class so we transfer the data to this placeholder glm::vec3 first.
+        glm::vec3 vector;
         // positions
         vector.x = mesh->mVertices[i].x;
         vector.y = mesh->mVertices[i].y;
@@ -160,11 +152,9 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
         vector.z = mesh->mNormals[i].z;
         vertex.Normal = vector;
         // texture coordinates
-        if(mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
+        if(mesh->mTextureCoords[0]) // check if the mesh contain texture coordinates or not
         {
             glm::vec2 vec;
-            // a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't
-            // use models where a vertex can have multiple texture coordinates so we always take the first set (0).
             vec.x = mesh->mTextureCoords[0][i].x;
             vec.y = mesh->mTextureCoords[0][i].y;
             vertex.TexCoords = vec;
@@ -183,37 +173,22 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
         vertex.Bitangent = vector;
         vertices.push_back(vertex);
     }
-    // now wak through each of the mesh's faces (a face is a mesh its triangle) and retrieve the corresponding vertex indices.
     for(unsigned int i = 0; i < mesh->mNumFaces; i++)
     {
         aiFace face = mesh->mFaces[i];
-        // retrieve all indices of the face and store them in the indices vector
         for(unsigned int j = 0; j < face.mNumIndices; j++)
         indices.push_back(face.mIndices[j]);
     }
-    // process materials
     aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-    // we assume a convention for sampler names in the shaders. Each diffuse texture should be named
-    // as 'texture_diffuseN' where N is a sequential number ranging from 1 to MAX_SAMPLER_NUMBER.
-    // Same applies to other texture as the following list summarizes:
-    // diffuse: texture_diffuseN
-    // specular: texture_specularN
-    // normal: texture_normalN
     
-    // 1. diffuse maps
     vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
     textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-    // 2. specular maps
     vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
     textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-    // 3. normal maps
     std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
     textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
-    // 4. height maps
     std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
     textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
-    
-    // return a mesh object created from the extracted mesh data
     return Mesh(vertices, indices, textures);
 }
 
@@ -280,52 +255,6 @@ void Model::followCursor(float x_val, float y_val)
     move_y(y_val);
 }
 
-void Model::move_z(float value)
-{
-//    z_coord += value;
-//    toWorld = glm::translate(glm::mat4(1.0f), glm::vec3(x_coord, y_coord, z_coord));
-//    toWorld_noRot = toWorld;
-//    // update bounding box's boundaries
-//    box->max_z += value;
-//    box->min_z += value;
-//    if(z_coord > 100) {
-//        init_z = z_coord = -1000 + (rand() % 200);
-//        init_x = x_coord =  rand() % 800 - 400;
-//        init_y = y_coord =  rand() % 100 + 5;
-//    }
-}
-
-/*
-void Model::spin(float deg)
-{
-    angle += deg;
-    if (angle > 360.0f || angle < -360.0f) angle = 0.0f;
-    // If you haven't figured it out from the last project, this is how you fix spin's behavior
-    toWorld = toWorld * glm::rotate(glm::mat4(1.0f), angle / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
-    
-    float max_x, max_y, max_z, min_x, min_y, min_z;
-    // initialize values
-    max_x = max_y = max_z = -numeric_limits<float>::max();
-    min_x = min_y = min_z = numeric_limits<float>::max();
-    for (int i=0; i<vertices.size(); i++) {
-        glm::vec3 old_v = rot_vertices[i];
-        glm::vec3 new_v = glm::rotate(old_v, deg / 180.0f * glm::pi<float>(), glm::vec3(0.0f, 1.0f, 0.0f));
-        rot_vertices[i] = glm::vec3(new_v.x, new_v.y, new_v.z);
-        
-        if (new_v.x > max_x) max_x = new_v.x;
-        if (new_v.x < min_x) min_x = new_v.x;
-        if (new_v.y > max_y) max_y = new_v.y;
-        if (new_v.y < min_y) min_y = new_v.y;
-        if (new_v.z > max_z) max_z = new_v.z;
-        if (new_v.z < min_z) min_z = new_v.z;
-    }
-    box->setBoundaries(max_x + x_coord, max_y + y_coord, max_z + z_coord, min_x + x_coord, min_y + y_coord, min_z + z_coord);
-    size = glm::vec3(max_x-min_x, max_y-min_y, max_z-min_z);
-    center = glm::vec3((min_x+max_x)/2, (min_y+max_y)/2, (min_z+max_z)/2);
-    transform = glm::translate(glm::mat4(1), center) * glm::scale(glm::mat4(1), size);
-}
-
-*/
 
 void Model::setScaleTransform(glm::mat4 scale) {
     scaleTransform = scale;

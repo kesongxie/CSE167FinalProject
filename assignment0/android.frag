@@ -35,7 +35,7 @@ void main()
     }
     // linear fog
     dist = abs(vSpace.z);
-    fogFactor = (1000 - dist)/800;
+    fogFactor = (1200 - dist)/800;
     fogFactor = clamp( fogFactor, 0.0, 1.0 );
     FragColor = mix(vec4(fogColor,1), FragColor, fogFactor);
 }

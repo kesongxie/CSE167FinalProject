@@ -23,8 +23,6 @@ public:
     static void openALPlay(const char *filename, bool loop) {
         
         ALuint buffer, source;
-        ALint state;
-        
         // Initialize the environment
         alutInit(0, NULL);
         

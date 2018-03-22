@@ -33,7 +33,6 @@
 		9884CBB4205E533700457B1E /* 44.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CBB3205E533000457B1E /* 44.wav */; };
 		9884CBB6205FB81300457B1E /* cbxt5-moiee.dds in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9884CBB5205FB80D00457B1E /* cbxt5-moiee.dds */; };
 		98A5EF1A205B93F1003608CB /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF18205B93F1003608CB /* Model.cpp */; };
-		98A5EF1D205BB16F003608CB /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A5EF1B205BB16F003608CB /* Particle.cpp */; };
 		98A5EF20205C43A2003608CB /* particle.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF1E205C4390003608CB /* particle.frag */; };
 		98A5EF21205C43A2003608CB /* particle.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF1F205C4390003608CB /* particle.vert */; };
 		98A5EF23205C4784003608CB /* particle.DDS in CopyFiles */ = {isa = PBXBuildFile; fileRef = 98A5EF22205C4779003608CB /* particle.DDS */; };
@@ -398,8 +397,6 @@
 		9884CBB5205FB80D00457B1E /* cbxt5-moiee.dds */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cbxt5-moiee.dds"; sourceTree = "<group>"; };
 		98A5EF18205B93F1003608CB /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		98A5EF19205B93F1003608CB /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
-		98A5EF1B205BB16F003608CB /* Particle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
-		98A5EF1C205BB16F003608CB /* Particle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Particle.hpp; sourceTree = "<group>"; };
 		98A5EF1E205C4390003608CB /* particle.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.frag; sourceTree = "<group>"; };
 		98A5EF1F205C4390003608CB /* particle.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vert; sourceTree = "<group>"; };
 		98A5EF22205C4779003608CB /* particle.DDS */ = {isa = PBXFileReference; lastKnownFileType = file; path = particle.DDS; sourceTree = "<group>"; };
@@ -701,8 +698,6 @@
 				98D873FA20585B9E00472E29 /* PerlinNoise.hpp */,
 				984B1A562058DF02000BF5D6 /* Skybox.hpp */,
 				984B1A552058DF02000BF5D6 /* Skybox.cpp */,
-				98A5EF1C205BB16F003608CB /* Particle.hpp */,
-				98A5EF1B205BB16F003608CB /* Particle.cpp */,
 				98A5EF25205C48B5003608CB /* Texture.hpp */,
 				9884CBA1205D109A00457B1E /* Bullet.hpp */,
 				9884CBA0205D109A00457B1E /* Bullet.cpp */,
@@ -992,7 +987,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				98DED2E2205A88560066D22D /* modelLoading.frag in Sources */,
-				98A5EF1D205BB16F003608CB /* Particle.cpp in Sources */,
 				98DED2E3205A88560066D22D /* modelLoading.vs in Sources */,
 				98DED2842059EE500066D22D /* OBJObject.cpp in Sources */,
 				98066DFC205305030025BA30 /* shader.cpp in Sources */,
