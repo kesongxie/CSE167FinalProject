@@ -10,7 +10,7 @@ Team members: Kesong Xie and Ryan Keng
   * Collision detection with bounding boxes (2 pts)  
   * Linear Fog (1 pt)
   * Particle System (1 pt)
-  * Rim Shading
+  * Rim Shading (1 pt)
   
 ### Link to YouTube
 https://www.youtube.com/watch?v=1M4k4EFHPi8
